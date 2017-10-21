@@ -29,6 +29,7 @@ pairs(pairs_df)
 ##KNN Section##
 
 #KNN Test Data#
+set.seed(1)
 train = sample(nrow(df), 2937)
 test = df[-train,]
 
