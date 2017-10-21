@@ -85,7 +85,7 @@ mean(knn4.pred==sex2[test_knn])
 # Builds a new dataframe that excludes a column that should not be included as a predictor.
 df_subset <- df %>% dplyr::select(., -subject)
 
-regfit.full=regsubsets(sex2~.,data=df_subset, nvmax=22)
+regfit.full=regsubsets(sex2~.,data=df_subset, nvmax=20)
 reg.summary=summary(regfit.full)
 names(reg.summary)
 plot(reg.summary$cp,xlab="Number of Variables",ylab="Cp")
