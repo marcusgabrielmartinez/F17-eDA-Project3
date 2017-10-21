@@ -18,8 +18,11 @@ df <- data.world::query(
 summary(df)
 attach(df)
 
+#Add binary column for gender
+df <- df %>% dplyr::mutate(sex = ifelse(sex == "true", 1, 0))
+
 #Pairs Chart#
-pairs_df <- df %>% dplyr::select(., motor_updrs, total_updrs, jitter, shimmer, nhr, hnr)
+pairs_df <- df %>% dplyr::select(., age, motor_updrs, total_updrs, jitter, shimmer, nhr, hnr, dfa)
 
 pairs(pairs_df)
 
@@ -41,3 +44,13 @@ predictorsKNN2=cbind(jitter, hnr)
 knn2.pred=class::knn(predictorsKNN2[train, ],predictorsKNN2[test_knn,],motor_updrs[train],k=1)
 table(knn2.pred,motor_updrs[test_knn])
 mean(knn2.pred==motor_updrs[test_knn])
+
+predictorsKNN3=cbind(age, hnr, dfa)
+knn3.pred=class::knn(predictorsKNN3[train, ],predictorsKNN3[test_knn,],motor_updrs[train],k=1)
+table(knn3.pred,motor_updrs[test_knn])
+mean(knn3.pred==motor_updrs[test_knn])
+
+predictorsKNN4=cbind(age, hnr, dfa)
+knn4.pred=class::knn(predictorsKNN4[train, ],predictorsKNN4[test_knn,],sex[train],k=1)
+table(knn4.pred,motor_updrs[test_knn])
+mean(knn4.pred==motor_updrs[test_knn])
