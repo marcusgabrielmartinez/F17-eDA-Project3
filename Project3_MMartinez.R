@@ -19,7 +19,7 @@ summary(df)
 attach(df)
 
 #Add binary column for gender
-df <- df %>% dplyr::mutate(sex = ifelse(sex == "true", 1, 0))
+df <- df %>% dplyr::mutate(sex2 = ifelse(sex == "true", 1, 0))
 
 #Pairs Chart#
 pairs_df <- df %>% dplyr::select(., age, motor_updrs, total_updrs, jitter, shimmer, nhr, hnr, dfa)
@@ -51,6 +51,6 @@ table(knn3.pred,motor_updrs[test_knn])
 mean(knn3.pred==motor_updrs[test_knn])
 
 predictorsKNN4=cbind(age, hnr, dfa)
-knn4.pred=class::knn(predictorsKNN4[train, ],predictorsKNN4[test_knn,],sex[train],k=1)
-table(knn4.pred,motor_updrs[test_knn])
-mean(knn4.pred==motor_updrs[test_knn])
+knn4.pred=class::knn(predictorsKNN4[train, ],predictorsKNN4[test_knn,],sex2[train],k=1)
+table(knn4.pred,sex2[test_knn])
+mean(knn4.pred==sex2[test_knn])
