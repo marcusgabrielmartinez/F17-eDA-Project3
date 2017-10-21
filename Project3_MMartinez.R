@@ -90,7 +90,11 @@ reg.summary=summary(regfit.full)
 names(reg.summary)
 plot(reg.summary$cp,xlab="Number of Variables",ylab="Cp")
 which.min(reg.summary$cp)
-points(10,reg.summary$cp[10],pch=20,col="red")
+#points(10,reg.summary$cp[10],pch=20,col="red")
+
+plot(reg.summary$adjr2,xlab="Number of Variables",ylab="adjr2")
+which.min(reg.summary$adjr2)
+
 summary(regfit.full)
 
 plot(regfit.full,scale="Cp")
