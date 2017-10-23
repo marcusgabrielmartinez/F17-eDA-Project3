@@ -1,4 +1,5 @@
 library(ggplot2)
+require(dplyr)
 require(ISLR)
 require(boot)
 require(data.world)
@@ -23,7 +24,7 @@ pairs(pairs_df)
 plot(nhr~jitter, data = df)
 ggplot(df, aes(x=jitter, y=nhr)) + geom_hex(bins = 50)
 glm.fit=glm(nhr~jitter, data=df)
-cv.glm(df,glm.fit)$delta 
+#cv.glm(df,glm.fit)$delta 
 #pretty slow (doesnt use formula (5.2) on page 180)
 
 ##Lets write a simple function to use formula (5.2)
@@ -50,4 +51,26 @@ for(d in degree){
   cv.error10[d]=cv.glm(df,glm.fit,K=10)$delta[1]
 }
 lines(degree,cv.error10,type="b",col="red")
+
+
+# bootstrap
+
+alpha=function(x,y){
+  vx=var(x)
+  vy=var(y)
+  cxy=cov(x,y)
+  (vy-cxy)/(vx+vy-2*cxy)
+}
+
+## What is the standard error of alpha?
+
+alpha.fn=function(data, index){
+  with(data[index,],alpha(jitter,nhr))
+}
+
+set.seed(1)
+alpha.fn (df,sample(1:200,200,replace=TRUE))
+boot.out=boot(df,alpha.fn,R=1000)
+boot.out
+plot(boot.out)
 
