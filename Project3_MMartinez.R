@@ -58,6 +58,11 @@ knn4.pred=class::knn(predictorsKNN4[train, ],predictorsKNN4[test_knn,],sex2[trai
 table(knn4.pred,sex2[test_knn])
 mean(knn4.pred==sex2[test_knn])
 
+predictorsKNN5=cbind(age, rpde, ppe, total_updrs)
+knn5.pred=class::knn(predictorsKNN5[train, ],predictorsKNN5[test_knn,],sex2[train],k=1)
+table(knn5.pred,sex2[test_knn])
+mean(knn5.pred==sex2[test_knn])
+
 # ##Lasso Section##- Not currently working
 # 
 # library(glmnet)
