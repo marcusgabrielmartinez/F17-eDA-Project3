@@ -54,7 +54,7 @@ lines(degree,cv.error10,type="b",col="red")
 
 
 # bootstrap
-
+?boot
 alpha=function(x,y){
   vx=var(x)
   vy=var(y)
@@ -69,8 +69,27 @@ alpha.fn=function(data, index){
 }
 
 set.seed(1)
-alpha.fn (df,sample(1:200,200,replace=TRUE))
-boot.out=boot(df,alpha.fn,R=1000)
+alpha.fn (df,sample(1:300,300,replace=TRUE))
+boot.out=boot(df,alpha.fn,R=2000)
 boot.out
 plot(boot.out)
 
+lin.statistic <- function(data, index) {
+  lm.fit <- lm(nhr ~ jitter, data = data, subset = index)
+  coef(lm.fit)
+}
+set.seed(1)
+boot(df, lin.statistic, 4000)
+summary(lm(nhr ~ jitter, data = df))
+#b = boot(df, quad.statistic, 4000)
+#boot.ci(b)
+plot(b)
+quad.statistic <- function(data, index) {
+  lm.fit <- lm(nhr ~ poly(jitter, 2), data = data, subset = index)
+  coef(lm.fit)
+}
+boot(df, quad.statistic, 4000)
+summary(lm(nhr ~ poly(jitter, 2), data = df))
+#b2 = boot(df, quad.statistic, 4000)
+#boot.ci(b2)
+plot(b2)
