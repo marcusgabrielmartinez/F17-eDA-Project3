@@ -6,6 +6,7 @@ require(MASS)
 require(ISLR)
 require(ggplot2)
 library(leaps)
+library(glmnet)
 
 data.world::set_config(save_config(auth_token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50Om1hcmN1c2dhYmUtdXQiLCJpc3MiOiJhZ2VudDptYXJjdXNnYWJlLXV0OjowYjE2NDQzOC1mYzRlLTRhNDktYWY1MC1iMWU1YjViYmIzYzMiLCJpYXQiOjE0ODQ4NjgyNjMsInJvbGUiOlsidXNlcl9hcGlfcmVhZCIsInVzZXJfYXBpX3dyaXRlIl0sImdlbmVyYWwtcHVycG9zZSI6dHJ1ZX0.Eb9i31mYAv6zQGjlze-PbiBJ_5_JNBDIZn51wcPnnNPny_ih2SSN9Ur_LVyRltEbrReNXM5b371XWrmMiexEKw"))
 #vignette("quickstart", package = "data.world")
@@ -65,16 +66,18 @@ mean(knn5.pred==sex2[test_knn])
 
 # ##Lasso Section##- Not currently working
 # 
-# library(glmnet)
-# x=model.matrix(sex2~.-1,data=df) 
-# y=df$sex2
-# 
+# # Builds a new dataframe that excludes a column that should not be included as a predictor.
+# df_subset <- df %>% dplyr::select(., -subject)
+#  
+# x=model.matrix(sex2~.-1,data=df_subset) 
+# y=df_subset$sex2
+#  
 # fit.lasso=glmnet(x,y)
 # plot(fit.lasso,xvar="lambda",label=TRUE)
 # cv.lasso=cv.glmnet(x,y)
 # plot(cv.lasso)
 # coef(cv.lasso)
-# 
+#  
 # lasso.tr=glmnet(x[train,],y[train])
 # lasso.tr
 # pred=predict(lasso.tr,x[-train,])
@@ -124,6 +127,57 @@ which.min(regfwd.summary$adjr2)
 
 plot(regfwd.summary$cp,xlab="Number of Variables",ylab="Cp")
 plot(regfwd.summary$adjr2,xlab="Number of Variables",ylab="adjr2")
+
+# ##Validation Set Section## - Not working!
+# 
+# # Builds a new dataframe that excludes a column that should not be included as a predictor.
+# df_subset <- df %>% dplyr::select(., -subject)
+# 
+# dim(df_subset)
+# set.seed(1)
+# train=sample(seq(263),180,replace=FALSE)
+# train
+# regfit.fwd=regsubsets(sex2~.,data=df_subset[train,],nvmax=20,method="forward")
+# 
+# 
+# val.errors=rep(NA,20)
+# x.test=model.matrix(sex2~.,data=df_subset[-train,])# notice the -index!
+# for(i in 1:20){
+#   coefi=coef(regfit.fwd,id=i)
+#   pred=x.test[,names(coefi)]%*%coefi
+#   val.errors[i]=mean((df_subset$sex2[-train]-pred)^2)
+# }
+# plot(sqrt(val.errors),ylab="Root MSE",ylim=c(300,400),pch=19,type="b")
+# points(sqrt(regfit.fwd$rss[-1]/180),col="blue",pch=19,type="b")
+# legend("topright",legend=c("Training","Validation"),col=c("blue","black"),pch=19)
+
+##Cross Validation Section##
+
+# Builds a new dataframe that excludes a column that should not be included as a predictor.
+df_subset <- df %>% dplyr::select(., -subject)
+
+predict.regsubsets=function(object,newdata,id,...){
+  form=as.formula(object$call[[2]])
+  mat=model.matrix(form,newdata)
+  coefi=coef(object,id=id)
+  mat[,names(coefi)]%*%coefi
+}
+
+set.seed(11)
+folds=sample(rep(1:10,length=nrow(df_subset)))
+folds
+table(folds)
+cv.errors=matrix(NA,10,20)
+for(k in 1:10){
+  best.fit=regsubsets(sex2~.,data=df_subset[folds!=k,],nvmax=20,method="forward")
+  for(i in 1:20){
+    pred=predict(best.fit,df_subset[folds==k,],id=i)
+    cv.errors[k,i]=mean( (df_subset$sex2[folds==k]-pred)^2)
+  }
+}
+rmse.cv=sqrt(apply(cv.errors,2,mean))
+plot(rmse.cv,pch=19,type="b")
+
 
 
 
