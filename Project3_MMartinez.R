@@ -106,3 +106,25 @@ plot(regfit.full,scale="Cp")
 plot(regfit.full,scale="adjr2")
 coef(regfit.full,10)
 
+##Forward Selection Section##
+
+# Builds a new dataframe that excludes a column that should not be included as a predictor.
+df_subset <- df %>% dplyr::select(., -subject)
+
+regfit.fwd=regsubsets(sex2~.,data=df_subset,nvmax=22,method="forward")
+summary(regfit.fwd)
+
+plot(regfit.fwd,scale="Cp")
+plot(regfit.fwd,scale="adjr2")
+
+regfwd.summary=summary(regfit.fwd)
+
+which.min(regfwd.summary$cp)
+which.min(regfwd.summary$adjr2)
+
+plot(regfwd.summary$cp,xlab="Number of Variables",ylab="Cp")
+plot(regfwd.summary$adjr2,xlab="Number of Variables",ylab="adjr2")
+
+
+
+
