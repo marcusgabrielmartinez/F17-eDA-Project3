@@ -64,6 +64,17 @@ knn5.pred=class::knn(predictorsKNN5[train, ],predictorsKNN5[test_knn,],sex2[trai
 table(knn5.pred,sex2[test_knn])
 mean(knn5.pred==sex2[test_knn])
 
+predictorsKNN6=cbind(jitter_abs, jitter_rap)
+knn6.pred=class::knn(predictorsKNN6[train, ],predictorsKNN6[test_knn,],sex2[train],k=1)
+table(knn6.pred,sex2[test_knn])
+mean(knn6.pred==sex2[test_knn])
+
+predictorsKNN7=cbind(age, motor_updrs, total_updrs, jitter, jitter_abs, jitter_ppq5, rpde, dfa, ppe)
+knn7.pred=class::knn(predictorsKNN7[train, ],predictorsKNN7[test_knn,],sex2[train],k=1)
+table(knn7.pred,sex2[test_knn])
+mean(knn7.pred==sex2[test_knn])
+
+
 # ##Lasso Section##- Not currently working
 # 
 # # Builds a new dataframe that excludes a column that should not be included as a predictor.
