@@ -21,6 +21,9 @@ summary(df)
 #Add binary column for gender
 df <- df %>% dplyr::mutate(sex2 = ifelse(sex == "true", 1, 0))
 
+#remove outliers
+#df <- df %>% dplyr::filter(jitter < 0.007, shimmer < 0.035, nhr < 0.032, hnr )
+
 attach(df)
 
 
@@ -63,19 +66,38 @@ table(qda1.pred$class,test$sex2)
 mean(qda1.pred$class==test$sex2)
 
 
-### stef
-library(leaps)
-regfit.full=regsubsets(Salary~.,data=Hitters)
-summary(regfit.full)
+### KNN ###
+predictorsKNN=cbind(age, motor_updrs, total_updrs, jitter, jitter_abs, jitter_ppq5, rpde, dfa, ppe)
+knn7.pred=class::knn(predictorsKNN7[train, ],predictorsKNN7[test_knn,],sex2[train],k=1)
+table(knn7.pred,sex2[test_knn])
+mean(knn7.pred==sex2[test_knn])
 
-regfit.full=regsubsets(Salary~.,data=Hitters, nvmax=19)
-reg.summary=summary(regfit.full)
-names(reg.summary)
-plot(reg.summary$cp,xlab="Number of Variables",ylab="Cp") #uses cp from the summary to compare the models and see which is best
-#plot(reg.summary$bic,xlab="Number of Variables",ylab="Bic")
-#plot(reg.summary$adjr2,xlab="Number of Variables",ylab="Adjr2")
-which.min(reg.summary$cp) #cp is the statistic you want to minimize
-points(10,reg.summary$cp[10],pch=20,col="red")
 
-plot(regfit.full,scale="Cp")
-coef(regfit.full,10)
+### Insight 2: hnr vs Shimmer ###
+plot(hnr~shimmer, data = df)
+#ggplot(df, aes(x=shimmer, y=hnr)) + geom_hex(bins = 50)
+glm.fit=glm(hnr~shimmer, data=df)
+#cv.glm(df,glm.fit)$delta 
+
+#Leave One Out Cross Validation - LOOCV
+loocv=function(fit){
+  h=lm.influence(fit)$h
+  mean((residuals(fit)/(1-h))^2)
+}
+loocv(glm.fit)
+
+cv.error=rep(0,6)
+degree=1:6
+for(d in degree){
+  glm.fit=glm(nhr~poly(shimmer,d), data=df)
+  cv.error[d]=loocv(glm.fit)
+}
+plot(degree,cv.error,type="b")
+
+#K fold cross validation
+cv.error10=rep(0,6)
+for(d in degree){
+  glm.fit=glm(nhr~poly(shimmer,d), data=df)
+  cv.error10[d]=cv.glm(df,glm.fit,K=10)$delta[1]
+}
+lines(degree,cv.error10,type="b",col="red")
