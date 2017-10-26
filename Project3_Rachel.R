@@ -90,3 +90,14 @@ plot(fit.lasso,xvar="lambda",label=TRUE)
 cv.lasso=cv.glmnet(x,y,family="binomial")
 plot(cv.lasso)
 coef(cv.lasso)
+
+## KNN
+predictorsKNN5=cbind(age, rpde, ppe, total_updrs)
+knn5.pred=class::knn(predictorsKNN5[train, ],predictorsKNN5[test_knn,],sex2[train],k=10)
+table(knn5.pred,sex2[test_knn])
+mean(knn5.pred==sex2[test_knn])
+
+predictorsKNN7=cbind(age, motor_updrs, total_updrs, jitter, jitter_abs, jitter_ppq5, rpde, dfa, ppe)
+knn7.pred=class::knn(predictorsKNN7[train, ],predictorsKNN7[test_knn,],sex2[train],k=10)
+table(knn7.pred,sex2[test_knn])
+mean(knn7.pred==sex2[test_knn])
