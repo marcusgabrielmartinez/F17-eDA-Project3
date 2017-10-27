@@ -165,121 +165,87 @@ However, we realized the mistake and reran the insights.
 Even with exhaustive search, the adjusted R2 for the chosen models was still low (around 0.25). We decided to use the predictors from the ten predictor model that subset selection chose (as referenced above) in different model types. Specifically, we explored Logistic Regression (which is the model that subset selection uses), Linear Discriminate Analysis, Quadratic Discriminate Analysis, and K Nearest Neighbors. In order to compare these model types, we compared prediction accuracy.
 
 ### Logistic Regression
+First, we did Logistic Regression. This is the least-squares model that subset selection also uses.
 ```{r}
-renderPlot(plot(lda3.fit))
-renderPlot({ggplot(lda3_df) + geom_histogram(mapping=aes(x=LD1))})
-renderPlot({ggplot(lda3_df) + geom_boxplot(mapping = aes(x=class,y=LD1))})
+set.seed(1)
+train = sample(nrow(df_subset_fixed), 2937)
+test = df_subset_fixed[-train,]
+
+## WHY ISN'T THIS WORKING
+glm2.fit=glm(sex2 ~ motor_updrs + total_updrs + jitter_abs + jitter_rap + jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe,
+             data=df, family=binomial,
+             subset=train)
+summary(glm2.fit)
+
+glm2.probs=predict(glm2.fit,newdata=test,type="response")
+glm2.pred=ifelse(glm2.probs>0.5,"1","0")
+sex2.test = test$sex2
+table(glm2.pred,sex2.test) 
+mean(glm2.pred==sex2.test) 
+```
+
+### Linear Discriminant Analysis
+
+Next, we did Linear Discriminant Analysis with the same predictors. 
+
+```{r}
+lda2.fit=lda(sex2 ~ motor_updrs + total_updrs + jitter_rap + jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe,
+             data=df, subset=train)
+lda2.fit
+lda2.pred=predict(lda2.fit, test)
+lda2_df = data.frame(lda2.pred)
+table(lda2.pred$class,test$sex2)
+mean(lda2.pred$class==test$sex2)
 ```
 
 
+### Quadratic Discriminant Analysis
 
-
-## Quadratic Discriminant Analysis
-
-
-Here we are analyzing two predictors, average hertz and jitter, to predict the Parkinson's Disease status of the patient. We are using Quadratic Discriminant Analysis to analyze the predictability of having Parkinson's Disease given these variables. 
+Next, we did Quadratic Discriminant Analysis with the same predictors.
 
 ```{r}
-qda1.fit = qda(status ~ mdvp_fo_hz + mdvp_jitter,
-              data=df, subset=train)
-qda1.fit
-qda1.pred = predict(qda1.fit, test)
-table(qda1.pred$class,test$status)
-table(qda1.pred$class==test$status)
-table(qda1.pred$class!=test$status)
-mean(qda1.pred$class==test$status)
-```
-
-
-Here we are analyzing six predictors, average hertz, jitter, rpde, d2, dfa, and spread1 to predict the Parkinson's Disease status of the patient. We are using Quadratic Discriminant Analysis to analyze the predictability of having Parkinson's Disease given these variables.  
-
-```{r}
-qda.fit3 = qda(status ~ mdvp_fo_hz + mdvp_jitter + rpde + d2 + dfa + spread1,
+qda2.fit = qda(sex2 ~ motor_updrs + total_updrs + jitter_abs + jitter_rap + jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe,
                data=df, subset=train)
-qda.fit3
-qda.pred3 = predict(qda.fit3, test)
-table(qda.pred3$class,test$status)
-table(qda.pred3$class==test$status)
-table(qda.pred3$class!=test$status)
-mean(qda.pred3$class==test$status)
+qda2.fit
+qda2.pred = predict(qda2.fit, test)
+table(qda2.pred$class,test$sex2)
+mean(qda2.pred$class==test$sex2)
 ```
 
 
-## K-Nearest Neighbors
+### K-Nearest Neighbors
 
-Here we are analyzing two predictors, average hertz and jitter, to predict the Parkinson's Disease status of the patient. We are using K-Nearest Neighbors to analyze the predictability of having Parkinson's Disease given these variables.
+Finally, we did K-Nearest Neighbors with the 10 predictors.
 
 ```{r}
-test_knn = sample(nrow(test), 97)
-predictors1=cbind(mdvp_fo_hz, mdvp_jitter)
-knn1.pred=class::knn(predictors1[train, ],predictors1[test_knn,],status[train],k=1)
-table(knn1.pred,status[test_knn])
-mean(knn1.pred==status[test_knn])
+test_knn = sample(nrow(test), 2937)
+predictorsKNN=cbind(motor_updrs, total_updrs, jitter_abs, jitter_rap, jitter_ppq5, shimmer_apq11, nhr, hnr, rpde, ppe)
+knn.pred=class::knn(predictorsKNN[train, ],predictorsKNN[test_knn,],sex2[train],k=1)
+table(knn.pred,sex2[test_knn])
+mean(knn.pred==sex2[test_knn])
 
 ```
 
+Here are relevant insights:
+[KNN Analysis of New "Best Model"](https://data.world/tarrantrl/f-17-eda-project-3/insights/cdc5411d-6061-4671-89b3-f3f24ddee86b)
+[Testing if KNN Analysis is the best with New Predictors](https://data.world/tarrantrl/f-17-eda-project-3/insights/9a5567f6-da54-4c88-ad7c-604d61c3b504)
 
-Here we are analyzing six predictors, average hertz, jitter, rpde, d2, dfa, and spread1 to predict the Parkinson's Disease status of the patient. We are using K-Nearest Neighbors to analyze the predictability of having Parkinson's Disease given these variables. 
+
+### Comparing Prediction Means
+
+After doing these analyses, we found that KNN gives the best prediction rate of sex. In fact, the prediction rate is nearly 100%. We found it interesting that we could predict sex with such a high degree of accuracy based on these measures of Parkinson's disease. This led us to tentatively conclude that these aspects of Parkinson's are sexually dimorphic.
 
 ```{r}
-predictors3=cbind(mdvp_fo_hz, mdvp_jitter, rpde, d2, dfa, spread1)
-knn3.pred=class::knn(predictors3[train, ],predictors3[test_knn,],status[train],k=1)
-table(knn3.pred,status[test_knn])
-mean(knn3.pred==status[test_knn])
-
-```
-
-
-## Comparison of the Mean Correct Predictions
-
-
-The following is a list of all the mean correct predictions for each of the models. For each type of analysis, the first mean represents the two predictor models and the second represents the six predictor models.
-
-Logictic Regressions Results
-```{r}
-mean(glm1.pred==status2.test)
-mean(glm3.pred==status2.test)
-
-```
-
-Linear Discriminant Analysis Results
-```{r}
-mean(lda1.pred$class==test$status)
-mean(lda3.pred$class==test$status)
-```
-
-Quadratic Discriminant Analysis Results
-```{r}
-mean(qda1.pred$class==test$status)
-mean(qda.pred3$class==test$status)
-```
-
-K-Nearest Neighbors Results
-```{r}
-mean(knn1.pred==status[test_knn])
-mean(knn3.pred==status[test_knn])
+mean(glm2.pred==sex2.test) 
+mean(lda2.pred$class==test$sex2)
+mean(qda2.pred$class==test$sex2)
+mean(knn.pred==sex2[test_knn])
 ```
 
 
 
 
-## Research Progression
+## Insights
 
-Using the pairs function we found predictors that aren't confounding and chose these to analyze. Initially we decided to choose average hertz and jitter as our predictors, because they yielded the best results among the two predictor combinations. Many of the variables were heavily correlated. For example, the fundamental frequency variables, the variation fundamental frequency variables, and the variation amplitude variables were all examples of this problem. Choosing one from each category gave us the variables with which we worked. We did further exploration, chose one variable each from jitter and shimmer, and then chose to include jitter instead of shimmer.
-
-```{r}
-sdf = dplyr::select(df, - status, - name, - mdvp_jitter_abs, -mdvp_ppq, - mdvp_rap, - mdvp_shimmer_db, - shimmer_apq3, - shimmer_apq5, - shimmer_dda, - status2)
-renderPlot(pairs(sdf))
-```
-
-This plot is a good example of where we started in terms of narrowing down our predictors. 
-
-##Insights
-
-When analyzing each model, the greater mean for each analysis type was not consistant (i.e. neither the two nor six predictor model proved to be better). However, despite these inconsistancies, the differences between each model within each analysis were small, and the six predictor models tended to have higher means than the corresponding two predictor models within the same analysis type. These inconsistancies were a consequence of random sampling, as well as our data being relatively small. Our worst models still yielded relatively good results usually above .75 for both two and six predictor models. For the purpose of consistancy in this data report, we included a seed.
-
-Even though these inconsistancies were present, the K-Nearest Neighbors (KNN) analysis type yields the overall best results. In fact, the six predictor model within the KNN analysis typically had the highest mean. The usual mean percentage was around .91 to .96.
-
-Parkinson's Disease is associated with a certain speech pattern; because our predictors are measurements of the patients' speech pattern, it is unsurprising that even our worst models had high prediction rates. 
-
+Ultimately, we were able to use the predictors found by subset selection to find a very accurate model. Even though subset selection did not give a very high R2 value with any of its models, it still gave us valuable insight into the data as to which predictors to include in other classification models.
 
