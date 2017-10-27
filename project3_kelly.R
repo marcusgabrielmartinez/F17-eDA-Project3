@@ -2,7 +2,13 @@ library(ggplot2)
 require(dplyr)
 require(ISLR)
 require(boot)
+library(tidyverse)
+library(modelr)
+require(MASS)
+library(leaps)
+library(glmnet)
 require(data.world)
+
 
 project <- "https://data.world/tarrantrl/parkinsons-telemonitoring"
 df <- data.world::query(
@@ -83,7 +89,7 @@ boot(df, lin.statistic, 4000)
 summary(lm(nhr ~ jitter, data = df))
 #b = boot(df, quad.statistic, 4000)
 #boot.ci(b)
-plot(b)
+#plot(b)
 quad.statistic <- function(data, index) {
   lm.fit <- lm(nhr ~ poly(jitter, 2), data = data, subset = index)
   coef(lm.fit)
@@ -93,3 +99,74 @@ summary(lm(nhr ~ poly(jitter, 2), data = df))
 #b2 = boot(df, quad.statistic, 4000)
 #boot.ci(b2)
 plot(b2)
+
+
+
+df <- data.world::query(
+  data.world::qry_sql("SELECT * FROM parkinsons_telemonitoring"),
+  dataset = project
+)
+#Add binary column for gender
+df <- df %>% dplyr::mutate(sex2 = ifelse(sex == "true", 1, 0))
+
+#forward selection
+##################
+#set.seed(1)
+
+df_subset_fixed <- df %>% dplyr::select(., -subject, -sex)
+
+regfit.fwd=regsubsets(sex2~.,data=df_subset_fixed,nvmax=22,method="forward")
+summary(regfit.fwd)
+
+plot(regfit.fwd,scale="Cp")
+plot(regfit.fwd,scale="adjr2")
+
+regfwd.summary=summary(regfit.fwd)
+
+which.min(regfwd.summary$cp)
+which.max(regfwd.summary$adjr2)
+
+plot(regfwd.summary$cp,xlab="Number of Variables",ylab="Cp")
+plot(regfwd.summary$adjr2,xlab="Number of Variables",ylab="adjr2")
+
+#forward selection without shimmer predictors except shimmer
+##################
+#set.seed(1)
+
+df_subset_fixed2 <- df %>% dplyr::select(., -subject, -sex, -shimmer_db, -shimmer_apq3, -shimmer_apq5, -shimmer_apq11, -shimmer_dda)
+
+regfit.fwd=regsubsets(sex2~.,data=df_subset_fixed2,nvmax=22,method="forward")
+summary(regfit.fwd)
+
+plot(regfit.fwd,scale="Cp")
+plot(regfit.fwd,scale="adjr2")
+
+regfwd.summary=summary(regfit.fwd)
+
+which.min(regfwd.summary$cp)
+which.max(regfwd.summary$adjr2)
+
+plot(regfwd.summary$cp,xlab="Number of Variables",ylab="Cp")
+plot(regfwd.summary$adjr2,xlab="Number of Variables",ylab="adjr2")
+#backward selection
+##################
+df_subset_fixed <- df %>% dplyr::select(., -subject, -sex)
+
+regfit.bw=regsubsets(sex2~.,data=df_subset_fixed,nvmax=22,method="backward")
+regfit.bw
+summary(regfit.bw)
+
+plot(regfit.bw,scale="Cp")
+plot(regfit.bw,scale="adjr2")
+
+regbw.summary=summary(regfit.bw)
+
+which.min(regbw.summary$cp)
+which.max(regbw.summary$adjr2)
+
+plot(regbw.summary$cp,xlab="Number of Variables",ylab="Cp")
+plot(regbw.summary$adjr2,xlab="Number of Variables",ylab="adjr2")
+
+
+
+
