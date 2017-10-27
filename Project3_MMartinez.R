@@ -74,6 +74,11 @@ knn7.pred=class::knn(predictorsKNN7[train, ],predictorsKNN7[test_knn,],sex2[trai
 table(knn7.pred,sex2[test_knn])
 mean(knn7.pred==sex2[test_knn])
 
+predictorsKNN7=cbind(age, motor_updrs, total_updrs, jitter, jitter_abs, jitter_ppq5, rpde, dfa, ppe)
+knn7.pred=class::knn(predictorsKNN7[train, ],predictorsKNN7[test_knn,],sex2[train],k=1)
+table(knn7.pred,sex2[test_knn])
+mean(knn7.pred==sex2[test_knn])
+
 
 # ##Lasso Section##- Not currently working
 # 
@@ -120,12 +125,48 @@ plot(regfit.full,scale="Cp")
 plot(regfit.full,scale="adjr2")
 coef(regfit.full,10)
 
+#Same Best Subset Code with FIXED Dataframe#
+df_subset_fixed <- df %>% dplyr::select(., -subject, -sex)
+
+regfit.full=regsubsets(sex2~.,data=df_subset_fixed, nvmax=22)
+reg.summary=summary(regfit.full)
+names(reg.summary)
+plot(reg.summary$cp,xlab="Number of Variables",ylab="Cp")
+which.min(reg.summary$cp)
+#points(10,reg.summary$cp[10],pch=20,col="red")
+
+plot(reg.summary$adjr2,xlab="Number of Variables",ylab="adjr2")
+which.min(reg.summary$adjr2)
+
+summary(regfit.full)
+
+plot(regfit.full,scale="Cp")
+plot(regfit.full,scale="adjr2")
+coef(regfit.full,10)
+
 ##Forward Selection Section##
 
 # Builds a new dataframe that excludes a column that should not be included as a predictor.
 df_subset <- df %>% dplyr::select(., -subject)
 
 regfit.fwd=regsubsets(sex2~.,data=df_subset,nvmax=22,method="forward")
+summary(regfit.fwd)
+
+plot(regfit.fwd,scale="Cp")
+plot(regfit.fwd,scale="adjr2")
+
+regfwd.summary=summary(regfit.fwd)
+
+which.min(regfwd.summary$cp)
+which.min(regfwd.summary$adjr2)
+
+plot(regfwd.summary$cp,xlab="Number of Variables",ylab="Cp")
+plot(regfwd.summary$adjr2,xlab="Number of Variables",ylab="adjr2")
+
+#Same Forward Code with FIXED Dataframe#
+df_subset_fixed <- df %>% dplyr::select(., -subject, -sex)
+
+regfit.fwd=regsubsets(sex2~.,data=df_subset_fixed,nvmax=22,method="forward")
 summary(regfit.fwd)
 
 plot(regfit.fwd,scale="Cp")
