@@ -19,12 +19,69 @@ df <- data.world::query(
 summary(df)
 
 #Add binary column for gender
-df <- df %>% dplyr::mutate(sex2 = ifelse(sex == "true", 1, 0))
+df <- df %>% dplyr::mutate(sex2 = ifelse(sex == "true", 1, 0)) 
 
-#remove outliers
-#df <- df %>% dplyr::filter(jitter < 0.007, shimmer < 0.035, nhr < 0.032, hnr )
+#Add column for age <=65 or not
+df <- df %>% dplyr::mutate(age2 = ifelse(age <= 65, 1, 0)) #so 1 means age<=65 and 0 means age>65
+summary(df)
 
 attach(df)
+
+
+### Insight 3 - age2 ###
+
+##Best Subset Section##
+
+# Builds a new dataframe that excludes a column that should not be included as a predictor.
+df_subset <- df %>% dplyr::select(., -subject, -age, -sex2)
+
+regfit.full=regsubsets(age2~.,data=df_subset, nvmax=22)
+reg.summary=summary(regfit.full)
+names(reg.summary)
+plot(reg.summary$cp,xlab="Number of Variables",ylab="Cp")
+which.min(reg.summary$cp)
+#points(10,reg.summary$cp[10],pch=20,col="red")
+
+plot(reg.summary$adjr2,xlab="Number of Variables",ylab="adjr2")
+which.min(reg.summary$adjr2)
+
+summary(regfit.full)
+
+plot(regfit.full,scale="Cp")
+plot(regfit.full,scale="adjr2")
+coef(regfit.full,10)
+
+##Forward Selection Section##
+
+regfit.fwd=regsubsets(age2~.,data=df_subset,nvmax=22,method="forward")
+summary(regfit.fwd)
+
+plot(regfit.fwd,scale="Cp")
+plot(regfit.fwd,scale="adjr2")
+
+regfwd.summary=summary(regfit.fwd)
+
+which.min(regfwd.summary$cp)
+which.min(regfwd.summary$adjr2)
+
+plot(regfwd.summary$cp,xlab="Number of Variables",ylab="Cp")
+plot(regfwd.summary$adjr2,xlab="Number of Variables",ylab="adjr2")
+
+#KNN 
+predictorsKNN2=cbind(age, hnr, dfa)
+knn2.pred=class::knn(predictorsKNN2[train, ],predictorsKNN2[test_knn,],total_updrs[train],k=1)
+table(knn2.pred,total_updrs[test_knn])
+mean(knn2.pred==total_updrs[test_knn])
+
+
+
+
+### KNN ### (marcus)
+predictorsKNN=cbind(age, motor_updrs, total_updrs, jitter, jitter_abs, jitter_ppq5, rpde, dfa, ppe)
+knn7.pred=class::knn(predictorsKNN7[train, ],predictorsKNN7[test_knn,],sex2[train],k=1)
+table(knn7.pred,sex2[test_knn])
+mean(knn7.pred==sex2[test_knn])
+
 
 
 ### Logistic Regression ###
