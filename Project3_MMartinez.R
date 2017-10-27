@@ -74,10 +74,15 @@ knn7.pred=class::knn(predictorsKNN7[train, ],predictorsKNN7[test_knn,],sex2[trai
 table(knn7.pred,sex2[test_knn])
 mean(knn7.pred==sex2[test_knn])
 
-predictorsKNN7=cbind(age, motor_updrs, total_updrs, jitter, jitter_abs, jitter_ppq5, rpde, dfa, ppe)
-knn7.pred=class::knn(predictorsKNN7[train, ],predictorsKNN7[test_knn,],sex2[train],k=1)
-table(knn7.pred,sex2[test_knn])
-mean(knn7.pred==sex2[test_knn])
+predictorsKNN8=cbind(motor_updrs, total_updrs, jitter_abs, jitter_rap, jitter_ppq5, shimmer_apq11, nhr, hnr, rpde, ppe)
+knn8.pred=class::knn(predictorsKNN8[train, ],predictorsKNN8[test_knn,],sex2[train],k=1)
+table(knn8.pred,sex2[test_knn])
+mean(knn8.pred==sex2[test_knn])
+
+predictorsKNN9=cbind(motor_updrs, total_updrs, jitter_abs, jitter_rap, jitter_ppq5, shimmer_apq11, nhr, hnr, rpde, ppe)
+knn9.pred=class::knn(predictorsKNN9[train, ],predictorsKNN9[test_knn,],sex2[train],k=10)
+table(knn9.pred,sex2[test_knn])
+mean(knn9.pred==sex2[test_knn])
 
 
 # ##Lasso Section##- Not currently working
