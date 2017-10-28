@@ -114,6 +114,10 @@ Find relevant insights here:
 
 [Low R2](https://data.world/tarrantrl/f-17-eda-project-3/insights/421ff100-fd46-477d-9517-0b874376e721)
 
+Other Forward Selection insights:
+
+[Predicting time since recruitment with forward selection](https://data.world/tarrantrl/f-17-eda-project-3/insights/1116a236-5d97-45fd-8491-fac363ee05a6)
+
 
 ## Subset Selection Predicting Sex
 
@@ -125,7 +129,7 @@ df_subset_fixed <- df %>% dplyr::select(., -sex)
 
 regfit.full=regsubsets(sex2~.,data=df_subset_fixed, nvmax=25)
 reg.summary=summary(regfit.full)
-reg.summary
+#reg.summary
 
 ```
 
@@ -207,6 +211,8 @@ Find other relevant insights here:
 
 [Parkinson's status lasso](https://data.world/tarrantrl/f-17-eda-project-3/insights/3d7bf097-d070-4dcd-b405-902d964696ef)
 
+[Predicting binary status vs T/F in last insight](https://data.world/tarrantrl/f-17-eda-project-3/insights/beb05d70-eb71-4dbe-bef8-267f2201f767)
+
 ## Using the Predictors from Subset Selection in Other Models
 Even with exhaustive search, the adjusted R2 for the chosen models was still low (around 0.25). We decided to use the predictors from the ten predictor model that subset selection chose (as referenced above) in different model types. Specifically, we explored Logistic Regression (which is the model that subset selection uses), Linear Discriminate Analysis, Quadratic Discriminate Analysis, and K Nearest Neighbors. In order to compare these model types, we compared prediction accuracy.
 
@@ -280,6 +286,16 @@ Here are relevant insights:
 
 [Testing if KNN Analysis is the best with New Predictors](https://data.world/tarrantrl/f-17-eda-project-3/insights/9a5567f6-da54-4c88-ad7c-604d61c3b504)
 
+Other KNN analyses: 
+
+[KNN Analysis of Multi-Predictor Model Predicting Sex](https://data.world/tarrantrl/f-17-eda-project-3/insights/863fa334-aa71-41d3-85d6-3d22f6e1943a)
+
+[Updated KNN Analysis of Multi-Predictor Model Predicting Sex](https://data.world/tarrantrl/f-17-eda-project-3/insights/41b64e0a-3bdf-4535-a243-afd9d76eb9cb)
+
+Other KNN insights:
+
+[New KNN Attempts (Based on Lasso and Forward Selection](https://data.world/tarrantrl/f-17-eda-project-3/insights/eebfeca4-678d-473a-9edf-0a7a56abcc87)
+
 ## Findings
 ### Comparing Prediction Means
 
@@ -298,3 +314,28 @@ As we mentioned before, we decided not to furthur pursue predicting Parkinson's 
 
 Ultimately, we were able to use the predictors found by subset selection to find a very accurate model predicting sex. Even though subset selection did not give a very high R2 value with any of its models, it still gave us valuable insight into the data as to which predictors to include in other classification models. KNN, again, was the best model. This is consistent with our findings from Project 2. 
 
+##Miscellaneous Insights
+
+[Low R2](https://data.world/tarrantrl/f-17-eda-project-3/insights/421ff100-fd46-477d-9517-0b874376e721)
+
+[Cross Validation on N-degree Model Predicting NHR](https://data.world/tarrantrl/f-17-eda-project-3/insights/ed877768-ce7a-4e67-89c7-27b6cda1eb94)
+
+[Age and Severity](https://data.world/tarrantrl/f-17-eda-project-3/insights/125e59b1-4e3d-4498-8b11-628abf04aac5)
+
+[Cross Validation on N-degree Model Predicting HNR](https://data.world/tarrantrl/f-17-eda-project-3/insights/93f47270-38f1-4cba-a9d5-80818dcba635)
+
+[Testing if KNN Analysis is the best with New Predictors](https://data.world/tarrantrl/f-17-eda-project-3/insights/90e07351-ea8b-4c33-93c6-9cfffadf6864)
+
+[Comparing results from subset selection and KNN](https://data.world/tarrantrl/f-17-eda-project-3/insights/a46bdeb6-23b9-4a70-b5e0-302804ce982c)
+
+[Best Subset Selection Predicting Age](https://data.world/tarrantrl/f-17-eda-project-3/insights/e77c329e-aed9-45b8-95a2-466af263c4c4)
+
+[Forward Selection Predicting Age](https://data.world/tarrantrl/f-17-eda-project-3/insights/f659224c-792f-4e82-949f-063fff8687bf)
+
+[Forward Selection: different predictors](https://data.world/tarrantrl/f-17-eda-project-3/insights/a71b6274-dc7b-4cd3-b258-a345c7574dd5)
+
+[Three quadratic pairs and their LOOCV and 10 fold CV](https://data.world/tarrantrl/f-17-eda-project-3/insights/1ff5a974-7efe-40b3-8e75-23777caa2fe8)
+
+[Analyzing LR, LDA, QDA results](https://data.world/tarrantrl/f-17-eda-project-3/insights/c1d3c4b2-89bc-4a61-a50b-15b6187ca521)
+
+[Testing if KNN Analysis is the best with New Predictors](https://data.world/tarrantrl/f-17-eda-project-3/insights/9a5567f6-da54-4c88-ad7c-604d61c3b504)
