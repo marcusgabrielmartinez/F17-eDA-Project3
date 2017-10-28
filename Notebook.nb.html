@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Group 2: Kelly Jennings, Marcus Martinez, Changyong Yi, Rachel Tarrant, Stefanos Kapetanakis" />
+<meta name="author" content="Group 2: Kelly Jennings, Stefanos Kapetanakis, Marcus Martinez, Rachel Tarrant, Changyong Yi" />
 
 
 <title>Prediction of Parkinson’s Disease</title>
@@ -266,7 +266,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Prediction of Parkinson’s Disease</h1>
-<h4 class="author"><em>Group 2: Kelly Jennings, Marcus Martinez, Changyong Yi, Rachel Tarrant, Stefanos Kapetanakis</em></h4>
+<h4 class="author"><em>Group 2: Kelly Jennings, Stefanos Kapetanakis, Marcus Martinez, Rachel Tarrant, Changyong Yi</em></h4>
 
 </div>
 
@@ -281,23 +281,57 @@ div.tocify {
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2Vzc2lvbkluZm8oKVxuYGBgIn0= -->
 <pre class="r"><code>sessionInfo()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUiB2ZXJzaW9uIDMuMy4yICgyMDE2LTEwLTMxKVxuUGxhdGZvcm06IHg4Nl82NC13NjQtbWluZ3czMi94NjQgKDY0LWJpdClcblJ1bm5pbmcgdW5kZXI6IFdpbmRvd3MgPj0gOCB4NjQgKGJ1aWxkIDkyMDApXG5cbmxvY2FsZTpcblsxXSBMQ19DT0xMQVRFPUVuZ2xpc2hfVW5pdGVkIFN0YXRlcy4xMjUyICBMQ19DVFlQRT1FbmdsaXNoX1VuaXRlZCBTdGF0ZXMuMTI1MiAgIFxuWzNdIExDX01PTkVUQVJZPUVuZ2xpc2hfVW5pdGVkIFN0YXRlcy4xMjUyIExDX05VTUVSSUM9QyAgICAgICAgICAgICAgICAgICAgICAgICAgXG5bNV0gTENfVElNRT1FbmdsaXNoX1VuaXRlZCBTdGF0ZXMuMTI1MiAgICBcblxuYXR0YWNoZWQgYmFzZSBwYWNrYWdlczpcblsxXSBzdGF0cyAgICAgZ3JhcGhpY3MgIGdyRGV2aWNlcyB1dGlscyAgICAgZGF0YXNldHMgIG1ldGhvZHMgICBiYXNlICAgICBcblxub3RoZXIgYXR0YWNoZWQgcGFja2FnZXM6XG4gWzFdIHNoaW55XzEuMC4wICAgICAgZHdhcGlfMC4xLjEgICAgICBkYXRhLndvcmxkXzEuMS4xIGdsbW5ldF8yLjAtMTMgICAgZm9yZWFjaF8xLjQuMyAgIFxuIFs2XSBNYXRyaXhfMS4yLTcuMSAgIGxlYXBzXzMuMCAgICAgICAgTUFTU183LjMtNDUgICAgICBtb2RlbHJfMC4xLjEgICAgIHB1cnJyXzAuMi4yICAgICBcblsxMV0gcmVhZHJfMS4xLjEgICAgICB0aWR5cl8wLjYuMSAgICAgIHRpYmJsZV8xLjMuMCAgICAgdGlkeXZlcnNlXzEuMS4xICBib290XzEuMy0xOCAgICAgXG5bMTZdIElTTFJfMS4xICAgICAgICAgZHBseXJfMC41LjAgICAgICBnZ3Bsb3QyXzIuMi4xICAgXG5cbmxvYWRlZCB2aWEgYSBuYW1lc3BhY2UgKGFuZCBub3QgYXR0YWNoZWQpOlxuIFsxXSByZXNoYXBlMl8xLjQuMiAgIGhhdmVuXzEuMS4wICAgICAgbGF0dGljZV8wLjIwLTM0ICBjb2xvcnNwYWNlXzEuMy0yIGh0bWx0b29sc18wLjMuNSBcbiBbNl0geWFtbF8yLjEuMTQgICAgICBiYXNlNjRlbmNfMC4xLTMgIGZvcmVpZ25fMC44LTY3ICAgREJJXzAuNS0xICAgICAgICByZWFkeGxfMS4wLjAgICAgXG5bMTFdIGluaV8wLjIgICAgICAgICAgcGx5cl8xLjguNCAgICAgICBzdHJpbmdyXzEuMi4wICAgIG11bnNlbGxfMC40LjMgICAgZ3RhYmxlXzAuMi4wICAgIFxuWzE2XSBjZWxscmFuZ2VyXzEuMS4wIHJ2ZXN0XzAuMy4yICAgICAgY29kZXRvb2xzXzAuMi0xNSBwc3ljaF8xLjcuOCAgICAgIGV2YWx1YXRlXzAuMTAgICBcblsyMV0ga25pdHJfMS4xNyAgICAgICBmb3JjYXRzXzAuMi4wICAgIGh0dHB1dl8xLjMuMyAgICAgcGFyYWxsZWxfMy4zLjIgICBicm9vbV8wLjQuMiAgICAgXG5bMjZdIFJjcHBfMC4xMi4xMCAgICAgeHRhYmxlXzEuOC0yICAgICBzY2FsZXNfMC40LjEgICAgIGJhY2twb3J0c18xLjAuNSAganNvbmxpdGVfMS4zICAgIFxuWzMxXSBtaW1lXzAuNSAgICAgICAgIG1ub3JtdF8xLjUtNSAgICAgaG1zXzAuMyAgICAgICAgICBkaWdlc3RfMC42LjExICAgIHN0cmluZ2lfMS4xLjIgICBcblszNl0gZ3JpZF8zLjMuMiAgICAgICBycHJvanJvb3RfMS4yICAgIHRvb2xzXzMuMy4yICAgICAgbWFncml0dHJfMS41ICAgICBsYXp5ZXZhbF8wLjIuMCAgXG5bNDFdIHJzY29ubmVjdF8wLjcgICAgeG1sMl8xLjEuMSAgICAgICBsdWJyaWRhdGVfMS42LjAgIGFzc2VydHRoYXRfMC4xICAgcm1hcmtkb3duXzEuNiAgIFxuWzQ2XSBodHRyXzEuMy4xICAgICAgIGl0ZXJhdG9yc18xLjAuOCAgUjZfMi4yLjAgICAgICAgICBubG1lXzMuMS0xMjggICAgXG4ifQ== -->
+<pre><code>R version 3.3.2 (2016-10-31)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows &gt;= 8 x64 (build 9200)
+
+locale:
+[1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United States.1252   
+[3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C                          
+[5] LC_TIME=English_United States.1252    
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] shiny_1.0.0      dwapi_0.1.1      data.world_1.1.1 glmnet_2.0-13    foreach_1.4.3   
+ [6] Matrix_1.2-7.1   leaps_3.0        MASS_7.3-45      modelr_0.1.1     purrr_0.2.2     
+[11] readr_1.1.1      tidyr_0.6.1      tibble_1.3.0     tidyverse_1.1.1  boot_1.3-18     
+[16] ISLR_1.1         dplyr_0.5.0      ggplot2_2.2.1   
+
+loaded via a namespace (and not attached):
+ [1] reshape2_1.4.2   haven_1.1.0      lattice_0.20-34  colorspace_1.3-2 htmltools_0.3.5 
+ [6] yaml_2.1.14      base64enc_0.1-3  foreign_0.8-67   DBI_0.5-1        readxl_1.0.0    
+[11] ini_0.2          plyr_1.8.4       stringr_1.2.0    munsell_0.4.3    gtable_0.2.0    
+[16] cellranger_1.1.0 rvest_0.3.2      codetools_0.2-15 psych_1.7.8      evaluate_0.10   
+[21] knitr_1.17       forcats_0.2.0    httpuv_1.3.3     parallel_3.3.2   broom_0.4.2     
+[26] Rcpp_0.12.10     xtable_1.8-2     scales_0.4.1     backports_1.0.5  jsonlite_1.3    
+[31] mime_0.5         mnormt_1.5-5     hms_0.3          digest_0.6.11    stringi_1.1.2   
+[36] grid_3.3.2       rprojroot_1.2    tools_3.3.2      magrittr_1.5     lazyeval_0.2.0  
+[41] rsconnect_0.7    xml2_1.1.1       lubridate_1.6.0  assertthat_0.1   rmarkdown_1.6   
+[46] httr_1.3.1       iterators_1.0.8  R6_2.2.0         nlme_3.1-128    </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
 <div id="section-github-link" class="section level2">
 <h2><strong>Github Link</strong></h2>
-<p><a href="https://github.com/stefkaps/F17-eDA-Project2" class="uri">https://github.com/stefkaps/F17-eDA-Project2</a></p>
+<p><a href="https://github.com/marcusgabrielmartinez/F17-eDA-Project3" class="uri">https://github.com/marcusgabrielmartinez/F17-eDA-Project3</a></p>
+</div>
+<div id="section-data.world-link" class="section level2">
+<h2><strong>Data.World Link</strong></h2>
+<p><a href="https://data.world/tarrantrl/f-17-eda-project-3" class="uri">https://data.world/tarrantrl/f-17-eda-project-3</a></p>
 </div>
 <div id="section-connecting-to-data.world" class="section level2">
 <h2><strong>Connecting to data.world</strong></h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJvamVjdCA8LSBcImh0dHBzOi8vZGF0YS53b3JsZC9tYXJjdXNnYWJlLXV0L3BhcmtpbnNvbnMtZGF0YVwiXG5kYXRhLndvcmxkOjpzZXRfY29uZmlnKGNmZ19lbnYoXCJEV19BUElcIikpXG5kZiA8LSBkYXRhLndvcmxkOjpxdWVyeShcbiBkYXRhLndvcmxkOjpxcnlfc3FsKFwiU0VMRUNUICogRlJPTSBwYXJraW5zb25zXCIpLFxuIGRhdGFzZXQgPSBwcm9qZWN0XG4pXG5gYGAifQ== -->
-<pre class="r"><code>project &lt;- &quot;https://data.world/marcusgabe-ut/parkinsons-data&quot;
-data.world::set_config(cfg_env(&quot;DW_API&quot;))
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJvamVjdCA8LSBcImh0dHBzOi8vZGF0YS53b3JsZC90YXJyYW50cmwvcGFya2luc29ucy10ZWxlbW9uaXRvcmluZ1wiXG5kZiA8LSBkYXRhLndvcmxkOjpxdWVyeShcbiAgZGF0YS53b3JsZDo6cXJ5X3NxbChcIlNFTEVDVCAqIEZST00gcGFya2luc29uc190ZWxlbW9uaXRvcmluZ1wiKSxcbiAgZGF0YXNldCA9IHByb2plY3RcbilcbmBgYCJ9 -->
+<pre class="r"><code>project &lt;- &quot;https://data.world/tarrantrl/parkinsons-telemonitoring&quot;
 df &lt;- data.world::query(
- data.world::qry_sql(&quot;SELECT * FROM parkinsons&quot;),
- dataset = project
+  data.world::qry_sql(&quot;SELECT * FROM parkinsons_telemonitoring&quot;),
+  dataset = project
 )</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -305,154 +339,748 @@ df &lt;- data.world::query(
 </div>
 <div id="section-setup" class="section level2">
 <h2>Setup</h2>
+<p>We split our dataset into two for training and testing. We also removed the subject id column and added a column to the dataset to translate the boolean strings for sex to binary values.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXR0YWNoKGRmKVxuYGBgIn0= -->
-<pre class="r"><code>attach(df)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYgPSBkcGx5cjo6c2VsZWN0KGRmLCAtc3ViamVjdClcbmRmIDwtIGRmICU+JSBkcGx5cjo6bXV0YXRlKHNleDIgPSBpZmVsc2Uoc2V4ID09IFwidHJ1ZVwiLCAxLCAwKSlcbmF0dGFjaChkZilcbnNldC5zZWVkKDEpXG50cmFpbiA9IHNhbXBsZShucm93KGRmKSwgOTcpXG50ZXN0ID0gZGZbLXRyYWluLF1cbmBgYCJ9 -->
+<pre class="r"><code>df = dplyr::select(df, -subject)
+df &lt;- df %&gt;% dplyr::mutate(sex2 = ifelse(sex == &quot;true&quot;, 1, 0))
+attach(df)
+set.seed(1)
+train = sample(nrow(df), 97)
+test = df[-train,]</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
 <div id="section-introduction" class="section level2">
 <h2><strong>Introduction</strong></h2>
-<p>This dataset is composed of a range of biomedical voice measurements from 31 people, 23 with Parkinson’s disease (PD). Each column in the table is a particular voice measure, and each row corresponds one of 195 voice recording from these individuals (“name” column). The main aim of the data is to discriminate healthy people from those with PD, according to “status” column which is set to 0 for healthy and 1 for PD.</p>
-<p>Attribute Information:</p>
-<p>Matrix column entries (attributes):</p>
-<p>name - ASCII subject name and recording number</p>
-<p>MDVP:Fo(Hz) - Average vocal fundamental frequency</p>
-<p>MDVP:Jitter(%),MDVP:Jitter(Abs),MDVP:RAP,MDVP:PPQ,Jitter:DDP - Several measures of variation in fundamental frequency</p>
-<p>MDVP:Shimmer,MDVP:Shimmer(dB),Shimmer:APQ3,Shimmer:APQ5,MDVP:APQ,Shimmer:DDA - Several measures of variation in amplitude</p>
-<p>status - Health status of the subject (one/true) - Parkinson’s, (zero/false) - healthy</p>
-<p>This document will provide readers four different types of analysis: Logistic Regression, Linear Discriminant Analysis, Quadratic Discriminant Analysis, and K-Nearest Neighbors.</p>
+<p>“This dataset is composed of a range of biomedical voice measurements from 42 people with early-stage Parkinson’s disease recruited to a six-month trial of a telemonitoring device for remote symptom progression monitoring. The recordings were automatically captured in the patient’s homes.</p>
+<p>Columns in the table contain subject number, subject age, subject gender, time interval from baseline recruitment date, motor UPDRS, total UPDRS, and 16 biomedical voice measures. Each row corresponds to one of 5,875 voice recording from these individuals. The main aim of the data is to predict the motor and total UPDRS scores (‘motor_UPDRS’ and ‘total_UPDRS’) from the 16 voice measures.&quot;</p>
+<p>subject# - Integer that uniquely identifies each subject age - Subject age sex - Subject gender ‘0’ - male, ‘1’ - female test_time - Time since recruitment into the trial. The integer part is the number of days since recruitment. motor_UPDRS - Clinician’s motor UPDRS score, linearly interpolated total_UPDRS - Clinician’s total UPDRS score, linearly interpolated (UPDRS is stands for Unified Parkison’s Disease Rating Scale and is used to rate the severity of Parkinson’s) Jitter(%),Jitter(Abs),Jitter:RAP,Jitter:PPQ5,Jitter:DDP - Several measures of variation in fundamental frequency (fundamental frequency is the lowest frequency of a sound wave). Shimmer,Shimmer(dB),Shimmer:APQ3,Shimmer:APQ5,Shimmer:APQ11,Shimmer:DDA - Several measures of variation in amplitude NHR,HNR - Two measures of ratio of noise to tonal components in the voice RPDE - A nonlinear dynamical complexity measure DFA - Signal fractal scaling exponent PPE - A nonlinear measure of fundamental frequency variation</p>
+<p>This document will compare models based on the predictors chosen by best subset selection, forward selection, and backward selection. These models include Logistic Regression, Linear Discriminant Analysis, Quadratic Discriminant Analysis, and K-Nearest Neighbors.</p>
 </div>
-<div id="section-logistic-regression" class="section level2">
-<h2>Logistic Regression</h2>
-<p>This</p>
+<div id="section-attempting-to-predict-parkinsons-severity" class="section level2">
+<h2>Attempting to Predict Parkinson’s Severity</h2>
+<p>First, we used forward subset selection to find the best model for predicting total UPDRS. In order to do this, we removed motor UPDRS from the data frame because it is a similar outcome measurement to total UPDRS.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYyID0gZGYgJT4lIGRwbHlyOjptdXRhdGUoc3RhdHVzMiA9IGlmZWxzZShzdGF0dXMgPT0gXCJ0cnVlXCIsIDEsIDApKVxudHJhaW5pbmcyID0gc2FtcGxlKG5yb3coZGYyKSwgOTcpXG50ZXN0aW5nMiA9IGRmMlstdHJhaW5pbmcyLF1cblxuZ2xtLmZpdD1nbG0oc3RhdHVzMn5tZHZwX2ZvX2h6K21kdnBfaml0dGVyLFxuICAgICAgICAgICAgZGF0YT1kZjIsZmFtaWx5PWJpbm9taWFsLFxuICAgICAgICAgICAgc3Vic2V0PXRyYWluaW5nMilcbnN1bW1hcnkoZ2xtLmZpdClcblxuZ2xtLnByb2JzPXByZWRpY3QoZ2xtLmZpdCxuZXdkYXRhPXRlc3RpbmcyLHR5cGU9XCJyZXNwb25zZVwiKVxuZ2xtLnByZWQ9aWZlbHNlKGdsbS5wcm9icz4wLjUsXCIxXCIsXCIwXCIpXG5zdGF0dXMyLnRlc3RpbmcgPSB0ZXN0aW5nMiRzdGF0dXMyXG5cbnRhYmxlKGdsbS5wcmVkLHN0YXR1czIudGVzdGluZylcbm1lYW4oZ2xtLnByZWQ9PXN0YXR1czIudGVzdGluZylcbmBgYCJ9 -->
-<pre class="r"><code>df2 = df %&gt;% dplyr::mutate(status2 = ifelse(status == &quot;true&quot;, 1, 0))
-training2 = sample(nrow(df2), 97)
-testing2 = df2[-training2,]
-
-glm.fit=glm(status2~mdvp_fo_hz+mdvp_jitter,
-            data=df2,family=binomial,
-            subset=training2)
-summary(glm.fit)
-
-glm.probs=predict(glm.fit,newdata=testing2,type=&quot;response&quot;)
-glm.pred=ifelse(glm.probs&gt;0.5,&quot;1&quot;,&quot;0&quot;)
-status2.testing = testing2$status2
-
-table(glm.pred,status2.testing)
-mean(glm.pred==status2.testing)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZ0b3RhbCA9IGRwbHlyOjpzZWxlY3QoZGYsIC1tb3Rvcl91cGRycywgLXNleClcbnJlZ2ZpdC5md2QgPSByZWdzdWJzZXRzKHRvdGFsX3VwZHJzfi4sIGRhdGE9ZGZ0b3RhbCwgbnZtYXg9MTksIG1ldGhvZD1cImZvcndhcmRcIilcbnJlZ2ZpdC5zdW1tYXJ5ID0gc3VtbWFyeShyZWdmaXQuZndkKVxuI3JlZ2ZpdC5zdW1tYXJ5XG5gYGAifQ== -->
+<pre class="r"><code>dftotal = dplyr::select(df, -motor_updrs, -sex)
+regfit.fwd = regsubsets(total_updrs~., data=dftotal, nvmax=19, method=&quot;forward&quot;)
+regfit.summary = summary(regfit.fwd)
+#regfit.summary</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>This</p>
+<p>Here are the plots of both Cp and adjusted R2 from the models given from forward subset selection.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2xtMy5maXQ9Z2xtKHN0YXR1czIgfiBtZHZwX2ZvX2h6ICsgbWR2cF9qaXR0ZXIgKyBycGRlICsgZDIgKyBkZmEgKyBzcHJlYWQxLFxuICAgICAgICAgICAgIGRhdGE9ZGYsIGZhbWlseT1iaW5vbWlhbCxcbiAgICAgICAgICAgICBzdWJzZXQ9dHJhaW4pXG5zdW1tYXJ5KGdsbTMuZml0KVxuZ2xtMy5wcm9icz1wcmVkaWN0KGdsbTMuZml0LG5ld2RhdGE9dGVzdCx0eXBlPVwicmVzcG9uc2VcIilcbiNnbG0ucHJvYnNbMTo1XVxuZ2xtMy5wcmVkPWlmZWxzZShnbG0zLnByb2JzPjAuNSxcIjFcIixcIjBcIilcbnN0YXR1czIudGVzdCA9IHRlc3Qkc3RhdHVzMlxudGFibGUoZ2xtMy5wcmVkLHN0YXR1czIudGVzdClcbm1lYW4oZ2xtMy5wcmVkPT1zdGF0dXMyLnRlc3QpXG5cbmBgYCJ9 -->
-<pre class="r"><code>glm3.fit=glm(status2 ~ mdvp_fo_hz + mdvp_jitter + rpde + d2 + dfa + spread1,
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVuZGVyUGxvdChwbG90KHJlZ2ZpdC5md2Qsc2NhbGU9XCJDcFwiKSlcbmBgYCJ9 -->
+<pre class="r"><code>renderPlot(plot(regfit.fwd,scale=&quot;Cp&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZnVuY3Rpb24gKC4uLikgXG57XG4gICAgaWYgKGxlbmd0aChvdXRwdXRBcmdzKSAhPSAwICYmICFoYXNFeGVjdXRlZCRnZXQoKSkge1xuICAgICAgICB3YXJuaW5nKFwiVW51c2VkIGFyZ3VtZW50OiBvdXRwdXRBcmdzLiBUaGUgYXJndW1lbnQgb3V0cHV0QXJncyBpcyBvbmx5IFwiLCBcbiAgICAgICAgICAgIFwibWVhbnQgdG8gYmUgdXNlZCB3aGVuIGVtYmVkZGluZyBzbmlwcGV0cyBvZiBTaGlueSBjb2RlIGluIGFuIFwiLCBcbiAgICAgICAgICAgIFwiUiBNYXJrZG93biBjb2RlIGNodW5rICh1c2luZyBydW50aW1lOiBzaGlueSkuIFdoZW4gcnVubmluZyBhIFwiLCBcbiAgICAgICAgICAgIFwiZnVsbCBTaGlueSBhcHAsIHBsZWFzZSBzZXQgdGhlIG91dHB1dCBhcmd1bWVudHMgZGlyZWN0bHkgaW4gXCIsIFxuICAgICAgICAgICAgXCJ0aGUgY29ycmVzcG9uZGluZyBvdXRwdXQgZnVuY3Rpb24gb2YgeW91ciBVSSBjb2RlLlwiKVxuICAgICAgICBoYXNFeGVjdXRlZCRzZXQoVFJVRSlcbiAgICB9XG4gICAgaWYgKGlzLm51bGwoZm9ybWFscyhvcmlnUmVuZGVyRnVuYykpKSBcbiAgICAgICAgb3JpZ1JlbmRlckZ1bmMoKVxuICAgIGVsc2Ugb3JpZ1JlbmRlckZ1bmMoLi4uKVxufVxuPGVudmlyb25tZW50OiAweDAwMDAwMDAwMWJjNGQ0ZTA+XG5hdHRyKCxcImNsYXNzXCIpXG5bMV0gXCJzaGlueS5yZW5kZXIuZnVuY3Rpb25cIiBcImZ1bmN0aW9uXCIgICAgICAgICAgICAgXG5hdHRyKCxcIm91dHB1dEZ1bmNcIilcbmZ1bmN0aW9uIChvdXRwdXRJZCwgd2lkdGggPSBcIjEwMCVcIiwgaGVpZ2h0ID0gXCI0MDBweFwiLCBjbGljayA9IE5VTEwsIFxuICAgIGRibGNsaWNrID0gTlVMTCwgaG92ZXIgPSBOVUxMLCBob3ZlckRlbGF5ID0gTlVMTCwgaG92ZXJEZWxheVR5cGUgPSBOVUxMLCBcbiAgICBicnVzaCA9IE5VTEwsIGNsaWNrSWQgPSBOVUxMLCBob3ZlcklkID0gTlVMTCwgaW5saW5lID0gRkFMU0UpIFxue1xuICAgIHJlcyA8LSBpbWFnZU91dHB1dChvdXRwdXRJZCwgd2lkdGgsIGhlaWdodCwgY2xpY2ssIGRibGNsaWNrLCBcbiAgICAgICAgaG92ZXIsIGhvdmVyRGVsYXksIGhvdmVyRGVsYXlUeXBlLCBicnVzaCwgY2xpY2tJZCwgaG92ZXJJZCwgXG4gICAgICAgIGlubGluZSlcbiAgICByZXMkYXR0cmlicyRjbGFzcyA8LSBcInNoaW55LXBsb3Qtb3V0cHV0XCJcbiAgICByZXNcbn1cbjxlbnZpcm9ubWVudDogbmFtZXNwYWNlOnNoaW55PlxuYXR0cigsXCJvdXRwdXRBcmdzXCIpXG5saXN0KClcbmF0dHIoLFwiaGFzRXhlY3V0ZWRcIilcbjxNdXRhYmxlPlxuICBQdWJsaWM6XG4gICAgY2xvbmU6IGZ1bmN0aW9uIChkZWVwID0gRkFMU0UpIFxuICAgIGdldDogZnVuY3Rpb24gKCkgXG4gICAgc2V0OiBmdW5jdGlvbiAodmFsdWUpIFxuICBQcml2YXRlOlxuICAgIHZhbHVlOiBGQUxTRVxuIn0= -->
+<pre><code>function (...) 
+{
+    if (length(outputArgs) != 0 &amp;&amp; !hasExecuted$get()) {
+        warning(&quot;Unused argument: outputArgs. The argument outputArgs is only &quot;, 
+            &quot;meant to be used when embedding snippets of Shiny code in an &quot;, 
+            &quot;R Markdown code chunk (using runtime: shiny). When running a &quot;, 
+            &quot;full Shiny app, please set the output arguments directly in &quot;, 
+            &quot;the corresponding output function of your UI code.&quot;)
+        hasExecuted$set(TRUE)
+    }
+    if (is.null(formals(origRenderFunc))) 
+        origRenderFunc()
+    else origRenderFunc(...)
+}
+&lt;environment: 0x000000001bc4d4e0&gt;
+attr(,&quot;class&quot;)
+[1] &quot;shiny.render.function&quot; &quot;function&quot;             
+attr(,&quot;outputFunc&quot;)
+function (outputId, width = &quot;100%&quot;, height = &quot;400px&quot;, click = NULL, 
+    dblclick = NULL, hover = NULL, hoverDelay = NULL, hoverDelayType = NULL, 
+    brush = NULL, clickId = NULL, hoverId = NULL, inline = FALSE) 
+{
+    res &lt;- imageOutput(outputId, width, height, click, dblclick, 
+        hover, hoverDelay, hoverDelayType, brush, clickId, hoverId, 
+        inline)
+    res$attribs$class &lt;- &quot;shiny-plot-output&quot;
+    res
+}
+&lt;environment: namespace:shiny&gt;
+attr(,&quot;outputArgs&quot;)
+list()
+attr(,&quot;hasExecuted&quot;)
+&lt;Mutable&gt;
+  Public:
+    clone: function (deep = FALSE) 
+    get: function () 
+    set: function (value) 
+  Private:
+    value: FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVuZGVyUGxvdChwbG90KHJlZ2ZpdC5zdW1tYXJ5JGNwLHhsYWI9XCJOdW1iZXIgb2YgVmFyaWFibGVzXCIseWxhYj1cIkNwXCIsIHR5cGU9XCJiXCIpKVxuYGBgIn0= -->
+<pre class="r"><code>renderPlot(plot(regfit.summary$cp,xlab=&quot;Number of Variables&quot;,ylab=&quot;Cp&quot;, type=&quot;b&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZnVuY3Rpb24gKC4uLikgXG57XG4gICAgaWYgKGxlbmd0aChvdXRwdXRBcmdzKSAhPSAwICYmICFoYXNFeGVjdXRlZCRnZXQoKSkge1xuICAgICAgICB3YXJuaW5nKFwiVW51c2VkIGFyZ3VtZW50OiBvdXRwdXRBcmdzLiBUaGUgYXJndW1lbnQgb3V0cHV0QXJncyBpcyBvbmx5IFwiLCBcbiAgICAgICAgICAgIFwibWVhbnQgdG8gYmUgdXNlZCB3aGVuIGVtYmVkZGluZyBzbmlwcGV0cyBvZiBTaGlueSBjb2RlIGluIGFuIFwiLCBcbiAgICAgICAgICAgIFwiUiBNYXJrZG93biBjb2RlIGNodW5rICh1c2luZyBydW50aW1lOiBzaGlueSkuIFdoZW4gcnVubmluZyBhIFwiLCBcbiAgICAgICAgICAgIFwiZnVsbCBTaGlueSBhcHAsIHBsZWFzZSBzZXQgdGhlIG91dHB1dCBhcmd1bWVudHMgZGlyZWN0bHkgaW4gXCIsIFxuICAgICAgICAgICAgXCJ0aGUgY29ycmVzcG9uZGluZyBvdXRwdXQgZnVuY3Rpb24gb2YgeW91ciBVSSBjb2RlLlwiKVxuICAgICAgICBoYXNFeGVjdXRlZCRzZXQoVFJVRSlcbiAgICB9XG4gICAgaWYgKGlzLm51bGwoZm9ybWFscyhvcmlnUmVuZGVyRnVuYykpKSBcbiAgICAgICAgb3JpZ1JlbmRlckZ1bmMoKVxuICAgIGVsc2Ugb3JpZ1JlbmRlckZ1bmMoLi4uKVxufVxuPGVudmlyb25tZW50OiAweDAwMDAwMDAwMWY1ZTI4MzA+XG5hdHRyKCxcImNsYXNzXCIpXG5bMV0gXCJzaGlueS5yZW5kZXIuZnVuY3Rpb25cIiBcImZ1bmN0aW9uXCIgICAgICAgICAgICAgXG5hdHRyKCxcIm91dHB1dEZ1bmNcIilcbmZ1bmN0aW9uIChvdXRwdXRJZCwgd2lkdGggPSBcIjEwMCVcIiwgaGVpZ2h0ID0gXCI0MDBweFwiLCBjbGljayA9IE5VTEwsIFxuICAgIGRibGNsaWNrID0gTlVMTCwgaG92ZXIgPSBOVUxMLCBob3ZlckRlbGF5ID0gTlVMTCwgaG92ZXJEZWxheVR5cGUgPSBOVUxMLCBcbiAgICBicnVzaCA9IE5VTEwsIGNsaWNrSWQgPSBOVUxMLCBob3ZlcklkID0gTlVMTCwgaW5saW5lID0gRkFMU0UpIFxue1xuICAgIHJlcyA8LSBpbWFnZU91dHB1dChvdXRwdXRJZCwgd2lkdGgsIGhlaWdodCwgY2xpY2ssIGRibGNsaWNrLCBcbiAgICAgICAgaG92ZXIsIGhvdmVyRGVsYXksIGhvdmVyRGVsYXlUeXBlLCBicnVzaCwgY2xpY2tJZCwgaG92ZXJJZCwgXG4gICAgICAgIGlubGluZSlcbiAgICByZXMkYXR0cmlicyRjbGFzcyA8LSBcInNoaW55LXBsb3Qtb3V0cHV0XCJcbiAgICByZXNcbn1cbjxlbnZpcm9ubWVudDogbmFtZXNwYWNlOnNoaW55PlxuYXR0cigsXCJvdXRwdXRBcmdzXCIpXG5saXN0KClcbmF0dHIoLFwiaGFzRXhlY3V0ZWRcIilcbjxNdXRhYmxlPlxuICBQdWJsaWM6XG4gICAgY2xvbmU6IGZ1bmN0aW9uIChkZWVwID0gRkFMU0UpIFxuICAgIGdldDogZnVuY3Rpb24gKCkgXG4gICAgc2V0OiBmdW5jdGlvbiAodmFsdWUpIFxuICBQcml2YXRlOlxuICAgIHZhbHVlOiBGQUxTRVxuIn0= -->
+<pre><code>function (...) 
+{
+    if (length(outputArgs) != 0 &amp;&amp; !hasExecuted$get()) {
+        warning(&quot;Unused argument: outputArgs. The argument outputArgs is only &quot;, 
+            &quot;meant to be used when embedding snippets of Shiny code in an &quot;, 
+            &quot;R Markdown code chunk (using runtime: shiny). When running a &quot;, 
+            &quot;full Shiny app, please set the output arguments directly in &quot;, 
+            &quot;the corresponding output function of your UI code.&quot;)
+        hasExecuted$set(TRUE)
+    }
+    if (is.null(formals(origRenderFunc))) 
+        origRenderFunc()
+    else origRenderFunc(...)
+}
+&lt;environment: 0x000000001f5e2830&gt;
+attr(,&quot;class&quot;)
+[1] &quot;shiny.render.function&quot; &quot;function&quot;             
+attr(,&quot;outputFunc&quot;)
+function (outputId, width = &quot;100%&quot;, height = &quot;400px&quot;, click = NULL, 
+    dblclick = NULL, hover = NULL, hoverDelay = NULL, hoverDelayType = NULL, 
+    brush = NULL, clickId = NULL, hoverId = NULL, inline = FALSE) 
+{
+    res &lt;- imageOutput(outputId, width, height, click, dblclick, 
+        hover, hoverDelay, hoverDelayType, brush, clickId, hoverId, 
+        inline)
+    res$attribs$class &lt;- &quot;shiny-plot-output&quot;
+    res
+}
+&lt;environment: namespace:shiny&gt;
+attr(,&quot;outputArgs&quot;)
+list()
+attr(,&quot;hasExecuted&quot;)
+&lt;Mutable&gt;
+  Public:
+    clone: function (deep = FALSE) 
+    get: function () 
+    set: function (value) 
+  Private:
+    value: FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2hpY2gubWluKHJlZ2ZpdC5zdW1tYXJ5JGNwKVxuYGBgIn0= -->
+<pre class="r"><code>which.min(regfit.summary$cp)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE1XG4ifQ== -->
+<pre><code>[1] 15</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVuZGVyUGxvdChwbG90KHJlZ2ZpdC5md2Qsc2NhbGU9XCJhZGpyMlwiKSlcbmBgYCJ9 -->
+<pre class="r"><code>renderPlot(plot(regfit.fwd,scale=&quot;adjr2&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZnVuY3Rpb24gKC4uLikgXG57XG4gICAgaWYgKGxlbmd0aChvdXRwdXRBcmdzKSAhPSAwICYmICFoYXNFeGVjdXRlZCRnZXQoKSkge1xuICAgICAgICB3YXJuaW5nKFwiVW51c2VkIGFyZ3VtZW50OiBvdXRwdXRBcmdzLiBUaGUgYXJndW1lbnQgb3V0cHV0QXJncyBpcyBvbmx5IFwiLCBcbiAgICAgICAgICAgIFwibWVhbnQgdG8gYmUgdXNlZCB3aGVuIGVtYmVkZGluZyBzbmlwcGV0cyBvZiBTaGlueSBjb2RlIGluIGFuIFwiLCBcbiAgICAgICAgICAgIFwiUiBNYXJrZG93biBjb2RlIGNodW5rICh1c2luZyBydW50aW1lOiBzaGlueSkuIFdoZW4gcnVubmluZyBhIFwiLCBcbiAgICAgICAgICAgIFwiZnVsbCBTaGlueSBhcHAsIHBsZWFzZSBzZXQgdGhlIG91dHB1dCBhcmd1bWVudHMgZGlyZWN0bHkgaW4gXCIsIFxuICAgICAgICAgICAgXCJ0aGUgY29ycmVzcG9uZGluZyBvdXRwdXQgZnVuY3Rpb24gb2YgeW91ciBVSSBjb2RlLlwiKVxuICAgICAgICBoYXNFeGVjdXRlZCRzZXQoVFJVRSlcbiAgICB9XG4gICAgaWYgKGlzLm51bGwoZm9ybWFscyhvcmlnUmVuZGVyRnVuYykpKSBcbiAgICAgICAgb3JpZ1JlbmRlckZ1bmMoKVxuICAgIGVsc2Ugb3JpZ1JlbmRlckZ1bmMoLi4uKVxufVxuPGVudmlyb25tZW50OiAweDAwMDAwMDAwMWY2YzgwMjg+XG5hdHRyKCxcImNsYXNzXCIpXG5bMV0gXCJzaGlueS5yZW5kZXIuZnVuY3Rpb25cIiBcImZ1bmN0aW9uXCIgICAgICAgICAgICAgXG5hdHRyKCxcIm91dHB1dEZ1bmNcIilcbmZ1bmN0aW9uIChvdXRwdXRJZCwgd2lkdGggPSBcIjEwMCVcIiwgaGVpZ2h0ID0gXCI0MDBweFwiLCBjbGljayA9IE5VTEwsIFxuICAgIGRibGNsaWNrID0gTlVMTCwgaG92ZXIgPSBOVUxMLCBob3ZlckRlbGF5ID0gTlVMTCwgaG92ZXJEZWxheVR5cGUgPSBOVUxMLCBcbiAgICBicnVzaCA9IE5VTEwsIGNsaWNrSWQgPSBOVUxMLCBob3ZlcklkID0gTlVMTCwgaW5saW5lID0gRkFMU0UpIFxue1xuICAgIHJlcyA8LSBpbWFnZU91dHB1dChvdXRwdXRJZCwgd2lkdGgsIGhlaWdodCwgY2xpY2ssIGRibGNsaWNrLCBcbiAgICAgICAgaG92ZXIsIGhvdmVyRGVsYXksIGhvdmVyRGVsYXlUeXBlLCBicnVzaCwgY2xpY2tJZCwgaG92ZXJJZCwgXG4gICAgICAgIGlubGluZSlcbiAgICByZXMkYXR0cmlicyRjbGFzcyA8LSBcInNoaW55LXBsb3Qtb3V0cHV0XCJcbiAgICByZXNcbn1cbjxlbnZpcm9ubWVudDogbmFtZXNwYWNlOnNoaW55PlxuYXR0cigsXCJvdXRwdXRBcmdzXCIpXG5saXN0KClcbmF0dHIoLFwiaGFzRXhlY3V0ZWRcIilcbjxNdXRhYmxlPlxuICBQdWJsaWM6XG4gICAgY2xvbmU6IGZ1bmN0aW9uIChkZWVwID0gRkFMU0UpIFxuICAgIGdldDogZnVuY3Rpb24gKCkgXG4gICAgc2V0OiBmdW5jdGlvbiAodmFsdWUpIFxuICBQcml2YXRlOlxuICAgIHZhbHVlOiBGQUxTRVxuIn0= -->
+<pre><code>function (...) 
+{
+    if (length(outputArgs) != 0 &amp;&amp; !hasExecuted$get()) {
+        warning(&quot;Unused argument: outputArgs. The argument outputArgs is only &quot;, 
+            &quot;meant to be used when embedding snippets of Shiny code in an &quot;, 
+            &quot;R Markdown code chunk (using runtime: shiny). When running a &quot;, 
+            &quot;full Shiny app, please set the output arguments directly in &quot;, 
+            &quot;the corresponding output function of your UI code.&quot;)
+        hasExecuted$set(TRUE)
+    }
+    if (is.null(formals(origRenderFunc))) 
+        origRenderFunc()
+    else origRenderFunc(...)
+}
+&lt;environment: 0x000000001f6c8028&gt;
+attr(,&quot;class&quot;)
+[1] &quot;shiny.render.function&quot; &quot;function&quot;             
+attr(,&quot;outputFunc&quot;)
+function (outputId, width = &quot;100%&quot;, height = &quot;400px&quot;, click = NULL, 
+    dblclick = NULL, hover = NULL, hoverDelay = NULL, hoverDelayType = NULL, 
+    brush = NULL, clickId = NULL, hoverId = NULL, inline = FALSE) 
+{
+    res &lt;- imageOutput(outputId, width, height, click, dblclick, 
+        hover, hoverDelay, hoverDelayType, brush, clickId, hoverId, 
+        inline)
+    res$attribs$class &lt;- &quot;shiny-plot-output&quot;
+    res
+}
+&lt;environment: namespace:shiny&gt;
+attr(,&quot;outputArgs&quot;)
+list()
+attr(,&quot;hasExecuted&quot;)
+&lt;Mutable&gt;
+  Public:
+    clone: function (deep = FALSE) 
+    get: function () 
+    set: function (value) 
+  Private:
+    value: FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVuZGVyUGxvdChwbG90KHJlZ2ZpdC5zdW1tYXJ5JGFkanIyLHhsYWI9XCJOdW1iZXIgb2YgVmFyaWFibGVzXCIseWxhYj1cIkFkanIyXCIsIHR5cGU9XCJiXCIpKVxuYGBgIn0= -->
+<pre class="r"><code>renderPlot(plot(regfit.summary$adjr2,xlab=&quot;Number of Variables&quot;,ylab=&quot;Adjr2&quot;, type=&quot;b&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZnVuY3Rpb24gKC4uLikgXG57XG4gICAgaWYgKGxlbmd0aChvdXRwdXRBcmdzKSAhPSAwICYmICFoYXNFeGVjdXRlZCRnZXQoKSkge1xuICAgICAgICB3YXJuaW5nKFwiVW51c2VkIGFyZ3VtZW50OiBvdXRwdXRBcmdzLiBUaGUgYXJndW1lbnQgb3V0cHV0QXJncyBpcyBvbmx5IFwiLCBcbiAgICAgICAgICAgIFwibWVhbnQgdG8gYmUgdXNlZCB3aGVuIGVtYmVkZGluZyBzbmlwcGV0cyBvZiBTaGlueSBjb2RlIGluIGFuIFwiLCBcbiAgICAgICAgICAgIFwiUiBNYXJrZG93biBjb2RlIGNodW5rICh1c2luZyBydW50aW1lOiBzaGlueSkuIFdoZW4gcnVubmluZyBhIFwiLCBcbiAgICAgICAgICAgIFwiZnVsbCBTaGlueSBhcHAsIHBsZWFzZSBzZXQgdGhlIG91dHB1dCBhcmd1bWVudHMgZGlyZWN0bHkgaW4gXCIsIFxuICAgICAgICAgICAgXCJ0aGUgY29ycmVzcG9uZGluZyBvdXRwdXQgZnVuY3Rpb24gb2YgeW91ciBVSSBjb2RlLlwiKVxuICAgICAgICBoYXNFeGVjdXRlZCRzZXQoVFJVRSlcbiAgICB9XG4gICAgaWYgKGlzLm51bGwoZm9ybWFscyhvcmlnUmVuZGVyRnVuYykpKSBcbiAgICAgICAgb3JpZ1JlbmRlckZ1bmMoKVxuICAgIGVsc2Ugb3JpZ1JlbmRlckZ1bmMoLi4uKVxufVxuPGVudmlyb25tZW50OiAweDAwMDAwMDAwMWY3OWU3NTA+XG5hdHRyKCxcImNsYXNzXCIpXG5bMV0gXCJzaGlueS5yZW5kZXIuZnVuY3Rpb25cIiBcImZ1bmN0aW9uXCIgICAgICAgICAgICAgXG5hdHRyKCxcIm91dHB1dEZ1bmNcIilcbmZ1bmN0aW9uIChvdXRwdXRJZCwgd2lkdGggPSBcIjEwMCVcIiwgaGVpZ2h0ID0gXCI0MDBweFwiLCBjbGljayA9IE5VTEwsIFxuICAgIGRibGNsaWNrID0gTlVMTCwgaG92ZXIgPSBOVUxMLCBob3ZlckRlbGF5ID0gTlVMTCwgaG92ZXJEZWxheVR5cGUgPSBOVUxMLCBcbiAgICBicnVzaCA9IE5VTEwsIGNsaWNrSWQgPSBOVUxMLCBob3ZlcklkID0gTlVMTCwgaW5saW5lID0gRkFMU0UpIFxue1xuICAgIHJlcyA8LSBpbWFnZU91dHB1dChvdXRwdXRJZCwgd2lkdGgsIGhlaWdodCwgY2xpY2ssIGRibGNsaWNrLCBcbiAgICAgICAgaG92ZXIsIGhvdmVyRGVsYXksIGhvdmVyRGVsYXlUeXBlLCBicnVzaCwgY2xpY2tJZCwgaG92ZXJJZCwgXG4gICAgICAgIGlubGluZSlcbiAgICByZXMkYXR0cmlicyRjbGFzcyA8LSBcInNoaW55LXBsb3Qtb3V0cHV0XCJcbiAgICByZXNcbn1cbjxlbnZpcm9ubWVudDogbmFtZXNwYWNlOnNoaW55PlxuYXR0cigsXCJvdXRwdXRBcmdzXCIpXG5saXN0KClcbmF0dHIoLFwiaGFzRXhlY3V0ZWRcIilcbjxNdXRhYmxlPlxuICBQdWJsaWM6XG4gICAgY2xvbmU6IGZ1bmN0aW9uIChkZWVwID0gRkFMU0UpIFxuICAgIGdldDogZnVuY3Rpb24gKCkgXG4gICAgc2V0OiBmdW5jdGlvbiAodmFsdWUpIFxuICBQcml2YXRlOlxuICAgIHZhbHVlOiBGQUxTRVxuIn0= -->
+<pre><code>function (...) 
+{
+    if (length(outputArgs) != 0 &amp;&amp; !hasExecuted$get()) {
+        warning(&quot;Unused argument: outputArgs. The argument outputArgs is only &quot;, 
+            &quot;meant to be used when embedding snippets of Shiny code in an &quot;, 
+            &quot;R Markdown code chunk (using runtime: shiny). When running a &quot;, 
+            &quot;full Shiny app, please set the output arguments directly in &quot;, 
+            &quot;the corresponding output function of your UI code.&quot;)
+        hasExecuted$set(TRUE)
+    }
+    if (is.null(formals(origRenderFunc))) 
+        origRenderFunc()
+    else origRenderFunc(...)
+}
+&lt;environment: 0x000000001f79e750&gt;
+attr(,&quot;class&quot;)
+[1] &quot;shiny.render.function&quot; &quot;function&quot;             
+attr(,&quot;outputFunc&quot;)
+function (outputId, width = &quot;100%&quot;, height = &quot;400px&quot;, click = NULL, 
+    dblclick = NULL, hover = NULL, hoverDelay = NULL, hoverDelayType = NULL, 
+    brush = NULL, clickId = NULL, hoverId = NULL, inline = FALSE) 
+{
+    res &lt;- imageOutput(outputId, width, height, click, dblclick, 
+        hover, hoverDelay, hoverDelayType, brush, clickId, hoverId, 
+        inline)
+    res$attribs$class &lt;- &quot;shiny-plot-output&quot;
+    res
+}
+&lt;environment: namespace:shiny&gt;
+attr(,&quot;outputArgs&quot;)
+list()
+attr(,&quot;hasExecuted&quot;)
+&lt;Mutable&gt;
+  Public:
+    clone: function (deep = FALSE) 
+    get: function () 
+    set: function (value) 
+  Private:
+    value: FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2hpY2gubWF4KHJlZ2ZpdC5zdW1tYXJ5JGFkanIyKVxuYGBgIn0= -->
+<pre class="r"><code>which.max(regfit.summary$adjr2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE2XG4ifQ== -->
+<pre><code>[1] 16</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The R2 values for all the models are very low. After considering these results in the context of the data, we realized that this is reasonable because all the patients have early Parkinson’s disease. Perhaps it is difficult to predict the severiy of the disease because none of the patients have severe forms of the disease yet. Since the R2 values are so low for all the models, we decided to move on to predicting other outcomes with this data.</p>
+<p>Find relevant insights here: <a href="https://data.world/tarrantrl/f-17-eda-project-3/insights/d3b42b42-4226-4b07-86b3-0c39bfddfe2b">Forward selection</a> <a href="https://data.world/tarrantrl/f-17-eda-project-3/insights/421ff100-fd46-477d-9517-0b874376e721">Low R2</a></p>
+</div>
+<div id="section-subset-selection-predicting-sex" class="section level2">
+<h2>Subset Selection Predicting Sex</h2>
+<p>Next, we used best subset selection to predict sex. We removed the original sex column in order to predict the binary version.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfc3Vic2V0X2ZpeGVkIDwtIGRmICU+JSBkcGx5cjo6c2VsZWN0KC4sIC1zZXgpXG5yZWdmaXQuZnVsbD1yZWdzdWJzZXRzKHNleDJ+LixkYXRhPWRmX3N1YnNldF9maXhlZCwgbnZtYXg9MjUpXG5yZWcuc3VtbWFyeT1zdW1tYXJ5KHJlZ2ZpdC5mdWxsKVxuI3JlZy5zdW1tYXJ5XG5gYGAifQ== -->
+<pre class="r"><code>df_subset_fixed &lt;- df %&gt;% dplyr::select(., -sex)
+regfit.full=regsubsets(sex2~.,data=df_subset_fixed, nvmax=25)
+reg.summary=summary(regfit.full)
+#reg.summary</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The following plots show Cp and R2 for each model chosen by subset selection. Although the minimum Cp is at 15, the Cp levels off around 10 predictors. For this reason, we chose to do further analysis on the first 10 predictors chosen by subset selection.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVuZGVyUGxvdChwbG90KHJlZ2ZpdC5mdWxsLHNjYWxlPVwiQ3BcIikpXG5gYGAifQ== -->
+<pre class="r"><code>renderPlot(plot(regfit.full,scale=&quot;Cp&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZnVuY3Rpb24gKC4uLikgXG57XG4gICAgaWYgKGxlbmd0aChvdXRwdXRBcmdzKSAhPSAwICYmICFoYXNFeGVjdXRlZCRnZXQoKSkge1xuICAgICAgICB3YXJuaW5nKFwiVW51c2VkIGFyZ3VtZW50OiBvdXRwdXRBcmdzLiBUaGUgYXJndW1lbnQgb3V0cHV0QXJncyBpcyBvbmx5IFwiLCBcbiAgICAgICAgICAgIFwibWVhbnQgdG8gYmUgdXNlZCB3aGVuIGVtYmVkZGluZyBzbmlwcGV0cyBvZiBTaGlueSBjb2RlIGluIGFuIFwiLCBcbiAgICAgICAgICAgIFwiUiBNYXJrZG93biBjb2RlIGNodW5rICh1c2luZyBydW50aW1lOiBzaGlueSkuIFdoZW4gcnVubmluZyBhIFwiLCBcbiAgICAgICAgICAgIFwiZnVsbCBTaGlueSBhcHAsIHBsZWFzZSBzZXQgdGhlIG91dHB1dCBhcmd1bWVudHMgZGlyZWN0bHkgaW4gXCIsIFxuICAgICAgICAgICAgXCJ0aGUgY29ycmVzcG9uZGluZyBvdXRwdXQgZnVuY3Rpb24gb2YgeW91ciBVSSBjb2RlLlwiKVxuICAgICAgICBoYXNFeGVjdXRlZCRzZXQoVFJVRSlcbiAgICB9XG4gICAgaWYgKGlzLm51bGwoZm9ybWFscyhvcmlnUmVuZGVyRnVuYykpKSBcbiAgICAgICAgb3JpZ1JlbmRlckZ1bmMoKVxuICAgIGVsc2Ugb3JpZ1JlbmRlckZ1bmMoLi4uKVxufVxuPGVudmlyb25tZW50OiAweDAwMDAwMDAwMWQ4ZTBkZjg+XG5hdHRyKCxcImNsYXNzXCIpXG5bMV0gXCJzaGlueS5yZW5kZXIuZnVuY3Rpb25cIiBcImZ1bmN0aW9uXCIgICAgICAgICAgICAgXG5hdHRyKCxcIm91dHB1dEZ1bmNcIilcbmZ1bmN0aW9uIChvdXRwdXRJZCwgd2lkdGggPSBcIjEwMCVcIiwgaGVpZ2h0ID0gXCI0MDBweFwiLCBjbGljayA9IE5VTEwsIFxuICAgIGRibGNsaWNrID0gTlVMTCwgaG92ZXIgPSBOVUxMLCBob3ZlckRlbGF5ID0gTlVMTCwgaG92ZXJEZWxheVR5cGUgPSBOVUxMLCBcbiAgICBicnVzaCA9IE5VTEwsIGNsaWNrSWQgPSBOVUxMLCBob3ZlcklkID0gTlVMTCwgaW5saW5lID0gRkFMU0UpIFxue1xuICAgIHJlcyA8LSBpbWFnZU91dHB1dChvdXRwdXRJZCwgd2lkdGgsIGhlaWdodCwgY2xpY2ssIGRibGNsaWNrLCBcbiAgICAgICAgaG92ZXIsIGhvdmVyRGVsYXksIGhvdmVyRGVsYXlUeXBlLCBicnVzaCwgY2xpY2tJZCwgaG92ZXJJZCwgXG4gICAgICAgIGlubGluZSlcbiAgICByZXMkYXR0cmlicyRjbGFzcyA8LSBcInNoaW55LXBsb3Qtb3V0cHV0XCJcbiAgICByZXNcbn1cbjxlbnZpcm9ubWVudDogbmFtZXNwYWNlOnNoaW55PlxuYXR0cigsXCJvdXRwdXRBcmdzXCIpXG5saXN0KClcbmF0dHIoLFwiaGFzRXhlY3V0ZWRcIilcbjxNdXRhYmxlPlxuICBQdWJsaWM6XG4gICAgY2xvbmU6IGZ1bmN0aW9uIChkZWVwID0gRkFMU0UpIFxuICAgIGdldDogZnVuY3Rpb24gKCkgXG4gICAgc2V0OiBmdW5jdGlvbiAodmFsdWUpIFxuICBQcml2YXRlOlxuICAgIHZhbHVlOiBGQUxTRVxuIn0= -->
+<pre><code>function (...) 
+{
+    if (length(outputArgs) != 0 &amp;&amp; !hasExecuted$get()) {
+        warning(&quot;Unused argument: outputArgs. The argument outputArgs is only &quot;, 
+            &quot;meant to be used when embedding snippets of Shiny code in an &quot;, 
+            &quot;R Markdown code chunk (using runtime: shiny). When running a &quot;, 
+            &quot;full Shiny app, please set the output arguments directly in &quot;, 
+            &quot;the corresponding output function of your UI code.&quot;)
+        hasExecuted$set(TRUE)
+    }
+    if (is.null(formals(origRenderFunc))) 
+        origRenderFunc()
+    else origRenderFunc(...)
+}
+&lt;environment: 0x000000001d8e0df8&gt;
+attr(,&quot;class&quot;)
+[1] &quot;shiny.render.function&quot; &quot;function&quot;             
+attr(,&quot;outputFunc&quot;)
+function (outputId, width = &quot;100%&quot;, height = &quot;400px&quot;, click = NULL, 
+    dblclick = NULL, hover = NULL, hoverDelay = NULL, hoverDelayType = NULL, 
+    brush = NULL, clickId = NULL, hoverId = NULL, inline = FALSE) 
+{
+    res &lt;- imageOutput(outputId, width, height, click, dblclick, 
+        hover, hoverDelay, hoverDelayType, brush, clickId, hoverId, 
+        inline)
+    res$attribs$class &lt;- &quot;shiny-plot-output&quot;
+    res
+}
+&lt;environment: namespace:shiny&gt;
+attr(,&quot;outputArgs&quot;)
+list()
+attr(,&quot;hasExecuted&quot;)
+&lt;Mutable&gt;
+  Public:
+    clone: function (deep = FALSE) 
+    get: function () 
+    set: function (value) 
+  Private:
+    value: FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVuZGVyUGxvdChwbG90KHJlZy5zdW1tYXJ5JGNwLHhsYWI9XCJOdW1iZXIgb2YgVmFyaWFibGVzXCIseWxhYj1cIkNwXCIpKVxuYGBgIn0= -->
+<pre class="r"><code>renderPlot(plot(reg.summary$cp,xlab=&quot;Number of Variables&quot;,ylab=&quot;Cp&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZnVuY3Rpb24gKC4uLikgXG57XG4gICAgaWYgKGxlbmd0aChvdXRwdXRBcmdzKSAhPSAwICYmICFoYXNFeGVjdXRlZCRnZXQoKSkge1xuICAgICAgICB3YXJuaW5nKFwiVW51c2VkIGFyZ3VtZW50OiBvdXRwdXRBcmdzLiBUaGUgYXJndW1lbnQgb3V0cHV0QXJncyBpcyBvbmx5IFwiLCBcbiAgICAgICAgICAgIFwibWVhbnQgdG8gYmUgdXNlZCB3aGVuIGVtYmVkZGluZyBzbmlwcGV0cyBvZiBTaGlueSBjb2RlIGluIGFuIFwiLCBcbiAgICAgICAgICAgIFwiUiBNYXJrZG93biBjb2RlIGNodW5rICh1c2luZyBydW50aW1lOiBzaGlueSkuIFdoZW4gcnVubmluZyBhIFwiLCBcbiAgICAgICAgICAgIFwiZnVsbCBTaGlueSBhcHAsIHBsZWFzZSBzZXQgdGhlIG91dHB1dCBhcmd1bWVudHMgZGlyZWN0bHkgaW4gXCIsIFxuICAgICAgICAgICAgXCJ0aGUgY29ycmVzcG9uZGluZyBvdXRwdXQgZnVuY3Rpb24gb2YgeW91ciBVSSBjb2RlLlwiKVxuICAgICAgICBoYXNFeGVjdXRlZCRzZXQoVFJVRSlcbiAgICB9XG4gICAgaWYgKGlzLm51bGwoZm9ybWFscyhvcmlnUmVuZGVyRnVuYykpKSBcbiAgICAgICAgb3JpZ1JlbmRlckZ1bmMoKVxuICAgIGVsc2Ugb3JpZ1JlbmRlckZ1bmMoLi4uKVxufVxuPGVudmlyb25tZW50OiAweDAwMDAwMDAwMWYwNjI0ZDA+XG5hdHRyKCxcImNsYXNzXCIpXG5bMV0gXCJzaGlueS5yZW5kZXIuZnVuY3Rpb25cIiBcImZ1bmN0aW9uXCIgICAgICAgICAgICAgXG5hdHRyKCxcIm91dHB1dEZ1bmNcIilcbmZ1bmN0aW9uIChvdXRwdXRJZCwgd2lkdGggPSBcIjEwMCVcIiwgaGVpZ2h0ID0gXCI0MDBweFwiLCBjbGljayA9IE5VTEwsIFxuICAgIGRibGNsaWNrID0gTlVMTCwgaG92ZXIgPSBOVUxMLCBob3ZlckRlbGF5ID0gTlVMTCwgaG92ZXJEZWxheVR5cGUgPSBOVUxMLCBcbiAgICBicnVzaCA9IE5VTEwsIGNsaWNrSWQgPSBOVUxMLCBob3ZlcklkID0gTlVMTCwgaW5saW5lID0gRkFMU0UpIFxue1xuICAgIHJlcyA8LSBpbWFnZU91dHB1dChvdXRwdXRJZCwgd2lkdGgsIGhlaWdodCwgY2xpY2ssIGRibGNsaWNrLCBcbiAgICAgICAgaG92ZXIsIGhvdmVyRGVsYXksIGhvdmVyRGVsYXlUeXBlLCBicnVzaCwgY2xpY2tJZCwgaG92ZXJJZCwgXG4gICAgICAgIGlubGluZSlcbiAgICByZXMkYXR0cmlicyRjbGFzcyA8LSBcInNoaW55LXBsb3Qtb3V0cHV0XCJcbiAgICByZXNcbn1cbjxlbnZpcm9ubWVudDogbmFtZXNwYWNlOnNoaW55PlxuYXR0cigsXCJvdXRwdXRBcmdzXCIpXG5saXN0KClcbmF0dHIoLFwiaGFzRXhlY3V0ZWRcIilcbjxNdXRhYmxlPlxuICBQdWJsaWM6XG4gICAgY2xvbmU6IGZ1bmN0aW9uIChkZWVwID0gRkFMU0UpIFxuICAgIGdldDogZnVuY3Rpb24gKCkgXG4gICAgc2V0OiBmdW5jdGlvbiAodmFsdWUpIFxuICBQcml2YXRlOlxuICAgIHZhbHVlOiBGQUxTRVxuIn0= -->
+<pre><code>function (...) 
+{
+    if (length(outputArgs) != 0 &amp;&amp; !hasExecuted$get()) {
+        warning(&quot;Unused argument: outputArgs. The argument outputArgs is only &quot;, 
+            &quot;meant to be used when embedding snippets of Shiny code in an &quot;, 
+            &quot;R Markdown code chunk (using runtime: shiny). When running a &quot;, 
+            &quot;full Shiny app, please set the output arguments directly in &quot;, 
+            &quot;the corresponding output function of your UI code.&quot;)
+        hasExecuted$set(TRUE)
+    }
+    if (is.null(formals(origRenderFunc))) 
+        origRenderFunc()
+    else origRenderFunc(...)
+}
+&lt;environment: 0x000000001f0624d0&gt;
+attr(,&quot;class&quot;)
+[1] &quot;shiny.render.function&quot; &quot;function&quot;             
+attr(,&quot;outputFunc&quot;)
+function (outputId, width = &quot;100%&quot;, height = &quot;400px&quot;, click = NULL, 
+    dblclick = NULL, hover = NULL, hoverDelay = NULL, hoverDelayType = NULL, 
+    brush = NULL, clickId = NULL, hoverId = NULL, inline = FALSE) 
+{
+    res &lt;- imageOutput(outputId, width, height, click, dblclick, 
+        hover, hoverDelay, hoverDelayType, brush, clickId, hoverId, 
+        inline)
+    res$attribs$class &lt;- &quot;shiny-plot-output&quot;
+    res
+}
+&lt;environment: namespace:shiny&gt;
+attr(,&quot;outputArgs&quot;)
+list()
+attr(,&quot;hasExecuted&quot;)
+&lt;Mutable&gt;
+  Public:
+    clone: function (deep = FALSE) 
+    get: function () 
+    set: function (value) 
+  Private:
+    value: FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2hpY2gubWluKHJlZy5zdW1tYXJ5JGNwKVxuYGBgIn0= -->
+<pre class="r"><code>which.min(reg.summary$cp)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE1XG4ifQ== -->
+<pre><code>[1] 15</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVuZGVyUGxvdChwbG90KHJlZ2ZpdC5mdWxsLHNjYWxlPVwiYWRqcjJcIikpXG5gYGAifQ== -->
+<pre class="r"><code>renderPlot(plot(regfit.full,scale=&quot;adjr2&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZnVuY3Rpb24gKC4uLikgXG57XG4gICAgaWYgKGxlbmd0aChvdXRwdXRBcmdzKSAhPSAwICYmICFoYXNFeGVjdXRlZCRnZXQoKSkge1xuICAgICAgICB3YXJuaW5nKFwiVW51c2VkIGFyZ3VtZW50OiBvdXRwdXRBcmdzLiBUaGUgYXJndW1lbnQgb3V0cHV0QXJncyBpcyBvbmx5IFwiLCBcbiAgICAgICAgICAgIFwibWVhbnQgdG8gYmUgdXNlZCB3aGVuIGVtYmVkZGluZyBzbmlwcGV0cyBvZiBTaGlueSBjb2RlIGluIGFuIFwiLCBcbiAgICAgICAgICAgIFwiUiBNYXJrZG93biBjb2RlIGNodW5rICh1c2luZyBydW50aW1lOiBzaGlueSkuIFdoZW4gcnVubmluZyBhIFwiLCBcbiAgICAgICAgICAgIFwiZnVsbCBTaGlueSBhcHAsIHBsZWFzZSBzZXQgdGhlIG91dHB1dCBhcmd1bWVudHMgZGlyZWN0bHkgaW4gXCIsIFxuICAgICAgICAgICAgXCJ0aGUgY29ycmVzcG9uZGluZyBvdXRwdXQgZnVuY3Rpb24gb2YgeW91ciBVSSBjb2RlLlwiKVxuICAgICAgICBoYXNFeGVjdXRlZCRzZXQoVFJVRSlcbiAgICB9XG4gICAgaWYgKGlzLm51bGwoZm9ybWFscyhvcmlnUmVuZGVyRnVuYykpKSBcbiAgICAgICAgb3JpZ1JlbmRlckZ1bmMoKVxuICAgIGVsc2Ugb3JpZ1JlbmRlckZ1bmMoLi4uKVxufVxuPGVudmlyb25tZW50OiAweDAwMDAwMDAwMWY2MzRjZTA+XG5hdHRyKCxcImNsYXNzXCIpXG5bMV0gXCJzaGlueS5yZW5kZXIuZnVuY3Rpb25cIiBcImZ1bmN0aW9uXCIgICAgICAgICAgICAgXG5hdHRyKCxcIm91dHB1dEZ1bmNcIilcbmZ1bmN0aW9uIChvdXRwdXRJZCwgd2lkdGggPSBcIjEwMCVcIiwgaGVpZ2h0ID0gXCI0MDBweFwiLCBjbGljayA9IE5VTEwsIFxuICAgIGRibGNsaWNrID0gTlVMTCwgaG92ZXIgPSBOVUxMLCBob3ZlckRlbGF5ID0gTlVMTCwgaG92ZXJEZWxheVR5cGUgPSBOVUxMLCBcbiAgICBicnVzaCA9IE5VTEwsIGNsaWNrSWQgPSBOVUxMLCBob3ZlcklkID0gTlVMTCwgaW5saW5lID0gRkFMU0UpIFxue1xuICAgIHJlcyA8LSBpbWFnZU91dHB1dChvdXRwdXRJZCwgd2lkdGgsIGhlaWdodCwgY2xpY2ssIGRibGNsaWNrLCBcbiAgICAgICAgaG92ZXIsIGhvdmVyRGVsYXksIGhvdmVyRGVsYXlUeXBlLCBicnVzaCwgY2xpY2tJZCwgaG92ZXJJZCwgXG4gICAgICAgIGlubGluZSlcbiAgICByZXMkYXR0cmlicyRjbGFzcyA8LSBcInNoaW55LXBsb3Qtb3V0cHV0XCJcbiAgICByZXNcbn1cbjxlbnZpcm9ubWVudDogbmFtZXNwYWNlOnNoaW55PlxuYXR0cigsXCJvdXRwdXRBcmdzXCIpXG5saXN0KClcbmF0dHIoLFwiaGFzRXhlY3V0ZWRcIilcbjxNdXRhYmxlPlxuICBQdWJsaWM6XG4gICAgY2xvbmU6IGZ1bmN0aW9uIChkZWVwID0gRkFMU0UpIFxuICAgIGdldDogZnVuY3Rpb24gKCkgXG4gICAgc2V0OiBmdW5jdGlvbiAodmFsdWUpIFxuICBQcml2YXRlOlxuICAgIHZhbHVlOiBGQUxTRVxuIn0= -->
+<pre><code>function (...) 
+{
+    if (length(outputArgs) != 0 &amp;&amp; !hasExecuted$get()) {
+        warning(&quot;Unused argument: outputArgs. The argument outputArgs is only &quot;, 
+            &quot;meant to be used when embedding snippets of Shiny code in an &quot;, 
+            &quot;R Markdown code chunk (using runtime: shiny). When running a &quot;, 
+            &quot;full Shiny app, please set the output arguments directly in &quot;, 
+            &quot;the corresponding output function of your UI code.&quot;)
+        hasExecuted$set(TRUE)
+    }
+    if (is.null(formals(origRenderFunc))) 
+        origRenderFunc()
+    else origRenderFunc(...)
+}
+&lt;environment: 0x000000001f634ce0&gt;
+attr(,&quot;class&quot;)
+[1] &quot;shiny.render.function&quot; &quot;function&quot;             
+attr(,&quot;outputFunc&quot;)
+function (outputId, width = &quot;100%&quot;, height = &quot;400px&quot;, click = NULL, 
+    dblclick = NULL, hover = NULL, hoverDelay = NULL, hoverDelayType = NULL, 
+    brush = NULL, clickId = NULL, hoverId = NULL, inline = FALSE) 
+{
+    res &lt;- imageOutput(outputId, width, height, click, dblclick, 
+        hover, hoverDelay, hoverDelayType, brush, clickId, hoverId, 
+        inline)
+    res$attribs$class &lt;- &quot;shiny-plot-output&quot;
+    res
+}
+&lt;environment: namespace:shiny&gt;
+attr(,&quot;outputArgs&quot;)
+list()
+attr(,&quot;hasExecuted&quot;)
+&lt;Mutable&gt;
+  Public:
+    clone: function (deep = FALSE) 
+    get: function () 
+    set: function (value) 
+  Private:
+    value: FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVuZGVyUGxvdChwbG90KHJlZy5zdW1tYXJ5JGFkanIyLHhsYWI9XCJOdW1iZXIgb2YgVmFyaWFibGVzXCIseWxhYj1cImFkanIyXCIpKVxuYGBgIn0= -->
+<pre class="r"><code>renderPlot(plot(reg.summary$adjr2,xlab=&quot;Number of Variables&quot;,ylab=&quot;adjr2&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZnVuY3Rpb24gKC4uLikgXG57XG4gICAgaWYgKGxlbmd0aChvdXRwdXRBcmdzKSAhPSAwICYmICFoYXNFeGVjdXRlZCRnZXQoKSkge1xuICAgICAgICB3YXJuaW5nKFwiVW51c2VkIGFyZ3VtZW50OiBvdXRwdXRBcmdzLiBUaGUgYXJndW1lbnQgb3V0cHV0QXJncyBpcyBvbmx5IFwiLCBcbiAgICAgICAgICAgIFwibWVhbnQgdG8gYmUgdXNlZCB3aGVuIGVtYmVkZGluZyBzbmlwcGV0cyBvZiBTaGlueSBjb2RlIGluIGFuIFwiLCBcbiAgICAgICAgICAgIFwiUiBNYXJrZG93biBjb2RlIGNodW5rICh1c2luZyBydW50aW1lOiBzaGlueSkuIFdoZW4gcnVubmluZyBhIFwiLCBcbiAgICAgICAgICAgIFwiZnVsbCBTaGlueSBhcHAsIHBsZWFzZSBzZXQgdGhlIG91dHB1dCBhcmd1bWVudHMgZGlyZWN0bHkgaW4gXCIsIFxuICAgICAgICAgICAgXCJ0aGUgY29ycmVzcG9uZGluZyBvdXRwdXQgZnVuY3Rpb24gb2YgeW91ciBVSSBjb2RlLlwiKVxuICAgICAgICBoYXNFeGVjdXRlZCRzZXQoVFJVRSlcbiAgICB9XG4gICAgaWYgKGlzLm51bGwoZm9ybWFscyhvcmlnUmVuZGVyRnVuYykpKSBcbiAgICAgICAgb3JpZ1JlbmRlckZ1bmMoKVxuICAgIGVsc2Ugb3JpZ1JlbmRlckZ1bmMoLi4uKVxufVxuPGVudmlyb25tZW50OiAweDAwMDAwMDAwMWY3MmFkNjA+XG5hdHRyKCxcImNsYXNzXCIpXG5bMV0gXCJzaGlueS5yZW5kZXIuZnVuY3Rpb25cIiBcImZ1bmN0aW9uXCIgICAgICAgICAgICAgXG5hdHRyKCxcIm91dHB1dEZ1bmNcIilcbmZ1bmN0aW9uIChvdXRwdXRJZCwgd2lkdGggPSBcIjEwMCVcIiwgaGVpZ2h0ID0gXCI0MDBweFwiLCBjbGljayA9IE5VTEwsIFxuICAgIGRibGNsaWNrID0gTlVMTCwgaG92ZXIgPSBOVUxMLCBob3ZlckRlbGF5ID0gTlVMTCwgaG92ZXJEZWxheVR5cGUgPSBOVUxMLCBcbiAgICBicnVzaCA9IE5VTEwsIGNsaWNrSWQgPSBOVUxMLCBob3ZlcklkID0gTlVMTCwgaW5saW5lID0gRkFMU0UpIFxue1xuICAgIHJlcyA8LSBpbWFnZU91dHB1dChvdXRwdXRJZCwgd2lkdGgsIGhlaWdodCwgY2xpY2ssIGRibGNsaWNrLCBcbiAgICAgICAgaG92ZXIsIGhvdmVyRGVsYXksIGhvdmVyRGVsYXlUeXBlLCBicnVzaCwgY2xpY2tJZCwgaG92ZXJJZCwgXG4gICAgICAgIGlubGluZSlcbiAgICByZXMkYXR0cmlicyRjbGFzcyA8LSBcInNoaW55LXBsb3Qtb3V0cHV0XCJcbiAgICByZXNcbn1cbjxlbnZpcm9ubWVudDogbmFtZXNwYWNlOnNoaW55PlxuYXR0cigsXCJvdXRwdXRBcmdzXCIpXG5saXN0KClcbmF0dHIoLFwiaGFzRXhlY3V0ZWRcIilcbjxNdXRhYmxlPlxuICBQdWJsaWM6XG4gICAgY2xvbmU6IGZ1bmN0aW9uIChkZWVwID0gRkFMU0UpIFxuICAgIGdldDogZnVuY3Rpb24gKCkgXG4gICAgc2V0OiBmdW5jdGlvbiAodmFsdWUpIFxuICBQcml2YXRlOlxuICAgIHZhbHVlOiBGQUxTRVxuIn0= -->
+<pre><code>function (...) 
+{
+    if (length(outputArgs) != 0 &amp;&amp; !hasExecuted$get()) {
+        warning(&quot;Unused argument: outputArgs. The argument outputArgs is only &quot;, 
+            &quot;meant to be used when embedding snippets of Shiny code in an &quot;, 
+            &quot;R Markdown code chunk (using runtime: shiny). When running a &quot;, 
+            &quot;full Shiny app, please set the output arguments directly in &quot;, 
+            &quot;the corresponding output function of your UI code.&quot;)
+        hasExecuted$set(TRUE)
+    }
+    if (is.null(formals(origRenderFunc))) 
+        origRenderFunc()
+    else origRenderFunc(...)
+}
+&lt;environment: 0x000000001f72ad60&gt;
+attr(,&quot;class&quot;)
+[1] &quot;shiny.render.function&quot; &quot;function&quot;             
+attr(,&quot;outputFunc&quot;)
+function (outputId, width = &quot;100%&quot;, height = &quot;400px&quot;, click = NULL, 
+    dblclick = NULL, hover = NULL, hoverDelay = NULL, hoverDelayType = NULL, 
+    brush = NULL, clickId = NULL, hoverId = NULL, inline = FALSE) 
+{
+    res &lt;- imageOutput(outputId, width, height, click, dblclick, 
+        hover, hoverDelay, hoverDelayType, brush, clickId, hoverId, 
+        inline)
+    res$attribs$class &lt;- &quot;shiny-plot-output&quot;
+    res
+}
+&lt;environment: namespace:shiny&gt;
+attr(,&quot;outputArgs&quot;)
+list()
+attr(,&quot;hasExecuted&quot;)
+&lt;Mutable&gt;
+  Public:
+    clone: function (deep = FALSE) 
+    get: function () 
+    set: function (value) 
+  Private:
+    value: FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2hpY2gubWF4KHJlZy5zdW1tYXJ5JGFkanIyKVxuYGBgIn0= -->
+<pre class="r"><code>which.max(reg.summary$adjr2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE5XG4ifQ== -->
+<pre><code>[1] 19</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>We compared the predictors chosen by best subset selection to those chosen by forward selection. Forward selection chose the same predictors as best subset selection.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVnZml0LmZ3ZD1yZWdzdWJzZXRzKHNleDJ+LixkYXRhPWRmX3N1YnNldF9maXhlZCxudm1heD0yMixtZXRob2Q9XCJmb3J3YXJkXCIpXG4jc3VtbWFyeShyZWdmaXQuZndkKVxucmVnZndkLnN1bW1hcnk9c3VtbWFyeShyZWdmaXQuZndkKVxuXG5yZW5kZXJQbG90KHBsb3QocmVnZml0LmZ3ZCxzY2FsZT1cIkNwXCIpKVxucmVuZGVyUGxvdChwbG90KHJlZ2Z3ZC5zdW1tYXJ5JGNwLHhsYWI9XCJOdW1iZXIgb2YgVmFyaWFibGVzXCIseWxhYj1cIkNwXCIpKVxud2hpY2gubWluKHJlZ2Z3ZC5zdW1tYXJ5JGNwKVxuXG5yZW5kZXJQbG90KHBsb3QocmVnZml0LmZ3ZCxzY2FsZT1cImFkanIyXCIpKVxucmVuZGVyUGxvdChwbG90KHJlZ2Z3ZC5zdW1tYXJ5JGFkanIyLHhsYWI9XCJOdW1iZXIgb2YgVmFyaWFibGVzXCIseWxhYj1cImFkanIyXCIpKVxud2hpY2gubWF4KHJlZ2Z3ZC5zdW1tYXJ5JGFkanIyKVxuYGBgIn0= -->
+<pre class="r"><code>regfit.fwd=regsubsets(sex2~.,data=df_subset_fixed,nvmax=22,method=&quot;forward&quot;)
+#summary(regfit.fwd)
+regfwd.summary=summary(regfit.fwd)
+
+renderPlot(plot(regfit.fwd,scale=&quot;Cp&quot;))
+renderPlot(plot(regfwd.summary$cp,xlab=&quot;Number of Variables&quot;,ylab=&quot;Cp&quot;))
+which.min(regfwd.summary$cp)
+
+renderPlot(plot(regfit.fwd,scale=&quot;adjr2&quot;))
+renderPlot(plot(regfwd.summary$adjr2,xlab=&quot;Number of Variables&quot;,ylab=&quot;adjr2&quot;))
+which.max(regfwd.summary$adjr2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>We decided to see if backwards selection would have different results than forward selection. The results including minimum CP and maximum adjr2 were the same, but the predictors at each value of CP were slightly different, especially the shimmer values on the lower values of CP.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfc3Vic2V0X2ZpeGVkIDwtIGRmICU+JSBkcGx5cjo6c2VsZWN0KC4sIC1zZXgpXG5cbnJlZ2ZpdC5idz1yZWdzdWJzZXRzKHNleDJ+LixkYXRhPWRmX3N1YnNldF9maXhlZCxudm1heD0yMixtZXRob2Q9XCJiYWNrd2FyZFwiKVxucmVnZml0LmJ3XG4jc3VtbWFyeShyZWdmaXQuYncpXG5cbnJlbmRlclBsb3QocGxvdChyZWdmaXQuYncsc2NhbGU9XCJDcFwiKSlcbnJlbmRlclBsb3QocGxvdChyZWdmaXQuYncsc2NhbGU9XCJhZGpyMlwiKSlcblxucmVnYncuc3VtbWFyeT1zdW1tYXJ5KHJlZ2ZpdC5idylcblxud2hpY2gubWluKHJlZ2J3LnN1bW1hcnkkY3ApXG53aGljaC5tYXgocmVnYncuc3VtbWFyeSRhZGpyMilcblxucmVuZGVyUGxvdChwbG90KHJlZ2J3LnN1bW1hcnkkY3AseGxhYj1cIk51bWJlciBvZiBWYXJpYWJsZXNcIix5bGFiPVwiQ3BcIikpXG5yZW5kZXJQbG90KHBsb3QocmVnYncuc3VtbWFyeSRhZGpyMix4bGFiPVwiTnVtYmVyIG9mIFZhcmlhYmxlc1wiLHlsYWI9XCJhZGpyMlwiKSlcbmBgYCJ9 -->
+<pre class="r"><code>df_subset_fixed &lt;- df %&gt;% dplyr::select(., -sex)
+
+regfit.bw=regsubsets(sex2~.,data=df_subset_fixed,nvmax=22,method=&quot;backward&quot;)
+regfit.bw
+#summary(regfit.bw)
+
+renderPlot(plot(regfit.bw,scale=&quot;Cp&quot;))
+renderPlot(plot(regfit.bw,scale=&quot;adjr2&quot;))
+
+regbw.summary=summary(regfit.bw)
+
+which.min(regbw.summary$cp)
+which.max(regbw.summary$adjr2)
+
+renderPlot(plot(regbw.summary$cp,xlab=&quot;Number of Variables&quot;,ylab=&quot;Cp&quot;))
+renderPlot(plot(regbw.summary$adjr2,xlab=&quot;Number of Variables&quot;,ylab=&quot;adjr2&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Find relevant insights here: Initially, we did not exclude the string sex variable in subset selection. <a href="https://data.world/tarrantrl/f-17-eda-project-3/insights/4837162b-be8f-49b2-ae7e-1b28166ccb6d">Best Subset Selection, Predicting Sex</a> <a href="https://data.world/tarrantrl/f-17-eda-project-3/insights/703f3575-6e53-439c-88ab-5f6997d5a78e">Forward Selection Predicting Sex &amp; Comparison to Best Subset</a> However, we realized the mistake and reran the insights. <a href="https://data.world/tarrantrl/f-17-eda-project-3/insights/cb333a27-3764-40bf-b665-a2321f85a61d">Correction: Best Subset &amp; Forward Selection Predicting Sex</a></p>
+<p><a href="https://data.world/tarrantrl/f-17-eda-project-3/insights/f68bbbda-20e9-44eb-ae4a-c34a882f2696">Backward Selection vs Forward</a></p>
+</div>
+<div id="section-shrinkage-method" class="section level2">
+<h2>Shrinkage Method</h2>
+<div id="section-lasso" class="section level3">
+<h3>Lasso</h3>
+<p>We did not use bootstrap for this specific model, but if you would like to see a different model where we used bootstrap, click <a href="https://data.world/tarrantrl/f-17-eda-project-3/insights/64c60c2e-a7a2-4fd0-b842-5adbfc4454ab">here.</a></p>
+</div>
+</div>
+<div id="section-using-the-predictors-from-subset-selection-in-other-models" class="section level2">
+<h2>Using the Predictors from Subset Selection in Other Models</h2>
+<p>Even with exhaustive search, the adjusted R2 for the chosen models was still low (around 0.25). We decided to use the predictors from the ten predictor model that subset selection chose (as referenced above) in different model types. Specifically, we explored Logistic Regression (which is the model that subset selection uses), Linear Discriminate Analysis, Quadratic Discriminate Analysis, and K Nearest Neighbors. In order to compare these model types, we compared prediction accuracy.</p>
+<div id="section-logistic-regression" class="section level3">
+<h3>Logistic Regression</h3>
+<p>First, we did Logistic Regression. This is the least-squares model that subset selection also uses.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoMSlcbnRyYWluID0gc2FtcGxlKG5yb3coZGZfc3Vic2V0X2ZpeGVkKSwgMjkzNylcbnRlc3QgPSBkZl9zdWJzZXRfZml4ZWRbLXRyYWluLF1cbiMjIFdIWSBJU04nVCBUSElTIFdPUktJTkdcbmdsbTIuZml0PWdsbShzZXgyIH4gbW90b3JfdXBkcnMgKyB0b3RhbF91cGRycyArIGppdHRlcl9yYXAgKyBqaXR0ZXJfcHBxNSArIHNoaW1tZXJfYXBxMTEgKyBuaHIgKyBobnIgKyBycGRlICsgcHBlLFxuICAgICAgICAgICAgIGRhdGE9ZGYsIGZhbWlseT1iaW5vbWlhbCxcbiAgICAgICAgICAgICBzdWJzZXQ9dHJhaW4pXG5zdW1tYXJ5KGdsbTIuZml0KVxuYGBgIn0= -->
+<pre class="r"><code>set.seed(1)
+train = sample(nrow(df_subset_fixed), 2937)
+test = df_subset_fixed[-train,]
+## WHY ISN'T THIS WORKING
+glm2.fit=glm(sex2 ~ motor_updrs + total_updrs + jitter_rap + jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe,
              data=df, family=binomial,
              subset=train)
-summary(glm3.fit)
-glm3.probs=predict(glm3.fit,newdata=test,type=&quot;response&quot;)
-#glm.probs[1:5]
-glm3.pred=ifelse(glm3.probs&gt;0.5,&quot;1&quot;,&quot;0&quot;)
-status2.test = test$status2
-table(glm3.pred,status2.test)
-mean(glm3.pred==status2.test)
-</code></pre>
+summary(glm2.fit)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuZ2xtKGZvcm11bGEgPSBzZXgyIH4gbW90b3JfdXBkcnMgKyB0b3RhbF91cGRycyArIGppdHRlcl9yYXAgKyBcbiAgICBqaXR0ZXJfcHBxNSArIHNoaW1tZXJfYXBxMTEgKyBuaHIgKyBobnIgKyBycGRlICsgcHBlLCBmYW1pbHkgPSBiaW5vbWlhbCwgXG4gICAgZGF0YSA9IGRmLCBzdWJzZXQgPSB0cmFpbilcblxuRGV2aWFuY2UgUmVzaWR1YWxzOiBcbiAgICBNaW4gICAgICAgMVEgICBNZWRpYW4gICAgICAgM1EgICAgICBNYXggIFxuLTQuNTU1NiAgLTAuODE5MCAgLTAuNTU2MCAgIDAuOTkzMiAgIDIuNDU2NyAgXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHogdmFsdWUgUHIoPnx6fCkgICAgXG4oSW50ZXJjZXB0KSAgICAgIDYuMTk5MDkgICAgMC43OTI4NSAgIDcuODE5IDUuMzNlLTE1ICoqKlxubW90b3JfdXBkcnMgICAgICAwLjIwNjY5ICAgIDAuMDE5NTEgIDEwLjU5NSAgPCAyZS0xNiAqKipcbnRvdGFsX3VwZHJzICAgICAtMC4xNTk2MCAgICAwLjAxNTM3IC0xMC4zODYgIDwgMmUtMTYgKioqXG5qaXR0ZXJfcmFwICAgICAxMTQuNzAyNTkgICA2OC4zOTE1MSAgIDEuNjc3ICAgMC4wOTM1IC4gIFxuaml0dGVyX3BwcTUgICAtMTUxLjMyOTkyICAgODQuNzAwODcgIC0xLjc4NyAgIDAuMDc0MCAuICBcbnNoaW1tZXJfYXBxMTEgIC0yNC4wNzI1MCAgICA0LjYxNzcxICAtNS4yMTMgMS44NmUtMDcgKioqXG5uaHIgICAgICAgICAgICAgMzAuNzU2MTAgICAgMi45NDAyNCAgMTAuNDYwICA8IDJlLTE2ICoqKlxuaG5yICAgICAgICAgICAgIC0wLjEwNTk3ICAgIDAuMDIyMDEgIC00LjgxNiAxLjQ3ZS0wNiAqKipcbnJwZGUgICAgICAgICAgICAtNS42MjU1NCAgICAwLjYzMDc4ICAtOC45MTggIDwgMmUtMTYgKioqXG5wcGUgICAgICAgICAgICAgLTcuNjE2MDkgICAgMS4wMjA3OCAgLTcuNDYxIDguNThlLTE0ICoqKlxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEpXG5cbiAgICBOdWxsIGRldmlhbmNlOiAzNjY0LjIgIG9uIDI5MzYgIGRlZ3JlZXMgb2YgZnJlZWRvbVxuUmVzaWR1YWwgZGV2aWFuY2U6IDMwOTQuMiAgb24gMjkyNyAgZGVncmVlcyBvZiBmcmVlZG9tXG5BSUM6IDMxMTQuMlxuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogNlxuIn0= -->
+<pre><code>
+Call:
+glm(formula = sex2 ~ motor_updrs + total_updrs + jitter_rap + 
+    jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe, family = binomial, 
+    data = df, subset = train)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-4.5556  -0.8190  -0.5560   0.9932   2.4567  
+
+Coefficients:
+                Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)      6.19909    0.79285   7.819 5.33e-15 ***
+motor_updrs      0.20669    0.01951  10.595  &lt; 2e-16 ***
+total_updrs     -0.15960    0.01537 -10.386  &lt; 2e-16 ***
+jitter_rap     114.70259   68.39151   1.677   0.0935 .  
+jitter_ppq5   -151.32992   84.70087  -1.787   0.0740 .  
+shimmer_apq11  -24.07250    4.61771  -5.213 1.86e-07 ***
+nhr             30.75610    2.94024  10.460  &lt; 2e-16 ***
+hnr             -0.10597    0.02201  -4.816 1.47e-06 ***
+rpde            -5.62554    0.63078  -8.918  &lt; 2e-16 ***
+ppe             -7.61609    1.02078  -7.461 8.58e-14 ***
+---
+Signif. codes:  0 *** 0.001 ** 0.01 * 0.05 . 0.1   1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 3664.2  on 2936  degrees of freedom
+Residual deviance: 3094.2  on 2927  degrees of freedom
+AIC: 3114.2
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2xtMi5wcm9icz1wcmVkaWN0KGdsbTIuZml0LG5ld2RhdGE9dGVzdCx0eXBlPVwicmVzcG9uc2VcIilcbmdsbTIucHJlZD1pZmVsc2UoZ2xtMi5wcm9icz4wLjUsXCIxXCIsXCIwXCIpXG5zZXgyLnRlc3QgPSB0ZXN0JHNleDJcbnRhYmxlKGdsbTIucHJlZCxzZXgyLnRlc3QpIFxuYGBgIn0= -->
+<pre class="r"><code>glm2.probs=predict(glm2.fit,newdata=test,type=&quot;response&quot;)
+glm2.pred=ifelse(glm2.probs&gt;0.5,&quot;1&quot;,&quot;0&quot;)
+sex2.test = test$sex2
+table(glm2.pred,sex2.test) </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgc2V4Mi50ZXN0XG5nbG0yLnByZWQgICAgMCAgICAxXG4gICAgICAgIDAgMTgyNyAgNjEwXG4gICAgICAgIDEgIDE3MiAgMzI5XG4ifQ== -->
+<pre><code>         sex2.test
+glm2.pred    0    1
+        0 1827  610
+        1  172  329</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihnbG0yLnByZWQ9PXNleDIudGVzdCkgXG5gYGAifQ== -->
+<pre class="r"><code>mean(glm2.pred==sex2.test) </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNzMzODMyNVxuIn0= -->
+<pre><code>[1] 0.7338325</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="section-linear-discriminant-analysis" class="section level2">
-<h2>Linear Discriminant Analysis</h2>
+<div id="section-linear-discriminant-analysis" class="section level3">
+<h3>Linear Discriminant Analysis</h3>
+<p>Next, we did Linear Discriminant Analysis with the same predictors.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhaW5pbmcgPSBzYW1wbGUobnJvdyhkZiksIDk3KVxudGVzdGluZyA9IGRmWy10cmFpbmluZyxdXG5cbmxkYS5maXQ9bGRhKHN0YXR1c35tZHZwX2ZvX2h6K21kdnBfaml0dGVyLGRhdGE9ZGYsIHN1YnNldCA9IHRyYWluaW5nKVxubGRhLmZpdFxuXG5sZGEucHJlZD1wcmVkaWN0KGxkYS5maXQsIHRlc3RpbmcpXG5sZGFfZGYgPSBkYXRhLmZyYW1lKGxkYS5wcmVkKVxuXG50YWJsZShsZGEucHJlZCRjbGFzcyx0ZXN0aW5nJHN0YXR1cylcbnRhYmxlKGxkYS5wcmVkJGNsYXNzPT10ZXN0aW5nJHN0YXR1cylcbnRhYmxlKGxkYS5wcmVkJGNsYXNzIT10ZXN0aW5nJHN0YXR1cylcbm1lYW4obGRhLnByZWQkY2xhc3M9PXRlc3Rpbmckc3RhdHVzKSBcbmBgYCJ9 -->
-<pre class="r"><code>training = sample(nrow(df), 97)
-testing = df[-training,]
-
-lda.fit=lda(status~mdvp_fo_hz+mdvp_jitter,data=df, subset = training)
-lda.fit
-
-lda.pred=predict(lda.fit, testing)
-lda_df = data.frame(lda.pred)
-
-table(lda.pred$class,testing$status)
-table(lda.pred$class==testing$status)
-table(lda.pred$class!=testing$status)
-mean(lda.pred$class==testing$status) </code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYzIDwtIGRmICU+JSBkcGx5cjo6bXV0YXRlKC4sIG5ld2ppdHRlcmFicyA9IChqaXR0ZXJfYWJzKjEwMDApKSAlPiUgZHBseXI6OnNlbGVjdCgtaml0dGVyX2FicylcbnRyYWluMiA9IHNhbXBsZShucm93KGRmMyksIDk3KVxudGVzdDIgPSBkZjNbLXRyYWluLF1cbmxkYTIuZml0PWxkYShzZXgyIH4gbW90b3JfdXBkcnMgKyB0b3RhbF91cGRycyArIG5ld2ppdHRlcmFicyArIGppdHRlcl9yYXAgKyBqaXR0ZXJfcHBxNSArIHNoaW1tZXJfYXBxMTEgKyBuaHIgKyBobnIgKyBycGRlICsgcHBlLFxuICAgICAgICAgICAgIGRhdGE9ZGYzLCBzdWJzZXQ9dHJhaW4yKVxubGRhMi5maXRcbmBgYCJ9 -->
+<pre class="r"><code>df3 &lt;- df %&gt;% dplyr::mutate(., newjitterabs = (jitter_abs*1000)) %&gt;% dplyr::select(-jitter_abs)
+train2 = sample(nrow(df3), 97)
+test2 = df3[-train,]
+lda2.fit=lda(sex2 ~ motor_updrs + total_updrs + newjitterabs + jitter_rap + jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe,
+             data=df3, subset=train2)
+lda2.fit</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI0xEQSBwbG90cz9cbnJlbmRlclBsb3QocGxvdChsZGEuZml0KSlcbnJlbmRlclBsb3Qoe2dncGxvdChsZGFfZGYpICsgZ2VvbV9oaXN0b2dyYW0obWFwcGluZz1hZXMoeD1MRDEpKX0pXG5yZW5kZXJQbG90KHtnZ3Bsb3QobGRhX2RmKSArIGdlb21fYm94cGxvdChtYXBwaW5nID0gYWVzKHg9Y2xhc3MseT1MRDEpKX0pXG5gYGAifQ== -->
-<pre class="r"><code>#LDA plots?
-renderPlot(plot(lda.fit))
-renderPlot({ggplot(lda_df) + geom_histogram(mapping=aes(x=LD1))})
-renderPlot({ggplot(lda_df) + geom_boxplot(mapping = aes(x=class,y=LD1))})</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiQ2FsbDpcbmxkYShzZXgyIH4gbW90b3JfdXBkcnMgKyB0b3RhbF91cGRycyArIG5ld2ppdHRlcmFicyArIGppdHRlcl9yYXAgKyBcbiAgICBqaXR0ZXJfcHBxNSArIHNoaW1tZXJfYXBxMTEgKyBuaHIgKyBobnIgKyBycGRlICsgcHBlLCBkYXRhID0gZGYzLCBcbiAgICBzdWJzZXQgPSB0cmFpbjIpXG5cblByaW9yIHByb2JhYmlsaXRpZXMgb2YgZ3JvdXBzOlxuICAgICAgICAwICAgICAgICAgMSBcbjAuNzIxNjQ5NSAwLjI3ODM1MDUgXG5cbkdyb3VwIG1lYW5zOlxuICBtb3Rvcl91cGRycyB0b3RhbF91cGRycyBuZXdqaXR0ZXJhYnMgIGppdHRlcl9yYXAgaml0dGVyX3BwcTUgc2hpbW1lcl9hcHExMSAgICAgICAgbmhyXG4wICAgIDIxLjgxOTQyICAgIDMwLjA4MTE2ICAgMC4wNDE4NDU4NiAwLjAwMjQxNjU3MSAwLjAwMjcwNTU3MSAgICAwLjAyNjIzMjI5IDAuMDIzMDc4NzlcbjEgICAgMTkuODAyNjggICAgMjYuNzE1NDQgICAwLjAzMjQ5MDc0IDAuMDAyOTA0MDc0IDAuMDAyOTU1MTg1ICAgIDAuMDI1NzI3NDEgMC4wMzkzMzUzMFxuICAgICAgIGhuciAgICAgIHJwZGUgICAgICAgcHBlXG4wIDIxLjg4NjUxIDAuNTQ2MTg2NyAwLjIxODAwODRcbjEgMjEuMjgzMjIgMC41NTA4NjgxIDAuMjE5MDkwN1xuXG5Db2VmZmljaWVudHMgb2YgbGluZWFyIGRpc2NyaW1pbmFudHM6XG4gICAgICAgICAgICAgICAgICAgICAgIExEMVxubW90b3JfdXBkcnMgICAgLTAuMDE1MjI3OTlcbnRvdGFsX3VwZHJzICAgIC0wLjAxOTA2MzE1XG5uZXdqaXR0ZXJhYnMgIC03MC42ODc3Njc1N1xuaml0dGVyX3JhcCAgICA5NDkuNzA4MTM4NzVcbmppdHRlcl9wcHE1ICAgLTQyLjMxNDgwNjg2XG5zaGltbWVyX2FwcTExIC00Ni4wMTczNzE5NFxubmhyICAgICAgICAgICAgMjYuMDEwMDk5MThcbmhuciAgICAgICAgICAgIC0wLjA5MjkyODkzXG5ycGRlICAgICAgICAgICAtMi40NzM2NDU2N1xucHBlICAgICAgICAgICAgIDIuNjkyMDExNjJcbiJ9 -->
+<pre><code>Call:
+lda(sex2 ~ motor_updrs + total_updrs + newjitterabs + jitter_rap + 
+    jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe, data = df3, 
+    subset = train2)
+
+Prior probabilities of groups:
+        0         1 
+0.7216495 0.2783505 
+
+Group means:
+  motor_updrs total_updrs newjitterabs  jitter_rap jitter_ppq5 shimmer_apq11        nhr
+0    21.81942    30.08116   0.04184586 0.002416571 0.002705571    0.02623229 0.02307879
+1    19.80268    26.71544   0.03249074 0.002904074 0.002955185    0.02572741 0.03933530
+       hnr      rpde       ppe
+0 21.88651 0.5461867 0.2180084
+1 21.28322 0.5508681 0.2190907
+
+Coefficients of linear discriminants:
+                       LD1
+motor_updrs    -0.01522799
+total_updrs    -0.01906315
+newjitterabs  -70.68776757
+jitter_rap    949.70813875
+jitter_ppq5   -42.31480686
+shimmer_apq11 -46.01737194
+nhr            26.01009918
+hnr            -0.09292893
+rpde           -2.47364567
+ppe             2.69201162</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGRhMi5wcmVkPXByZWRpY3QobGRhMi5maXQsIHRlc3QyKVxubGRhMl9kZiA9IGRhdGEuZnJhbWUobGRhMi5wcmVkKVxudGFibGUobGRhMi5wcmVkJGNsYXNzLHRlc3QyJHNleDIpXG5gYGAifQ== -->
+<pre class="r"><code>lda2.pred=predict(lda2.fit, test2)
+lda2_df = data.frame(lda2.pred)
+table(lda2.pred$class,test2$sex2)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="section-quadratic-discriminant-analysis" class="section level2">
-<h2>Quadratic Discriminant Analysis</h2>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucWRhLmZpdCA9IHFkYShzdGF0dXN+bWR2cF9mb19oeittZHZwX2ppdHRlcixkYXRhPWRmLHN1YnNldD10cmFpbmluZylcbnFkYS5maXRcblxudGVzdGluZyA8LSBkcGx5cjo6c2FtcGxlX24oZGYsOTgpXG5xZGEucHJlZCA9IHByZWRpY3QocWRhLmZpdCwgdGVzdGluZylcblxudGFibGUocWRhLnByZWQkY2xhc3MsdGVzdGluZyRzdGF0dXMpXG50YWJsZShxZGEucHJlZCRjbGFzcz09dGVzdGluZyRzdGF0dXMpXG50YWJsZShxZGEucHJlZCRjbGFzcyE9dGVzdGluZyRzdGF0dXMpXG5tZWFuKHFkYS5wcmVkJGNsYXNzPT10ZXN0aW5nJHN0YXR1cylcbmBgYCJ9 -->
-<pre class="r"><code>qda.fit = qda(status~mdvp_fo_hz+mdvp_jitter,data=df,subset=training)
-qda.fit
-
-testing &lt;- dplyr::sample_n(df,98)
-qda.pred = predict(qda.fit, testing)
-
-table(qda.pred$class,testing$status)
-table(qda.pred$class==testing$status)
-table(qda.pred$class!=testing$status)
-mean(qda.pred$class==testing$status)</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiICAgXG4gICAgICAgMCAgICAxXG4gIDAgMTg2NiAgNDk4XG4gIDEgIDEzMyAgNDQxXG4ifQ== -->
+<pre><code>   
+       0    1
+  0 1866  498
+  1  133  441</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihsZGEyLnByZWQkY2xhc3M9PXRlc3QyJHNleDIpXG5gYGAifQ== -->
+<pre class="r"><code>mean(lda2.pred$class==test2$sex2)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="section-k-nearest-neighbors" class="section level2">
-<h2>K-Nearest Neighbors</h2>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZGljdG9ycz1jYmluZChtZHZwX2ZvX2h6LG1kdnBfaml0dGVyKVxudGVzdGluZ19rbm4gPSBzYW1wbGUobnJvdyh0ZXN0aW5nKSwgOTcpXG5cbmtubi5wcmVkPWNsYXNzOjprbm4ocHJlZGljdG9yc1t0cmFpbmluZywgXSxwcmVkaWN0b3JzW3Rlc3Rpbmdfa25uLF0sc3RhdHVzW3RyYWluaW5nXSxrPTEpXG5cbnRhYmxlKGtubi5wcmVkLHN0YXR1c1t0ZXN0aW5nX2tubl0pXG5tZWFuKGtubi5wcmVkPT1zdGF0dXNbdGVzdGluZ19rbm5dKVxuXG5gYGAifQ== -->
-<pre class="r"><code>predictors=cbind(mdvp_fo_hz,mdvp_jitter)
-testing_knn = sample(nrow(testing), 97)
-
-knn.pred=class::knn(predictors[training, ],predictors[testing_knn,],status[training],k=1)
-
-table(knn.pred,status[testing_knn])
-mean(knn.pred==status[testing_knn])
-</code></pre>
-<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNzg1MjI4XG4ifQ== -->
+<pre><code>[1] 0.785228</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="section-comparison-of-the-mean-correct-predictions" class="section level2">
-<h2>Comparison of the Mean Correct Predictions</h2>
+<div id="section-quadratic-discriminant-analysis" class="section level3">
+<h3>Quadratic Discriminant Analysis</h3>
+<p>Next, we did Quadratic Discriminant Analysis with the same predictors.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDb21wYXJpc29uIG9mIHRoZSBtZWFuIGNvcnJlY3QgcHJlZGljdGlvbnNcbm1lYW4oZ2xtLnByZWQ9PXN0YXR1czIudGVzdGluZylcbm1lYW4obGRhLnByZWQkY2xhc3M9PXRlc3Rpbmckc3RhdHVzKVxubWVhbihxZGEucHJlZCRjbGFzcz09dGVzdGluZyRzdGF0dXMpXG5tZWFuKGtubi5wcmVkPT1zdGF0dXNbdGVzdGluZ19rbm5dKVxuYGBgIn0= -->
-<pre class="r"><code># Comparison of the mean correct predictions
-mean(glm.pred==status2.testing)
-mean(lda.pred$class==testing$status)
-mean(qda.pred$class==testing$status)
-mean(knn.pred==status[testing_knn])</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucWRhMi5maXQgPSBxZGEoc2V4MiB+IG1vdG9yX3VwZHJzICsgdG90YWxfdXBkcnMgKyBqaXR0ZXJfYWJzICsgaml0dGVyX3JhcCArIGppdHRlcl9wcHE1ICsgc2hpbW1lcl9hcHExMSArIG5ociArIGhuciArIHJwZGUgKyBwcGUsXG4gICAgICAgICAgICAgICBkYXRhPWRmLCBzdWJzZXQ9dHJhaW4pXG5xZGEyLmZpdFxuYGBgIn0= -->
+<pre class="r"><code>qda2.fit = qda(sex2 ~ motor_updrs + total_updrs + jitter_abs + jitter_rap + jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe,
+               data=df, subset=train)
+qda2.fit</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQ2FsbDpcbnFkYShzZXgyIH4gbW90b3JfdXBkcnMgKyB0b3RhbF91cGRycyArIGppdHRlcl9hYnMgKyBqaXR0ZXJfcmFwICsgXG4gICAgaml0dGVyX3BwcTUgKyBzaGltbWVyX2FwcTExICsgbmhyICsgaG5yICsgcnBkZSArIHBwZSwgZGF0YSA9IGRmLCBcbiAgICBzdWJzZXQgPSB0cmFpbilcblxuUHJpb3IgcHJvYmFiaWxpdGllcyBvZiBncm91cHM6XG4gICAgICAgIDAgICAgICAgICAxIFxuMC42ODQwMzEzIDAuMzE1OTY4NyBcblxuR3JvdXAgbWVhbnM6XG4gIG1vdG9yX3VwZHJzIHRvdGFsX3VwZHJzICAgaml0dGVyX2FicyAgaml0dGVyX3JhcCBqaXR0ZXJfcHBxNSBzaGltbWVyX2FwcTExICAgICAgICBuaHJcbjAgICAgMjEuMzM3NDAgICAgMjkuNTQwNTkgNC43NDUwMDFlLTA1IDAuMDAyNzkxMDM1IDAuMDAzMDAxODk2ICAgIDAuMDI3MTE2MTUgMC4wMjQ3Mjc3OFxuMSAgICAyMS4zNDc1NiAgICAyNy45MzQxOSAzLjcyMDIyN2UtMDUgMC4wMDM0NjE4NDMgMC4wMDM5MTExODUgICAgMC4wMjg3MDczMyAwLjA0ODY5MjkxXG4gICAgICAgaG5yICAgICAgcnBkZSAgICAgICBwcGVcbjAgMjEuNzE4OTggMC41NTExNTYzIDAuMjI0MjE0MFxuMSAyMS41NjEyOSAwLjUxODIxNzYgMC4yMDg2MzU2XG4ifQ== -->
+<pre><code>Call:
+qda(sex2 ~ motor_updrs + total_updrs + jitter_abs + jitter_rap + 
+    jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe, data = df, 
+    subset = train)
+
+Prior probabilities of groups:
+        0         1 
+0.6840313 0.3159687 
+
+Group means:
+  motor_updrs total_updrs   jitter_abs  jitter_rap jitter_ppq5 shimmer_apq11        nhr
+0    21.33740    29.54059 4.745001e-05 0.002791035 0.003001896    0.02711615 0.02472778
+1    21.34756    27.93419 3.720227e-05 0.003461843 0.003911185    0.02870733 0.04869291
+       hnr      rpde       ppe
+0 21.71898 0.5511563 0.2242140
+1 21.56129 0.5182176 0.2086356</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucWRhMi5wcmVkID0gcHJlZGljdChxZGEyLmZpdCwgdGVzdClcbnRhYmxlKHFkYTIucHJlZCRjbGFzcyx0ZXN0JHNleDIpXG5gYGAifQ== -->
+<pre class="r"><code>qda2.pred = predict(qda2.fit, test)
+table(qda2.pred$class,test$sex2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgXG4gICAgICAgMCAgICAxXG4gIDAgMTk0MSAgNjYxXG4gIDEgICA1OCAgMjc4XG4ifQ== -->
+<pre><code>   
+       0    1
+  0 1941  661
+  1   58  278</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihxZGEyLnByZWQkY2xhc3M9PXRlc3Qkc2V4MilcbmBgYCJ9 -->
+<pre class="r"><code>mean(qda2.pred$class==test$sex2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNzU1Mjc1N1xuIn0= -->
+<pre><code>[1] 0.7552757</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
+<div id="section-k-nearest-neighbors" class="section level3">
+<h3>K-Nearest Neighbors</h3>
+<p>Finally, we did K-Nearest Neighbors with the 10 predictors.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGVzdF9rbm4gPSBzYW1wbGUobnJvdyh0ZXN0KSwgMjkzNylcbnByZWRpY3RvcnNLTk49Y2JpbmQobW90b3JfdXBkcnMsIHRvdGFsX3VwZHJzLCBqaXR0ZXJfYWJzLCBqaXR0ZXJfcmFwLCBqaXR0ZXJfcHBxNSwgc2hpbW1lcl9hcHExMSwgbmhyLCBobnIsIHJwZGUsIHBwZSlcbmtubi5wcmVkPWNsYXNzOjprbm4ocHJlZGljdG9yc0tOTlt0cmFpbiwgXSxwcmVkaWN0b3JzS05OW3Rlc3Rfa25uLF0sc2V4Mlt0cmFpbl0saz0xKVxudGFibGUoa25uLnByZWQsc2V4Mlt0ZXN0X2tubl0pXG5gYGAifQ== -->
+<pre class="r"><code>test_knn = sample(nrow(test), 2937)
+predictorsKNN=cbind(motor_updrs, total_updrs, jitter_abs, jitter_rap, jitter_ppq5, shimmer_apq11, nhr, hnr, rpde, ppe)
+knn.pred=class::knn(predictorsKNN[train, ],predictorsKNN[test_knn,],sex2[train],k=1)
+table(knn.pred,sex2[test_knn])</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICBcbmtubi5wcmVkICAgIDAgICAgMVxuICAgICAgIDAgMjAzNSAgIDk1XG4gICAgICAgMSAgIDc2ICA3MzFcbiJ9 -->
+<pre><code>        
+knn.pred    0    1
+       0 2035   95
+       1   76  731</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihrbm4ucHJlZD09c2V4Mlt0ZXN0X2tubl0pXG5gYGAifQ== -->
+<pre class="r"><code>mean(knn.pred==sex2[test_knn])</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTQxNzc3M1xuIn0= -->
+<pre><code>[1] 0.9417773</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Here are relevant insights: <a href="https://data.world/tarrantrl/f-17-eda-project-3/insights/cdc5411d-6061-4671-89b3-f3f24ddee86b">KNN Analysis of New “Best Model”</a> <a href="https://data.world/tarrantrl/f-17-eda-project-3/insights/9a5567f6-da54-4c88-ad7c-604d61c3b504">Testing if KNN Analysis is the best with New Predictors</a></p>
+</div>
+</div>
+<div id="section-findings" class="section level2">
+<h2>Findings</h2>
+<div id="section-comparing-prediction-means" class="section level3">
+<h3>Comparing Prediction Means</h3>
+<p>After doing these analyses, we found that KNN gives the best prediction rate of sex. In fact, the prediction rate is nearly 100%. We found it interesting that we could predict sex with such a high degree of accuracy based on these measures of Parkinson’s disease. This led us to tentatively conclude that these aspects of Parkinson’s are sexually dimorphic.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihnbG0yLnByZWQ9PXNleDIudGVzdCkgXG5gYGAifQ== -->
+<pre class="r"><code>mean(glm2.pred==sex2.test) </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNzMzODMyNVxuIn0= -->
+<pre><code>[1] 0.7338325</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihsZGEyLnByZWQkY2xhc3M9PXRlc3Qkc2V4MilcbmBgYCJ9 -->
+<pre class="r"><code>mean(lda2.pred$class==test$sex2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNzg1MjI4XG4ifQ== -->
+<pre><code>[1] 0.785228</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihxZGEyLnByZWQkY2xhc3M9PXRlc3Qkc2V4MilcbmBgYCJ9 -->
+<pre class="r"><code>mean(qda2.pred$class==test$sex2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNzU1Mjc1N1xuIn0= -->
+<pre><code>[1] 0.7552757</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihrbm4ucHJlZD09c2V4Mlt0ZXN0X2tubl0pXG5gYGAifQ== -->
+<pre class="r"><code>mean(knn.pred==sex2[test_knn])</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTQxNzc3M1xuIn0= -->
+<pre><code>[1] 0.9417773</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="section-final-thoughts" class="section level3">
+<h3>Final Thoughts</h3>
+<p>As we mentioned before, we decided not to furthur pursue predicting Parkinson’s severity. We believe it was difficult to predict severity of Parkinson’s, because the patients in the study were early on in the progress of the disease.</p>
+<p>Ultimately, we were able to use the predictors found by subset selection to find a very accurate model predicting sex. Even though subset selection did not give a very high R2 value with any of its models, it still gave us valuable insight into the data as to which predictors to include in other classification models. KNN, again, was the best model. This is consistent with our findings from Project 2.</p>
 <!-- rnb-text-end -->
 </div>
+</div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlByZWRpY3Rpb24gb2YgUGFya2luc29uJ3MgRGlzZWFzZSINCmF1dGhvcjogJ0dyb3VwIDI6IEtlbGx5IEplbm5pbmdzLCBNYXJjdXMgTWFydGluZXosIENoYW5neW9uZyBZaSwgUmFjaGVsIFRhcnJhbnQsIFN0ZWZhbm9zDQogIEthcGV0YW5ha2lzJw0KcmVzb3VyY2VfZmlsZXM6DQotIC5SZW52aXJvbg0Kb3V0cHV0Og0KICBodG1sX25vdGVib29rOg0KICAgIGNvZGVfZm9sZGluZzogaGlkZQ0KICAgIHRvYzogeWVzDQogICAgdG9jX2RlcHRoOiA0DQogICAgdG9jX2Zsb2F0OiB5ZXMNCnJ1bnRpbWU6IHNoaW55DQotLS0NCg0KYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCnJlcXVpcmUoTUFTUykNCnJlcXVpcmUoZ2dwbG90MikNCnJlcXVpcmUoSVNMUikNCnJlcXVpcmUoc2hpbnkpDQpyZXF1aXJlKGRhdGEud29ybGQpDQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpDQpgYGANCiAgDQojIyAqKlIgU2Vzc2lvbiBJbmZvKiogIA0KDQpgYGB7cn0NCnNlc3Npb25JbmZvKCkNCmBgYA0KDQojIyAqKkdpdGh1YiBMaW5rKiogDQpodHRwczovL2dpdGh1Yi5jb20vc3RlZmthcHMvRjE3LWVEQS1Qcm9qZWN0Mg0KDQojIyAqKkNvbm5lY3RpbmcgdG8gZGF0YS53b3JsZCoqIA0KYGBge3J9DQpwcm9qZWN0IDwtICJodHRwczovL2RhdGEud29ybGQvbWFyY3VzZ2FiZS11dC9wYXJraW5zb25zLWRhdGEiDQpkYXRhLndvcmxkOjpzZXRfY29uZmlnKGNmZ19lbnYoIkRXX0FQSSIpKQ0KZGYgPC0gZGF0YS53b3JsZDo6cXVlcnkoDQogZGF0YS53b3JsZDo6cXJ5X3NxbCgiU0VMRUNUICogRlJPTSBwYXJraW5zb25zIiksDQogZGF0YXNldCA9IHByb2plY3QNCikNCmBgYA0KDQojIyBTZXR1cA0KDQpgYGB7cn0NCmF0dGFjaChkZikNCmBgYA0KDQoNCiMjICoqSW50cm9kdWN0aW9uKiogDQpUaGlzIGRhdGFzZXQgaXMgY29tcG9zZWQgb2YgYSByYW5nZSBvZiBiaW9tZWRpY2FsIHZvaWNlIG1lYXN1cmVtZW50cyBmcm9tIDMxIHBlb3BsZSwgMjMgd2l0aCBQYXJraW5zb24ncyBkaXNlYXNlIChQRCkuIEVhY2ggY29sdW1uIGluIHRoZSB0YWJsZSBpcyBhIHBhcnRpY3VsYXIgdm9pY2UgbWVhc3VyZSwgYW5kIGVhY2ggcm93IGNvcnJlc3BvbmRzIG9uZSBvZiAxOTUgdm9pY2UgcmVjb3JkaW5nIGZyb20gdGhlc2UgaW5kaXZpZHVhbHMgKCJuYW1lIiBjb2x1bW4pLiBUaGUgbWFpbiBhaW0gb2YgdGhlIGRhdGEgaXMgdG8gZGlzY3JpbWluYXRlIGhlYWx0aHkgcGVvcGxlIGZyb20gdGhvc2Ugd2l0aCBQRCwgYWNjb3JkaW5nIHRvICJzdGF0dXMiIGNvbHVtbiB3aGljaCBpcyBzZXQgdG8gMCBmb3IgaGVhbHRoeSBhbmQgMSBmb3IgUEQuDQoNCg0KQXR0cmlidXRlIEluZm9ybWF0aW9uOg0KDQpNYXRyaXggY29sdW1uIGVudHJpZXMgKGF0dHJpYnV0ZXMpOg0KDQpuYW1lIC0gQVNDSUkgc3ViamVjdCBuYW1lIGFuZCByZWNvcmRpbmcgbnVtYmVyDQoNCk1EVlA6Rm8oSHopIC0gQXZlcmFnZSB2b2NhbCBmdW5kYW1lbnRhbCBmcmVxdWVuY3kNCg0KTURWUDpKaXR0ZXIoJSksTURWUDpKaXR0ZXIoQWJzKSxNRFZQOlJBUCxNRFZQOlBQUSxKaXR0ZXI6RERQIC0gU2V2ZXJhbCBtZWFzdXJlcyBvZiB2YXJpYXRpb24gaW4gZnVuZGFtZW50YWwgZnJlcXVlbmN5DQoNCk1EVlA6U2hpbW1lcixNRFZQOlNoaW1tZXIoZEIpLFNoaW1tZXI6QVBRMyxTaGltbWVyOkFQUTUsTURWUDpBUFEsU2hpbW1lcjpEREEgLSBTZXZlcmFsIG1lYXN1cmVzIG9mIHZhcmlhdGlvbiBpbiBhbXBsaXR1ZGUNCg0Kc3RhdHVzIC0gSGVhbHRoIHN0YXR1cyBvZiB0aGUgc3ViamVjdCAob25lL3RydWUpIC0gUGFya2luc29uJ3MsICh6ZXJvL2ZhbHNlKSAtIGhlYWx0aHkNCg0KDQpUaGlzIGRvY3VtZW50IHdpbGwgcHJvdmlkZSByZWFkZXJzIGZvdXIgZGlmZmVyZW50IHR5cGVzIG9mIGFuYWx5c2lzOiBMb2dpc3RpYyBSZWdyZXNzaW9uLCBMaW5lYXIgRGlzY3JpbWluYW50IEFuYWx5c2lzLCBRdWFkcmF0aWMgRGlzY3JpbWluYW50IEFuYWx5c2lzLCBhbmQgSy1OZWFyZXN0IE5laWdoYm9ycy4gDQoNCiMjIExvZ2lzdGljIFJlZ3Jlc3Npb24NClRoaXMgDQoNCmBgYHtyfQ0KZGYyID0gZGYgJT4lIGRwbHlyOjptdXRhdGUoc3RhdHVzMiA9IGlmZWxzZShzdGF0dXMgPT0gInRydWUiLCAxLCAwKSkNCnRyYWluaW5nMiA9IHNhbXBsZShucm93KGRmMiksIDk3KQ0KdGVzdGluZzIgPSBkZjJbLXRyYWluaW5nMixdDQoNCmdsbS5maXQ9Z2xtKHN0YXR1czJ+bWR2cF9mb19oeittZHZwX2ppdHRlciwNCiAgICAgICAgICAgIGRhdGE9ZGYyLGZhbWlseT1iaW5vbWlhbCwNCiAgICAgICAgICAgIHN1YnNldD10cmFpbmluZzIpDQpzdW1tYXJ5KGdsbS5maXQpDQoNCmdsbS5wcm9icz1wcmVkaWN0KGdsbS5maXQsbmV3ZGF0YT10ZXN0aW5nMix0eXBlPSJyZXNwb25zZSIpDQpnbG0ucHJlZD1pZmVsc2UoZ2xtLnByb2JzPjAuNSwiMSIsIjAiKQ0Kc3RhdHVzMi50ZXN0aW5nID0gdGVzdGluZzIkc3RhdHVzMg0KDQp0YWJsZShnbG0ucHJlZCxzdGF0dXMyLnRlc3RpbmcpDQptZWFuKGdsbS5wcmVkPT1zdGF0dXMyLnRlc3RpbmcpDQpgYGANCg0KVGhpcw0KDQpgYGB7cn0NCmdsbTMuZml0PWdsbShzdGF0dXMyIH4gbWR2cF9mb19oeiArIG1kdnBfaml0dGVyICsgcnBkZSArIGQyICsgZGZhICsgc3ByZWFkMSwNCiAgICAgICAgICAgICBkYXRhPWRmLCBmYW1pbHk9Ymlub21pYWwsDQogICAgICAgICAgICAgc3Vic2V0PXRyYWluKQ0Kc3VtbWFyeShnbG0zLmZpdCkNCmdsbTMucHJvYnM9cHJlZGljdChnbG0zLmZpdCxuZXdkYXRhPXRlc3QsdHlwZT0icmVzcG9uc2UiKQ0KI2dsbS5wcm9ic1sxOjVdDQpnbG0zLnByZWQ9aWZlbHNlKGdsbTMucHJvYnM+MC41LCIxIiwiMCIpDQpzdGF0dXMyLnRlc3QgPSB0ZXN0JHN0YXR1czINCnRhYmxlKGdsbTMucHJlZCxzdGF0dXMyLnRlc3QpDQptZWFuKGdsbTMucHJlZD09c3RhdHVzMi50ZXN0KQ0KDQpgYGANCg0KDQojIyBMaW5lYXIgRGlzY3JpbWluYW50IEFuYWx5c2lzDQpgYGB7cn0NCnRyYWluaW5nID0gc2FtcGxlKG5yb3coZGYpLCA5NykNCnRlc3RpbmcgPSBkZlstdHJhaW5pbmcsXQ0KDQpsZGEuZml0PWxkYShzdGF0dXN+bWR2cF9mb19oeittZHZwX2ppdHRlcixkYXRhPWRmLCBzdWJzZXQgPSB0cmFpbmluZykNCmxkYS5maXQNCg0KbGRhLnByZWQ9cHJlZGljdChsZGEuZml0LCB0ZXN0aW5nKQ0KbGRhX2RmID0gZGF0YS5mcmFtZShsZGEucHJlZCkNCg0KdGFibGUobGRhLnByZWQkY2xhc3MsdGVzdGluZyRzdGF0dXMpDQp0YWJsZShsZGEucHJlZCRjbGFzcz09dGVzdGluZyRzdGF0dXMpDQp0YWJsZShsZGEucHJlZCRjbGFzcyE9dGVzdGluZyRzdGF0dXMpDQptZWFuKGxkYS5wcmVkJGNsYXNzPT10ZXN0aW5nJHN0YXR1cykgDQpgYGANCg0KYGBge3J9DQojTERBIHBsb3RzPw0KcmVuZGVyUGxvdChwbG90KGxkYS5maXQpKQ0KcmVuZGVyUGxvdCh7Z2dwbG90KGxkYV9kZikgKyBnZW9tX2hpc3RvZ3JhbShtYXBwaW5nPWFlcyh4PUxEMSkpfSkNCnJlbmRlclBsb3Qoe2dncGxvdChsZGFfZGYpICsgZ2VvbV9ib3hwbG90KG1hcHBpbmcgPSBhZXMoeD1jbGFzcyx5PUxEMSkpfSkNCmBgYA0KDQojIyBRdWFkcmF0aWMgRGlzY3JpbWluYW50IEFuYWx5c2lzDQoNCmBgYHtyfQ0KcWRhLmZpdCA9IHFkYShzdGF0dXN+bWR2cF9mb19oeittZHZwX2ppdHRlcixkYXRhPWRmLHN1YnNldD10cmFpbmluZykNCnFkYS5maXQNCg0KdGVzdGluZyA8LSBkcGx5cjo6c2FtcGxlX24oZGYsOTgpDQpxZGEucHJlZCA9IHByZWRpY3QocWRhLmZpdCwgdGVzdGluZykNCg0KdGFibGUocWRhLnByZWQkY2xhc3MsdGVzdGluZyRzdGF0dXMpDQp0YWJsZShxZGEucHJlZCRjbGFzcz09dGVzdGluZyRzdGF0dXMpDQp0YWJsZShxZGEucHJlZCRjbGFzcyE9dGVzdGluZyRzdGF0dXMpDQptZWFuKHFkYS5wcmVkJGNsYXNzPT10ZXN0aW5nJHN0YXR1cykNCmBgYA0KDQojIyBLLU5lYXJlc3QgTmVpZ2hib3JzDQoNCmBgYHtyfQ0KcHJlZGljdG9ycz1jYmluZChtZHZwX2ZvX2h6LG1kdnBfaml0dGVyKQ0KdGVzdGluZ19rbm4gPSBzYW1wbGUobnJvdyh0ZXN0aW5nKSwgOTcpDQoNCmtubi5wcmVkPWNsYXNzOjprbm4ocHJlZGljdG9yc1t0cmFpbmluZywgXSxwcmVkaWN0b3JzW3Rlc3Rpbmdfa25uLF0sc3RhdHVzW3RyYWluaW5nXSxrPTEpDQoNCnRhYmxlKGtubi5wcmVkLHN0YXR1c1t0ZXN0aW5nX2tubl0pDQptZWFuKGtubi5wcmVkPT1zdGF0dXNbdGVzdGluZ19rbm5dKQ0KDQpgYGANCg0KIyMgQ29tcGFyaXNvbiBvZiB0aGUgTWVhbiBDb3JyZWN0IFByZWRpY3Rpb25zDQoNCg0KYGBge3J9DQojIENvbXBhcmlzb24gb2YgdGhlIG1lYW4gY29ycmVjdCBwcmVkaWN0aW9ucw0KbWVhbihnbG0ucHJlZD09c3RhdHVzMi50ZXN0aW5nKQ0KbWVhbihsZGEucHJlZCRjbGFzcz09dGVzdGluZyRzdGF0dXMpDQptZWFuKHFkYS5wcmVkJGNsYXNzPT10ZXN0aW5nJHN0YXR1cykNCm1lYW4oa25uLnByZWQ9PXN0YXR1c1t0ZXN0aW5nX2tubl0pDQpgYGANCg0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlByZWRpY3Rpb24gb2YgUGFya2luc29uJ3MgRGlzZWFzZSINCmF1dGhvcjogJ0dyb3VwIDI6IEtlbGx5IEplbm5pbmdzLCBTdGVmYW5vcyBLYXBldGFuYWtpcywgTWFyY3VzIE1hcnRpbmV6LCBSYWNoZWwgVGFycmFudCwgQ2hhbmd5b25nIFlpJw0KcmVzb3VyY2VfZmlsZXM6DQotIC5SZW52aXJvbg0Kb3V0cHV0Og0KICBodG1sX25vdGVib29rOg0KICAgIGNvZGVfZm9sZGluZzogaGlkZQ0KICAgIHRvYzogeWVzDQogICAgdG9jX2RlcHRoOiA0DQogICAgdG9jX2Zsb2F0OiB5ZXMNCnJ1bnRpbWU6IHNoaW55DQotLS0NCg0KYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9DQpsaWJyYXJ5KGdncGxvdDIpDQpyZXF1aXJlKGRwbHlyKQ0KcmVxdWlyZShJU0xSKQ0KcmVxdWlyZShib290KQ0KbGlicmFyeSh0aWR5dmVyc2UpDQpsaWJyYXJ5KG1vZGVscikNCnJlcXVpcmUoTUFTUykNCmxpYnJhcnkobGVhcHMpDQpsaWJyYXJ5KGdsbW5ldCkNCnJlcXVpcmUoZGF0YS53b3JsZCkNCnJlcXVpcmUoc2hpbnkpDQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpDQpgYGANCiAgDQojIyAqKlIgU2Vzc2lvbiBJbmZvKiogIA0KDQpgYGB7cn0NCnNlc3Npb25JbmZvKCkNCmBgYA0KDQojIyAqKkdpdGh1YiBMaW5rKiogDQpodHRwczovL2dpdGh1Yi5jb20vbWFyY3VzZ2FicmllbG1hcnRpbmV6L0YxNy1lREEtUHJvamVjdDMNCg0KIyMgKipEYXRhLldvcmxkIExpbmsqKg0KaHR0cHM6Ly9kYXRhLndvcmxkL3RhcnJhbnRybC9mLTE3LWVkYS1wcm9qZWN0LTMNCg0KIyMgKipDb25uZWN0aW5nIHRvIGRhdGEud29ybGQqKiANCmBgYHtyfQ0KcHJvamVjdCA8LSAiaHR0cHM6Ly9kYXRhLndvcmxkL3RhcnJhbnRybC9wYXJraW5zb25zLXRlbGVtb25pdG9yaW5nIg0KZGF0YS53b3JsZDo6c2V0X2NvbmZpZyhjZmdfZW52KCJEV19BUEkiKSkNCmRmIDwtIGRhdGEud29ybGQ6OnF1ZXJ5KA0KICBkYXRhLndvcmxkOjpxcnlfc3FsKCJTRUxFQ1QgKiBGUk9NIHBhcmtpbnNvbnNfdGVsZW1vbml0b3JpbmciKSwNCiAgZGF0YXNldCA9IHByb2plY3QNCikNCmBgYA0KDQojIyBTZXR1cA0KV2Ugc3BsaXQgb3VyIGRhdGFzZXQgaW50byB0d28gZm9yIHRyYWluaW5nIGFuZCB0ZXN0aW5nLg0KV2UgYWxzbyByZW1vdmVkIHRoZSBzdWJqZWN0IGlkIGNvbHVtbiBhbmQgYWRkZWQgYSBjb2x1bW4gdG8gdGhlIGRhdGFzZXQgdG8gdHJhbnNsYXRlIHRoZSBib29sZWFuIHN0cmluZ3MgZm9yIHNleCB0byBiaW5hcnkgdmFsdWVzLg0KDQpgYGB7cn0NCmRmID0gZHBseXI6OnNlbGVjdChkZiwgLXN1YmplY3QpDQpkZiA8LSBkZiAlPiUgZHBseXI6Om11dGF0ZShzZXgyID0gaWZlbHNlKHNleCA9PSAidHJ1ZSIsIDEsIDApKQ0KYXR0YWNoKGRmKQ0Kc2V0LnNlZWQoMSkNCnRyYWluID0gc2FtcGxlKG5yb3coZGYpLCA5NykNCnRlc3QgPSBkZlstdHJhaW4sXQ0KYGBgDQoNCg0KIyMgKipJbnRyb2R1Y3Rpb24qKiANCiJUaGlzIGRhdGFzZXQgaXMgY29tcG9zZWQgb2YgYSByYW5nZSBvZiBiaW9tZWRpY2FsIHZvaWNlIG1lYXN1cmVtZW50cyBmcm9tIDQyIHBlb3BsZSB3aXRoIGVhcmx5LXN0YWdlIFBhcmtpbnNvbidzIGRpc2Vhc2UgcmVjcnVpdGVkIHRvIGEgc2l4LW1vbnRoIHRyaWFsIG9mIGEgdGVsZW1vbml0b3JpbmcgZGV2aWNlIGZvciByZW1vdGUgc3ltcHRvbSBwcm9ncmVzc2lvbiBtb25pdG9yaW5nLiBUaGUgcmVjb3JkaW5ncyB3ZXJlIGF1dG9tYXRpY2FsbHkgY2FwdHVyZWQgaW4gdGhlIHBhdGllbnQncyBob21lcy4NCg0KQ29sdW1ucyBpbiB0aGUgdGFibGUgY29udGFpbiBzdWJqZWN0IG51bWJlciwgc3ViamVjdCBhZ2UsIHN1YmplY3QgZ2VuZGVyLCB0aW1lIGludGVydmFsIGZyb20gYmFzZWxpbmUgcmVjcnVpdG1lbnQgZGF0ZSwgbW90b3IgVVBEUlMsIHRvdGFsIFVQRFJTLCBhbmQgMTYgYmlvbWVkaWNhbCB2b2ljZSBtZWFzdXJlcy4gRWFjaCByb3cgY29ycmVzcG9uZHMgdG8gb25lIG9mIDUsODc1IHZvaWNlIHJlY29yZGluZyBmcm9tIHRoZXNlIGluZGl2aWR1YWxzLiBUaGUgbWFpbiBhaW0gb2YgdGhlIGRhdGEgaXMgdG8gcHJlZGljdCB0aGUgbW90b3IgYW5kIHRvdGFsIFVQRFJTIHNjb3JlcyAoJ21vdG9yX1VQRFJTJyBhbmQgJ3RvdGFsX1VQRFJTJykgZnJvbSB0aGUgMTYgdm9pY2UgbWVhc3VyZXMuIg0KDQoNCnN1YmplY3QjIC0gSW50ZWdlciB0aGF0IHVuaXF1ZWx5IGlkZW50aWZpZXMgZWFjaCBzdWJqZWN0IA0KYWdlIC0gU3ViamVjdCBhZ2UgDQpzZXggLSBTdWJqZWN0IGdlbmRlciAnMCcgLSBtYWxlLCAnMScgLSBmZW1hbGUgDQp0ZXN0X3RpbWUgLSBUaW1lIHNpbmNlIHJlY3J1aXRtZW50IGludG8gdGhlIHRyaWFsLiBUaGUgaW50ZWdlciBwYXJ0IGlzIHRoZSBudW1iZXIgb2YgZGF5cyBzaW5jZSByZWNydWl0bWVudC4gDQptb3Rvcl9VUERSUyAtIENsaW5pY2lhbidzIG1vdG9yIFVQRFJTIHNjb3JlLCBsaW5lYXJseSBpbnRlcnBvbGF0ZWQgDQp0b3RhbF9VUERSUyAtIENsaW5pY2lhbidzIHRvdGFsIFVQRFJTIHNjb3JlLCBsaW5lYXJseSBpbnRlcnBvbGF0ZWQgKFVQRFJTIGlzIHN0YW5kcyBmb3IgVW5pZmllZCBQYXJraXNvbidzIERpc2Vhc2UgUmF0aW5nIFNjYWxlIGFuZCBpcyB1c2VkIHRvIHJhdGUgdGhlIHNldmVyaXR5IG9mIFBhcmtpbnNvbidzKQ0KSml0dGVyKCUpLEppdHRlcihBYnMpLEppdHRlcjpSQVAsSml0dGVyOlBQUTUsSml0dGVyOkREUCAtIFNldmVyYWwgbWVhc3VyZXMgb2YgdmFyaWF0aW9uIGluIGZ1bmRhbWVudGFsIGZyZXF1ZW5jeSAoZnVuZGFtZW50YWwgZnJlcXVlbmN5IGlzIHRoZSBsb3dlc3QgZnJlcXVlbmN5IG9mIGEgc291bmQgd2F2ZSkuDQpTaGltbWVyLFNoaW1tZXIoZEIpLFNoaW1tZXI6QVBRMyxTaGltbWVyOkFQUTUsU2hpbW1lcjpBUFExMSxTaGltbWVyOkREQSAtIFNldmVyYWwgbWVhc3VyZXMgb2YgdmFyaWF0aW9uIGluIGFtcGxpdHVkZSANCk5IUixITlIgLSBUd28gbWVhc3VyZXMgb2YgcmF0aW8gb2Ygbm9pc2UgdG8gdG9uYWwgY29tcG9uZW50cyBpbiB0aGUgdm9pY2UgDQpSUERFIC0gQSBub25saW5lYXIgZHluYW1pY2FsIGNvbXBsZXhpdHkgbWVhc3VyZSANCkRGQSAtIFNpZ25hbCBmcmFjdGFsIHNjYWxpbmcgZXhwb25lbnQgDQpQUEUgLSBBIG5vbmxpbmVhciBtZWFzdXJlIG9mIGZ1bmRhbWVudGFsIGZyZXF1ZW5jeSB2YXJpYXRpb24NCg0KVGhpcyBkb2N1bWVudCB3aWxsIGNvbXBhcmUgbW9kZWxzIGJhc2VkIG9uIHRoZSBwcmVkaWN0b3JzIGNob3NlbiBieSBiZXN0IHN1YnNldCBzZWxlY3Rpb24sIGZvcndhcmQgc2VsZWN0aW9uLCBhbmQgYmFja3dhcmQgc2VsZWN0aW9uLiBUaGVzZSBtb2RlbHMgaW5jbHVkZSBMb2dpc3RpYyBSZWdyZXNzaW9uLCBMaW5lYXIgRGlzY3JpbWluYW50IEFuYWx5c2lzLCBRdWFkcmF0aWMgRGlzY3JpbWluYW50IEFuYWx5c2lzLCBhbmQgSy1OZWFyZXN0IE5laWdoYm9ycy4NCg0KIyMgQXR0ZW1wdGluZyB0byBQcmVkaWN0IFBhcmtpbnNvbidzIFNldmVyaXR5DQpGaXJzdCwgd2UgdXNlZCBmb3J3YXJkIHN1YnNldCBzZWxlY3Rpb24gdG8gZmluZCB0aGUgYmVzdCBtb2RlbCBmb3IgcHJlZGljdGluZyB0b3RhbCBVUERSUy4gSW4gb3JkZXIgdG8gZG8gdGhpcywgd2UgcmVtb3ZlZCBtb3RvciBVUERSUyBmcm9tIHRoZSBkYXRhIGZyYW1lIGJlY2F1c2UgaXQgaXMgYSBzaW1pbGFyIG91dGNvbWUgbWVhc3VyZW1lbnQgdG8gdG90YWwgVVBEUlMuDQogDQoNCmBgYHtyfQ0KZGZ0b3RhbCA9IGRwbHlyOjpzZWxlY3QoZGYsIC1tb3Rvcl91cGRycywgLXNleCkNCnJlZ2ZpdC5md2QgPSByZWdzdWJzZXRzKHRvdGFsX3VwZHJzfi4sIGRhdGE9ZGZ0b3RhbCwgbnZtYXg9MTksIG1ldGhvZD0iZm9yd2FyZCIpDQpyZWdmaXQuc3VtbWFyeSA9IHN1bW1hcnkocmVnZml0LmZ3ZCkNCiNyZWdmaXQuc3VtbWFyeQ0KYGBgDQoNCg0KSGVyZSBhcmUgdGhlIHBsb3RzIG9mIGJvdGggQ3AgYW5kIGFkanVzdGVkIFIyIGZyb20gdGhlIG1vZGVscyBnaXZlbiBmcm9tIGZvcndhcmQgc3Vic2V0IHNlbGVjdGlvbi4gDQoNCmBgYHtyfQ0KcmVuZGVyUGxvdChwbG90KHJlZ2ZpdC5md2Qsc2NhbGU9IkNwIikpDQpyZW5kZXJQbG90KHBsb3QocmVnZml0LnN1bW1hcnkkY3AseGxhYj0iTnVtYmVyIG9mIFZhcmlhYmxlcyIseWxhYj0iQ3AiLCB0eXBlPSJiIikpDQp3aGljaC5taW4ocmVnZml0LnN1bW1hcnkkY3ApDQpyZW5kZXJQbG90KHBsb3QocmVnZml0LmZ3ZCxzY2FsZT0iYWRqcjIiKSkNCnJlbmRlclBsb3QocGxvdChyZWdmaXQuc3VtbWFyeSRhZGpyMix4bGFiPSJOdW1iZXIgb2YgVmFyaWFibGVzIix5bGFiPSJBZGpyMiIsIHR5cGU9ImIiKSkNCndoaWNoLm1heChyZWdmaXQuc3VtbWFyeSRhZGpyMikNCmBgYA0KDQpUaGUgUjIgdmFsdWVzIGZvciBhbGwgdGhlIG1vZGVscyBhcmUgdmVyeSBsb3cuIEFmdGVyIGNvbnNpZGVyaW5nIHRoZXNlIHJlc3VsdHMgaW4gdGhlIGNvbnRleHQgb2YgdGhlIGRhdGEsIHdlIHJlYWxpemVkIHRoYXQgdGhpcyBpcyByZWFzb25hYmxlIGJlY2F1c2UgYWxsIHRoZSBwYXRpZW50cyBoYXZlIGVhcmx5IFBhcmtpbnNvbidzIGRpc2Vhc2UuIFBlcmhhcHMgaXQgaXMgZGlmZmljdWx0IHRvIHByZWRpY3QgdGhlIHNldmVyaXkgb2YgdGhlIGRpc2Vhc2UgYmVjYXVzZSBub25lIG9mIHRoZSBwYXRpZW50cyBoYXZlIHNldmVyZSBmb3JtcyBvZiB0aGUgZGlzZWFzZSB5ZXQuIFNpbmNlIHRoZSBSMiB2YWx1ZXMgYXJlIHNvIGxvdyBmb3IgYWxsIHRoZSBtb2RlbHMsIHdlIGRlY2lkZWQgdG8gbW92ZSBvbiB0byBwcmVkaWN0aW5nIG90aGVyIG91dGNvbWVzIHdpdGggdGhpcyBkYXRhLg0KDQpGaW5kIHJlbGV2YW50IGluc2lnaHRzIGhlcmU6DQpbRm9yd2FyZCBzZWxlY3Rpb25dKGh0dHBzOi8vZGF0YS53b3JsZC90YXJyYW50cmwvZi0xNy1lZGEtcHJvamVjdC0zL2luc2lnaHRzL2QzYjQyYjQyLTQyMjYtNGIwNy04NmIzLTBjMzliZmRkZmUyYikNCltMb3cgUjJdKGh0dHBzOi8vZGF0YS53b3JsZC90YXJyYW50cmwvZi0xNy1lZGEtcHJvamVjdC0zL2luc2lnaHRzLzQyMWZmMTAwLWZkNDYtNDc3ZC05NTE3LTBiODc0Mzc2ZTcyMSkNCg0KDQojIyBTdWJzZXQgU2VsZWN0aW9uIFByZWRpY3RpbmcgU2V4DQoNCk5leHQsIHdlIHVzZWQgYmVzdCBzdWJzZXQgc2VsZWN0aW9uIHRvIHByZWRpY3Qgc2V4LiBXZSByZW1vdmVkIHRoZSBvcmlnaW5hbCBzZXggY29sdW1uIGluIG9yZGVyIHRvIHByZWRpY3QgdGhlIGJpbmFyeSB2ZXJzaW9uLg0KDQoNCmBgYHtyfQ0KZGZfc3Vic2V0X2ZpeGVkIDwtIGRmICU+JSBkcGx5cjo6c2VsZWN0KC4sIC1zZXgpDQoNCnJlZ2ZpdC5mdWxsPXJlZ3N1YnNldHMoc2V4Mn4uLGRhdGE9ZGZfc3Vic2V0X2ZpeGVkLCBudm1heD0yNSkNCnJlZy5zdW1tYXJ5PXN1bW1hcnkocmVnZml0LmZ1bGwpDQpyZWcuc3VtbWFyeQ0KDQpgYGANCg0KDQpUaGUgZm9sbG93aW5nIHBsb3RzIHNob3cgQ3AgYW5kIFIyIGZvciBlYWNoIG1vZGVsIGNob3NlbiBieSBzdWJzZXQgc2VsZWN0aW9uLiBBbHRob3VnaCB0aGUgbWluaW11bSBDcCBpcyBhdCAxNSwgdGhlIENwIGxldmVscyBvZmYgYXJvdW5kIDEwIHByZWRpY3RvcnMuIEZvciB0aGlzIHJlYXNvbiwgd2UgY2hvc2UgdG8gZG8gZnVydGhlciBhbmFseXNpcyBvbiB0aGUgZmlyc3QgMTAgcHJlZGljdG9ycyBjaG9zZW4gYnkgc3Vic2V0IHNlbGVjdGlvbi4NCg0KYGBge3J9DQpyZW5kZXJQbG90KHBsb3QocmVnZml0LmZ1bGwsc2NhbGU9IkNwIikpDQpyZW5kZXJQbG90KHBsb3QocmVnLnN1bW1hcnkkY3AseGxhYj0iTnVtYmVyIG9mIFZhcmlhYmxlcyIseWxhYj0iQ3AiKSkNCndoaWNoLm1pbihyZWcuc3VtbWFyeSRjcCkNCg0KcmVuZGVyUGxvdChwbG90KHJlZ2ZpdC5mdWxsLHNjYWxlPSJhZGpyMiIpKQ0KcmVuZGVyUGxvdChwbG90KHJlZy5zdW1tYXJ5JGFkanIyLHhsYWI9Ik51bWJlciBvZiBWYXJpYWJsZXMiLHlsYWI9ImFkanIyIikpDQp3aGljaC5tYXgocmVnLnN1bW1hcnkkYWRqcjIpDQpgYGANCg0KV2UgY29tcGFyZWQgdGhlIHByZWRpY3RvcnMgY2hvc2VuIGJ5IGJlc3Qgc3Vic2V0IHNlbGVjdGlvbiB0byB0aG9zZSBjaG9zZW4gYnkgZm9yd2FyZCBzZWxlY3Rpb24uIEZvcndhcmQgc2VsZWN0aW9uIGNob3NlIHRoZSBzYW1lIHByZWRpY3RvcnMgYXMgYmVzdCBzdWJzZXQgc2VsZWN0aW9uLiANCg0KYGBge3J9DQpyZWdmaXQuZndkPXJlZ3N1YnNldHMoc2V4Mn4uLGRhdGE9ZGZfc3Vic2V0X2ZpeGVkLG52bWF4PTIyLG1ldGhvZD0iZm9yd2FyZCIpDQojc3VtbWFyeShyZWdmaXQuZndkKQ0KcmVnZndkLnN1bW1hcnk9c3VtbWFyeShyZWdmaXQuZndkKQ0KDQpyZW5kZXJQbG90KHBsb3QocmVnZml0LmZ3ZCxzY2FsZT0iQ3AiKSkNCnJlbmRlclBsb3QocGxvdChyZWdmd2Quc3VtbWFyeSRjcCx4bGFiPSJOdW1iZXIgb2YgVmFyaWFibGVzIix5bGFiPSJDcCIpKQ0Kd2hpY2gubWluKHJlZ2Z3ZC5zdW1tYXJ5JGNwKQ0KDQpyZW5kZXJQbG90KHBsb3QocmVnZml0LmZ3ZCxzY2FsZT0iYWRqcjIiKSkNCnJlbmRlclBsb3QocGxvdChyZWdmd2Quc3VtbWFyeSRhZGpyMix4bGFiPSJOdW1iZXIgb2YgVmFyaWFibGVzIix5bGFiPSJhZGpyMiIpKQ0Kd2hpY2gubWF4KHJlZ2Z3ZC5zdW1tYXJ5JGFkanIyKQ0KYGBgDQoNCldlIGRlY2lkZWQgdG8gc2VlIGlmIGJhY2t3YXJkcyBzZWxlY3Rpb24gd291bGQgaGF2ZSBkaWZmZXJlbnQgcmVzdWx0cyB0aGFuIGZvcndhcmQgc2VsZWN0aW9uLiBUaGUgcmVzdWx0cyBpbmNsdWRpbmcgbWluaW11bSBDUCBhbmQgbWF4aW11bSBhZGpyMiB3ZXJlIHRoZSBzYW1lLCBidXQgdGhlIHByZWRpY3RvcnMgYXQgZWFjaCB2YWx1ZSBvZiBDUCB3ZXJlIHNsaWdodGx5IGRpZmZlcmVudCwgZXNwZWNpYWxseSB0aGUgc2hpbW1lciB2YWx1ZXMgb24gdGhlIGxvd2VyIHZhbHVlcyBvZiBDUC4NCg0KYGBge3J9DQpkZl9zdWJzZXRfZml4ZWQgPC0gZGYgJT4lIGRwbHlyOjpzZWxlY3QoLiwgLXNleCkNCg0KcmVnZml0LmJ3PXJlZ3N1YnNldHMoc2V4Mn4uLGRhdGE9ZGZfc3Vic2V0X2ZpeGVkLG52bWF4PTIyLG1ldGhvZD0iYmFja3dhcmQiKQ0KcmVnZml0LmJ3DQojc3VtbWFyeShyZWdmaXQuYncpDQoNCnJlbmRlclBsb3QocGxvdChyZWdmaXQuYncsc2NhbGU9IkNwIikpDQpyZW5kZXJQbG90KHBsb3QocmVnZml0LmJ3LHNjYWxlPSJhZGpyMiIpKQ0KDQpyZWdidy5zdW1tYXJ5PXN1bW1hcnkocmVnZml0LmJ3KQ0KDQp3aGljaC5taW4ocmVnYncuc3VtbWFyeSRjcCkNCndoaWNoLm1heChyZWdidy5zdW1tYXJ5JGFkanIyKQ0KDQpyZW5kZXJQbG90KHBsb3QocmVnYncuc3VtbWFyeSRjcCx4bGFiPSJOdW1iZXIgb2YgVmFyaWFibGVzIix5bGFiPSJDcCIpKQ0KcmVuZGVyUGxvdChwbG90KHJlZ2J3LnN1bW1hcnkkYWRqcjIseGxhYj0iTnVtYmVyIG9mIFZhcmlhYmxlcyIseWxhYj0iYWRqcjIiKSkNCmBgYA0KDQoNCkZpbmQgcmVsZXZhbnQgaW5zaWdodHMgaGVyZToNCkluaXRpYWxseSwgd2UgZGlkIG5vdCBleGNsdWRlIHRoZSBzdHJpbmcgc2V4IHZhcmlhYmxlIGluIHN1YnNldCBzZWxlY3Rpb24uIA0KW0Jlc3QgU3Vic2V0IFNlbGVjdGlvbiwgUHJlZGljdGluZyBTZXhdKGh0dHBzOi8vZGF0YS53b3JsZC90YXJyYW50cmwvZi0xNy1lZGEtcHJvamVjdC0zL2luc2lnaHRzLzQ4MzcxNjJiLWJlOGYtNDliMi1hZTdlLTFiMjgxNjZjY2I2ZCkNCltGb3J3YXJkIFNlbGVjdGlvbiBQcmVkaWN0aW5nIFNleCAmIENvbXBhcmlzb24gdG8gQmVzdCBTdWJzZXRdKGh0dHBzOi8vZGF0YS53b3JsZC90YXJyYW50cmwvZi0xNy1lZGEtcHJvamVjdC0zL2luc2lnaHRzLzcwM2YzNTc1LTZlNTMtNDM5Yy04OGFiLTVmNjk5N2Q1YTc4ZSkNCkhvd2V2ZXIsIHdlIHJlYWxpemVkIHRoZSBtaXN0YWtlIGFuZCByZXJhbiB0aGUgaW5zaWdodHMuDQpbQ29ycmVjdGlvbjogQmVzdCBTdWJzZXQgJiBGb3J3YXJkIFNlbGVjdGlvbiBQcmVkaWN0aW5nIFNleF0oaHR0cHM6Ly9kYXRhLndvcmxkL3RhcnJhbnRybC9mLTE3LWVkYS1wcm9qZWN0LTMvaW5zaWdodHMvY2IzMzNhMjctMzc2NC00MGJmLWI2NjUtYTIzMjFmODVhNjFkKQ0KDQpbQmFja3dhcmQgU2VsZWN0aW9uIHZzIEZvcndhcmRdKGh0dHBzOi8vZGF0YS53b3JsZC90YXJyYW50cmwvZi0xNy1lZGEtcHJvamVjdC0zL2luc2lnaHRzL2Y2OGJiYmRhLTIwZTktNDRlYi1hZTRhLWMzNGE4ODJmMjY5NikNCg0KIyMgU2hyaW5rYWdlIE1ldGhvZA0KDQojIyMgTGFzc28NCg0KV2UgZGlkIG5vdCB1c2UgYm9vdHN0cmFwIGZvciB0aGlzIHNwZWNpZmljIG1vZGVsLCBidXQgaWYgeW91IHdvdWxkIGxpa2UgdG8gc2VlIGEgZGlmZmVyZW50IG1vZGVsIHdoZXJlIHdlIHVzZWQgYm9vdHN0cmFwLCBjbGljayBbaGVyZS5dKGh0dHBzOi8vZGF0YS53b3JsZC90YXJyYW50cmwvZi0xNy1lZGEtcHJvamVjdC0zL2luc2lnaHRzLzY0YzYwYzJlLWE3YTItNGZkMC1iODQyLTVhZGJmYzQ0NTRhYikNCg0KIyMgVXNpbmcgdGhlIFByZWRpY3RvcnMgZnJvbSBTdWJzZXQgU2VsZWN0aW9uIGluIE90aGVyIE1vZGVscw0KRXZlbiB3aXRoIGV4aGF1c3RpdmUgc2VhcmNoLCB0aGUgYWRqdXN0ZWQgUjIgZm9yIHRoZSBjaG9zZW4gbW9kZWxzIHdhcyBzdGlsbCBsb3cgKGFyb3VuZCAwLjI1KS4gV2UgZGVjaWRlZCB0byB1c2UgdGhlIHByZWRpY3RvcnMgZnJvbSB0aGUgdGVuIHByZWRpY3RvciBtb2RlbCB0aGF0IHN1YnNldCBzZWxlY3Rpb24gY2hvc2UgKGFzIHJlZmVyZW5jZWQgYWJvdmUpIGluIGRpZmZlcmVudCBtb2RlbCB0eXBlcy4gU3BlY2lmaWNhbGx5LCB3ZSBleHBsb3JlZCBMb2dpc3RpYyBSZWdyZXNzaW9uICh3aGljaCBpcyB0aGUgbW9kZWwgdGhhdCBzdWJzZXQgc2VsZWN0aW9uIHVzZXMpLCBMaW5lYXIgRGlzY3JpbWluYXRlIEFuYWx5c2lzLCBRdWFkcmF0aWMgRGlzY3JpbWluYXRlIEFuYWx5c2lzLCBhbmQgSyBOZWFyZXN0IE5laWdoYm9ycy4gSW4gb3JkZXIgdG8gY29tcGFyZSB0aGVzZSBtb2RlbCB0eXBlcywgd2UgY29tcGFyZWQgcHJlZGljdGlvbiBhY2N1cmFjeS4NCg0KIyMjIExvZ2lzdGljIFJlZ3Jlc3Npb24NCkZpcnN0LCB3ZSBkaWQgTG9naXN0aWMgUmVncmVzc2lvbi4gVGhpcyBpcyB0aGUgbGVhc3Qtc3F1YXJlcyBtb2RlbCB0aGF0IHN1YnNldCBzZWxlY3Rpb24gYWxzbyB1c2VzLg0KYGBge3J9DQpzZXQuc2VlZCgxKQ0KdHJhaW4gPSBzYW1wbGUobnJvdyhkZl9zdWJzZXRfZml4ZWQpLCAyOTM3KQ0KdGVzdCA9IGRmX3N1YnNldF9maXhlZFstdHJhaW4sXQ0KDQpnbG0yLmZpdD1nbG0oc2V4MiB+IG1vdG9yX3VwZHJzICsgdG90YWxfdXBkcnMgKyBqaXR0ZXJfcmFwICsgaml0dGVyX3BwcTUgKyBzaGltbWVyX2FwcTExICsgbmhyICsgaG5yICsgcnBkZSArIHBwZSwNCiAgICAgICAgICAgICBkYXRhPWRmLCBmYW1pbHk9Ymlub21pYWwsDQogICAgICAgICAgICAgc3Vic2V0PXRyYWluKQ0Kc3VtbWFyeShnbG0yLmZpdCkNCg0KZ2xtMi5wcm9icz1wcmVkaWN0KGdsbTIuZml0LG5ld2RhdGE9dGVzdCx0eXBlPSJyZXNwb25zZSIpDQpnbG0yLnByZWQ9aWZlbHNlKGdsbTIucHJvYnM+MC41LCIxIiwiMCIpDQpzZXgyLnRlc3QgPSB0ZXN0JHNleDINCnRhYmxlKGdsbTIucHJlZCxzZXgyLnRlc3QpIA0KbWVhbihnbG0yLnByZWQ9PXNleDIudGVzdCkgDQpgYGANCg0KIyMjIExpbmVhciBEaXNjcmltaW5hbnQgQW5hbHlzaXMNCg0KTmV4dCwgd2UgZGlkIExpbmVhciBEaXNjcmltaW5hbnQgQW5hbHlzaXMgd2l0aCB0aGUgc2FtZSBwcmVkaWN0b3JzLiANCg0KYGBge3J9DQoNCmRmMyA8LSBkZiAlPiUgZHBseXI6Om11dGF0ZSguLCBuZXdqaXR0ZXJhYnMgPSAoaml0dGVyX2FicyoxMDAwKSkgJT4lIGRwbHlyOjpzZWxlY3QoLWppdHRlcl9hYnMpDQp0cmFpbjIgPSBzYW1wbGUobnJvdyhkZjMpLCA5NykNCnRlc3QyID0gZGYzWy10cmFpbixdDQpsZGEyLmZpdD1sZGEoc2V4MiB+IG1vdG9yX3VwZHJzICsgdG90YWxfdXBkcnMgKyBuZXdqaXR0ZXJhYnMgKyBqaXR0ZXJfcmFwICsgaml0dGVyX3BwcTUgKyBzaGltbWVyX2FwcTExICsgbmhyICsgaG5yICsgcnBkZSArIHBwZSwNCiAgICAgICAgICAgICBkYXRhPWRmMywgc3Vic2V0PXRyYWluMikNCmxkYTIuZml0DQpsZGEyLnByZWQ9cHJlZGljdChsZGEyLmZpdCwgdGVzdDIpDQpsZGEyX2RmID0gZGF0YS5mcmFtZShsZGEyLnByZWQpDQp0YWJsZShsZGEyLnByZWQkY2xhc3MsdGVzdDIkc2V4MikNCm1lYW4obGRhMi5wcmVkJGNsYXNzPT10ZXN0MiRzZXgyKQ0KYGBgDQoNCg0KIyMjIFF1YWRyYXRpYyBEaXNjcmltaW5hbnQgQW5hbHlzaXMNCg0KTmV4dCwgd2UgZGlkIFF1YWRyYXRpYyBEaXNjcmltaW5hbnQgQW5hbHlzaXMgd2l0aCB0aGUgc2FtZSBwcmVkaWN0b3JzLg0KDQpgYGB7cn0NCnFkYTIuZml0ID0gcWRhKHNleDIgfiBtb3Rvcl91cGRycyArIHRvdGFsX3VwZHJzICsgaml0dGVyX2FicyArIGppdHRlcl9yYXAgKyBqaXR0ZXJfcHBxNSArIHNoaW1tZXJfYXBxMTEgKyBuaHIgKyBobnIgKyBycGRlICsgcHBlLA0KICAgICAgICAgICAgICAgZGF0YT1kZiwgc3Vic2V0PXRyYWluKQ0KcWRhMi5maXQNCnFkYTIucHJlZCA9IHByZWRpY3QocWRhMi5maXQsIHRlc3QpDQp0YWJsZShxZGEyLnByZWQkY2xhc3MsdGVzdCRzZXgyKQ0KbWVhbihxZGEyLnByZWQkY2xhc3M9PXRlc3Qkc2V4MikNCmBgYA0KDQoNCiMjIyBLLU5lYXJlc3QgTmVpZ2hib3JzDQoNCkZpbmFsbHksIHdlIGRpZCBLLU5lYXJlc3QgTmVpZ2hib3JzIHdpdGggdGhlIDEwIHByZWRpY3RvcnMuDQoNCmBgYHtyfQ0KdGVzdF9rbm4gPSBzYW1wbGUobnJvdyh0ZXN0KSwgMjkzNykNCnByZWRpY3RvcnNLTk49Y2JpbmQobW90b3JfdXBkcnMsIHRvdGFsX3VwZHJzLCBqaXR0ZXJfYWJzLCBqaXR0ZXJfcmFwLCBqaXR0ZXJfcHBxNSwgc2hpbW1lcl9hcHExMSwgbmhyLCBobnIsIHJwZGUsIHBwZSkNCmtubi5wcmVkPWNsYXNzOjprbm4ocHJlZGljdG9yc0tOTlt0cmFpbiwgXSxwcmVkaWN0b3JzS05OW3Rlc3Rfa25uLF0sc2V4Mlt0cmFpbl0saz0xKQ0KdGFibGUoa25uLnByZWQsc2V4Mlt0ZXN0X2tubl0pDQptZWFuKGtubi5wcmVkPT1zZXgyW3Rlc3Rfa25uXSkNCg0KYGBgDQoNCkhlcmUgYXJlIHJlbGV2YW50IGluc2lnaHRzOg0KW0tOTiBBbmFseXNpcyBvZiBOZXcgIkJlc3QgTW9kZWwiXShodHRwczovL2RhdGEud29ybGQvdGFycmFudHJsL2YtMTctZWRhLXByb2plY3QtMy9pbnNpZ2h0cy9jZGM1NDExZC02MDYxLTQ2NzEtODliMy1mM2YyNGRkZWU4NmIpDQpbVGVzdGluZyBpZiBLTk4gQW5hbHlzaXMgaXMgdGhlIGJlc3Qgd2l0aCBOZXcgUHJlZGljdG9yc10oaHR0cHM6Ly9kYXRhLndvcmxkL3RhcnJhbnRybC9mLTE3LWVkYS1wcm9qZWN0LTMvaW5zaWdodHMvOWE1NTY3ZjYtZGE1NC00Yzg4LWFkN2MtNjA0ZDYxYzNiNTA0KQ0KDQojIyBGaW5kaW5ncw0KIyMjIENvbXBhcmluZyBQcmVkaWN0aW9uIE1lYW5zDQoNCkFmdGVyIGRvaW5nIHRoZXNlIGFuYWx5c2VzLCB3ZSBmb3VuZCB0aGF0IEtOTiBnaXZlcyB0aGUgYmVzdCBwcmVkaWN0aW9uIHJhdGUgb2Ygc2V4LiBJbiBmYWN0LCB0aGUgcHJlZGljdGlvbiByYXRlIGlzIG5lYXJseSAxMDAlLiBXZSBmb3VuZCBpdCBpbnRlcmVzdGluZyB0aGF0IHdlIGNvdWxkIHByZWRpY3Qgc2V4IHdpdGggc3VjaCBhIGhpZ2ggZGVncmVlIG9mIGFjY3VyYWN5IGJhc2VkIG9uIHRoZXNlIG1lYXN1cmVzIG9mIFBhcmtpbnNvbidzIGRpc2Vhc2UuIFRoaXMgbGVkIHVzIHRvIHRlbnRhdGl2ZWx5IGNvbmNsdWRlIHRoYXQgdGhlc2UgYXNwZWN0cyBvZiBQYXJraW5zb24ncyBhcmUgc2V4dWFsbHkgZGltb3JwaGljLg0KDQpgYGB7cn0NCm1lYW4oZ2xtMi5wcmVkPT1zZXgyLnRlc3QpIA0KbWVhbihsZGEyLnByZWQkY2xhc3M9PXRlc3Qkc2V4MikNCm1lYW4ocWRhMi5wcmVkJGNsYXNzPT10ZXN0JHNleDIpDQptZWFuKGtubi5wcmVkPT1zZXgyW3Rlc3Rfa25uXSkNCmBgYA0KDQojIyMgRmluYWwgVGhvdWdodHMNCg0KQXMgd2UgbWVudGlvbmVkIGJlZm9yZSwgd2UgZGVjaWRlZCBub3QgdG8gZnVydGh1ciBwdXJzdWUgcHJlZGljdGluZyBQYXJraW5zb24ncyBzZXZlcml0eS4gV2UgYmVsaWV2ZSBpdCB3YXMgZGlmZmljdWx0IHRvIHByZWRpY3Qgc2V2ZXJpdHkgb2YgUGFya2luc29uJ3MsIGJlY2F1c2UgdGhlIHBhdGllbnRzIGluIHRoZSBzdHVkeSB3ZXJlIGVhcmx5IG9uIGluIHRoZSBwcm9ncmVzcyBvZiB0aGUgZGlzZWFzZS4gDQoNClVsdGltYXRlbHksIHdlIHdlcmUgYWJsZSB0byB1c2UgdGhlIHByZWRpY3RvcnMgZm91bmQgYnkgc3Vic2V0IHNlbGVjdGlvbiB0byBmaW5kIGEgdmVyeSBhY2N1cmF0ZSBtb2RlbCBwcmVkaWN0aW5nIHNleC4gRXZlbiB0aG91Z2ggc3Vic2V0IHNlbGVjdGlvbiBkaWQgbm90IGdpdmUgYSB2ZXJ5IGhpZ2ggUjIgdmFsdWUgd2l0aCBhbnkgb2YgaXRzIG1vZGVscywgaXQgc3RpbGwgZ2F2ZSB1cyB2YWx1YWJsZSBpbnNpZ2h0IGludG8gdGhlIGRhdGEgYXMgdG8gd2hpY2ggcHJlZGljdG9ycyB0byBpbmNsdWRlIGluIG90aGVyIGNsYXNzaWZpY2F0aW9uIG1vZGVscy4gS05OLCBhZ2Fpbiwgd2FzIHRoZSBiZXN0IG1vZGVsLiBUaGlzIGlzIGNvbnNpc3RlbnQgd2l0aCBvdXIgZmluZGluZ3MgZnJvbSBQcm9qZWN0IDIuIA0KDQo=</div>
 
 
 </div>

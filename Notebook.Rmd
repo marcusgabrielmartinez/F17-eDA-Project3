@@ -36,9 +36,13 @@ sessionInfo()
 ## **Github Link** 
 https://github.com/marcusgabrielmartinez/F17-eDA-Project3
 
+## **Data.World Link**
+https://data.world/tarrantrl/f-17-eda-project-3
+
 ## **Connecting to data.world** 
 ```{r}
 project <- "https://data.world/tarrantrl/parkinsons-telemonitoring"
+data.world::set_config(cfg_env("DW_API"))
 df <- data.world::query(
   data.world::qry_sql("SELECT * FROM parkinsons_telemonitoring"),
   dataset = project
@@ -85,10 +89,10 @@ First, we used forward subset selection to find the best model for predicting to
  
 
 ```{r}
-dftotal = dplyr::select(df, -motor_updrs)
+dftotal = dplyr::select(df, -motor_updrs, -sex)
 regfit.fwd = regsubsets(total_updrs~., data=dftotal, nvmax=19, method="forward")
 regfit.summary = summary(regfit.fwd)
-regfit.summary
+#regfit.summary
 ```
 
 
@@ -141,7 +145,7 @@ We compared the predictors chosen by best subset selection to those chosen by fo
 
 ```{r}
 regfit.fwd=regsubsets(sex2~.,data=df_subset_fixed,nvmax=22,method="forward")
-summary(regfit.fwd)
+#summary(regfit.fwd)
 regfwd.summary=summary(regfit.fwd)
 
 renderPlot(plot(regfit.fwd,scale="Cp"))
@@ -153,6 +157,28 @@ renderPlot(plot(regfwd.summary$adjr2,xlab="Number of Variables",ylab="adjr2"))
 which.max(regfwd.summary$adjr2)
 ```
 
+We decided to see if backwards selection would have different results than forward selection. The results including minimum CP and maximum adjr2 were the same, but the predictors at each value of CP were slightly different, especially the shimmer values on the lower values of CP.
+
+```{r}
+df_subset_fixed <- df %>% dplyr::select(., -sex)
+
+regfit.bw=regsubsets(sex2~.,data=df_subset_fixed,nvmax=22,method="backward")
+regfit.bw
+#summary(regfit.bw)
+
+renderPlot(plot(regfit.bw,scale="Cp"))
+renderPlot(plot(regfit.bw,scale="adjr2"))
+
+regbw.summary=summary(regfit.bw)
+
+which.min(regbw.summary$cp)
+which.max(regbw.summary$adjr2)
+
+renderPlot(plot(regbw.summary$cp,xlab="Number of Variables",ylab="Cp"))
+renderPlot(plot(regbw.summary$adjr2,xlab="Number of Variables",ylab="adjr2"))
+```
+
+
 Find relevant insights here:
 Initially, we did not exclude the string sex variable in subset selection. 
 [Best Subset Selection, Predicting Sex](https://data.world/tarrantrl/f-17-eda-project-3/insights/4837162b-be8f-49b2-ae7e-1b28166ccb6d)
@@ -160,6 +186,13 @@ Initially, we did not exclude the string sex variable in subset selection.
 However, we realized the mistake and reran the insights.
 [Correction: Best Subset & Forward Selection Predicting Sex](https://data.world/tarrantrl/f-17-eda-project-3/insights/cb333a27-3764-40bf-b665-a2321f85a61d)
 
+[Backward Selection vs Forward](https://data.world/tarrantrl/f-17-eda-project-3/insights/f68bbbda-20e9-44eb-ae4a-c34a882f2696)
+
+## Shrinkage Method
+
+### Lasso
+
+We did not use bootstrap for this specific model, but if you would like to see a different model where we used bootstrap, click [here.](https://data.world/tarrantrl/f-17-eda-project-3/insights/64c60c2e-a7a2-4fd0-b842-5adbfc4454ab)
 
 ## Using the Predictors from Subset Selection in Other Models
 Even with exhaustive search, the adjusted R2 for the chosen models was still low (around 0.25). We decided to use the predictors from the ten predictor model that subset selection chose (as referenced above) in different model types. Specifically, we explored Logistic Regression (which is the model that subset selection uses), Linear Discriminate Analysis, Quadratic Discriminate Analysis, and K Nearest Neighbors. In order to compare these model types, we compared prediction accuracy.
@@ -171,8 +204,7 @@ set.seed(1)
 train = sample(nrow(df_subset_fixed), 2937)
 test = df_subset_fixed[-train,]
 
-## WHY ISN'T THIS WORKING
-glm2.fit=glm(sex2 ~ motor_updrs + total_updrs + jitter_abs + jitter_rap + jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe,
+glm2.fit=glm(sex2 ~ motor_updrs + total_updrs + jitter_rap + jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe,
              data=df, family=binomial,
              subset=train)
 summary(glm2.fit)
@@ -189,13 +221,17 @@ mean(glm2.pred==sex2.test)
 Next, we did Linear Discriminant Analysis with the same predictors. 
 
 ```{r}
-lda2.fit=lda(sex2 ~ motor_updrs + total_updrs + jitter_rap + jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe,
-             data=df, subset=train)
+
+df3 <- df %>% dplyr::mutate(., newjitterabs = (jitter_abs*1000)) %>% dplyr::select(-jitter_abs)
+train2 = sample(nrow(df3), 97)
+test2 = df3[-train,]
+lda2.fit=lda(sex2 ~ motor_updrs + total_updrs + newjitterabs + jitter_rap + jitter_ppq5 + shimmer_apq11 + nhr + hnr + rpde + ppe,
+             data=df3, subset=train2)
 lda2.fit
-lda2.pred=predict(lda2.fit, test)
+lda2.pred=predict(lda2.fit, test2)
 lda2_df = data.frame(lda2.pred)
-table(lda2.pred$class,test$sex2)
-mean(lda2.pred$class==test$sex2)
+table(lda2.pred$class,test2$sex2)
+mean(lda2.pred$class==test2$sex2)
 ```
 
 
@@ -230,7 +266,7 @@ Here are relevant insights:
 [KNN Analysis of New "Best Model"](https://data.world/tarrantrl/f-17-eda-project-3/insights/cdc5411d-6061-4671-89b3-f3f24ddee86b)
 [Testing if KNN Analysis is the best with New Predictors](https://data.world/tarrantrl/f-17-eda-project-3/insights/9a5567f6-da54-4c88-ad7c-604d61c3b504)
 
-
+## Findings
 ### Comparing Prediction Means
 
 After doing these analyses, we found that KNN gives the best prediction rate of sex. In fact, the prediction rate is nearly 100%. We found it interesting that we could predict sex with such a high degree of accuracy based on these measures of Parkinson's disease. This led us to tentatively conclude that these aspects of Parkinson's are sexually dimorphic.
@@ -242,10 +278,9 @@ mean(qda2.pred$class==test$sex2)
 mean(knn.pred==sex2[test_knn])
 ```
 
+### Final Thoughts
 
+As we mentioned before, we decided not to furthur pursue predicting Parkinson's severity. We believe it was difficult to predict severity of Parkinson's, because the patients in the study were early on in the progress of the disease. 
 
-
-## Insights
-
-Ultimately, we were able to use the predictors found by subset selection to find a very accurate model. Even though subset selection did not give a very high R2 value with any of its models, it still gave us valuable insight into the data as to which predictors to include in other classification models.
+Ultimately, we were able to use the predictors found by subset selection to find a very accurate model predicting sex. Even though subset selection did not give a very high R2 value with any of its models, it still gave us valuable insight into the data as to which predictors to include in other classification models. KNN, again, was the best model. This is consistent with our findings from Project 2. 
 
