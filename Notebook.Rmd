@@ -200,6 +200,10 @@ However, we realized the mistake and reran the insights.
 
 [Backward Selection vs Forward](https://data.world/tarrantrl/f-17-eda-project-3/insights/f68bbbda-20e9-44eb-ae4a-c34a882f2696)
 
+Other subset selection insights:
+
+[Forward Selection: different predictors](https://data.world/tarrantrl/f-17-eda-project-3/insights/a71b6274-dc7b-4cd3-b258-a345c7574dd5)
+
 ## Shrinkage Method
 
 ### Lasso
@@ -301,6 +305,8 @@ Here are relevant insights:
 
 [Testing if KNN Analysis is the best with New Predictors](https://data.world/tarrantrl/f-17-eda-project-3/insights/9a5567f6-da54-4c88-ad7c-604d61c3b504)
 
+[Analyzing LR, LDA, QDA results](https://data.world/tarrantrl/f-17-eda-project-3/insights/c1d3c4b2-89bc-4a61-a50b-15b6187ca521)
+
 Other KNN analyses: 
 
 [KNN Analysis of Multi-Predictor Model Predicting Sex](https://data.world/tarrantrl/f-17-eda-project-3/insights/863fa334-aa71-41d3-85d6-3d22f6e1943a)
@@ -345,10 +351,4 @@ Ultimately, we were able to use the predictors found by subset selection to find
 
 [Forward Selection Predicting Age](https://data.world/tarrantrl/f-17-eda-project-3/insights/f659224c-792f-4e82-949f-063fff8687bf)
 
-[Forward Selection: different predictors](https://data.world/tarrantrl/f-17-eda-project-3/insights/a71b6274-dc7b-4cd3-b258-a345c7574dd5)
-
 [Three quadratic pairs and their LOOCV and 10 fold CV](https://data.world/tarrantrl/f-17-eda-project-3/insights/1ff5a974-7efe-40b3-8e75-23777caa2fe8)
-
-[Analyzing LR, LDA, QDA results](https://data.world/tarrantrl/f-17-eda-project-3/insights/c1d3c4b2-89bc-4a61-a50b-15b6187ca521)
-
-[Testing if KNN Analysis is the best with New Predictors](https://data.world/tarrantrl/f-17-eda-project-3/insights/9a5567f6-da54-4c88-ad7c-604d61c3b504)
