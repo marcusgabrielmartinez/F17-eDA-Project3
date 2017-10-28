@@ -50,6 +50,7 @@ df <- data.world::query(
 ```
 
 ## Setup
+
 We split our dataset into two for training and testing.
 We also removed the subject id column and added a column to the dataset to translate the boolean strings for sex to binary values.
 
@@ -64,6 +65,7 @@ test = df[-train,]
 
 
 ## **Introduction** 
+
 "This dataset is composed of a range of biomedical voice measurements from 42 people with early-stage Parkinson's disease recruited to a six-month trial of a telemonitoring device for remote symptom progression monitoring. The recordings were automatically captured in the patient's homes.
 
 Columns in the table contain subject number, subject age, subject gender, time interval from baseline recruitment date, motor UPDRS, total UPDRS, and 16 biomedical voice measures. Each row corresponds to one of 5,875 voice recording from these individuals. The main aim of the data is to predict the motor and total UPDRS scores ('motor_UPDRS' and 'total_UPDRS') from the 16 voice measures."
@@ -85,6 +87,7 @@ PPE - A nonlinear measure of fundamental frequency variation
 This document will compare models based on the predictors chosen by best subset selection, forward selection, and backward selection. These models include Logistic Regression, Linear Discriminant Analysis, Quadratic Discriminant Analysis, and K-Nearest Neighbors.
 
 ## Attempting to Predict Parkinson's Severity
+
 First, we used forward subset selection to find the best model for predicting total UPDRS. In order to do this, we removed motor UPDRS from the data frame because it is a similar outcome measurement to total UPDRS.
  
 
@@ -201,7 +204,17 @@ However, we realized the mistake and reran the insights.
 
 ### Lasso
 
+We used Lasso to analyze the data another way. From this analysis, one predictor stands out at different lambdas in the chart. However, the final coefficients included age, test_time, motor_updrs, total_updrs, jitter, jitter_abs, jitter_rap, shimmer_apq3, shimmer_dda, nhr, hnr, rpde, dfa, and ppe. Jitter_abs and jitter_rap had the highest coefficients. This is slightly different than the predictors returned by subset selection, but most of them are the same. Lasso shrunt the predictors down to 14, which is similar to the 15 predictor model with the lowest Cp from subset selection. Subset selection did not choose test_time or dfa and chose slightly different jitters and shimmers. These are similar enough that we are still confident in continuing analysis with the predictors from the 10 predictor subset model.
 
+```{r}
+x=model.matrix(sex2~.-1,data=df_subset_fixed) 
+y=df_subset_fixed$sex2
+fit.lasso=glmnet(x,y,family="binomial")
+renderPlot(plot(fit.lasso,xvar="lambda",label=TRUE))
+cv.lasso=cv.glmnet(x,y,family="binomial")
+renderPlot(plot(cv.lasso))
+coef(cv.lasso)
+```
 
 We did not use bootstrap for this specific model, but if you would like to see a different model where we used bootstrap, click [here.](https://data.world/tarrantrl/f-17-eda-project-3/insights/64c60c2e-a7a2-4fd0-b842-5adbfc4454ab)
 
@@ -214,9 +227,11 @@ Find other relevant insights here:
 [Predicting binary status vs T/F in last insight](https://data.world/tarrantrl/f-17-eda-project-3/insights/beb05d70-eb71-4dbe-bef8-267f2201f767)
 
 ## Using the Predictors from Subset Selection in Other Models
+
 Even with exhaustive search, the adjusted R2 for the chosen models was still low (around 0.25). We decided to use the predictors from the ten predictor model that subset selection chose (as referenced above) in different model types. Specifically, we explored Logistic Regression (which is the model that subset selection uses), Linear Discriminate Analysis, Quadratic Discriminate Analysis, and K Nearest Neighbors. In order to compare these model types, we compared prediction accuracy.
 
 ### Logistic Regression
+
 First, we did Logistic Regression. This is the least-squares model that subset selection also uses.
 ```{r}
 set.seed(1)
@@ -315,8 +330,6 @@ As we mentioned before, we decided not to furthur pursue predicting Parkinson's 
 Ultimately, we were able to use the predictors found by subset selection to find a very accurate model predicting sex. Even though subset selection did not give a very high R2 value with any of its models, it still gave us valuable insight into the data as to which predictors to include in other classification models. KNN, again, was the best model. This is consistent with our findings from Project 2. 
 
 ##Miscellaneous Insights
-
-[Low R2](https://data.world/tarrantrl/f-17-eda-project-3/insights/421ff100-fd46-477d-9517-0b874376e721)
 
 [Cross Validation on N-degree Model Predicting NHR](https://data.world/tarrantrl/f-17-eda-project-3/insights/ed877768-ce7a-4e67-89c7-27b6cda1eb94)
 
