@@ -1,0 +1,12 @@
+name: project3nb
+title: Project3NB
+username:
+account: marcusgmartinez
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 229989
+bundleId: 1049075
+url: https://marcusgmartinez.shinyapps.io/project3nb/
+when: 1509154421.9917
+asMultiple: FALSE
+asStatic: FALSE

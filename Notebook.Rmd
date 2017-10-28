@@ -111,6 +111,7 @@ The R2 values for all the models are very low. After considering these results i
 
 Find relevant insights here:
 [Forward selection](https://data.world/tarrantrl/f-17-eda-project-3/insights/d3b42b42-4226-4b07-86b3-0c39bfddfe2b)
+
 [Low R2](https://data.world/tarrantrl/f-17-eda-project-3/insights/421ff100-fd46-477d-9517-0b874376e721)
 
 
@@ -181,9 +182,13 @@ renderPlot(plot(regbw.summary$adjr2,xlab="Number of Variables",ylab="adjr2"))
 
 Find relevant insights here:
 Initially, we did not exclude the string sex variable in subset selection. 
+
 [Best Subset Selection, Predicting Sex](https://data.world/tarrantrl/f-17-eda-project-3/insights/4837162b-be8f-49b2-ae7e-1b28166ccb6d)
+
 [Forward Selection Predicting Sex & Comparison to Best Subset](https://data.world/tarrantrl/f-17-eda-project-3/insights/703f3575-6e53-439c-88ab-5f6997d5a78e)
+
 However, we realized the mistake and reran the insights.
+
 [Correction: Best Subset & Forward Selection Predicting Sex](https://data.world/tarrantrl/f-17-eda-project-3/insights/cb333a27-3764-40bf-b665-a2321f85a61d)
 
 [Backward Selection vs Forward](https://data.world/tarrantrl/f-17-eda-project-3/insights/f68bbbda-20e9-44eb-ae4a-c34a882f2696)
@@ -192,7 +197,15 @@ However, we realized the mistake and reran the insights.
 
 ### Lasso
 
+
+
 We did not use bootstrap for this specific model, but if you would like to see a different model where we used bootstrap, click [here.](https://data.world/tarrantrl/f-17-eda-project-3/insights/64c60c2e-a7a2-4fd0-b842-5adbfc4454ab)
+
+Find other relevant insights here: 
+
+[Lasso for predicting Sex](https://data.world/tarrantrl/f-17-eda-project-3/insights/789fc85c-3bb9-4649-9c9e-6afa2765a5fb)
+
+[Parkinson's status lasso](https://data.world/tarrantrl/f-17-eda-project-3/insights/3d7bf097-d070-4dcd-b405-902d964696ef)
 
 ## Using the Predictors from Subset Selection in Other Models
 Even with exhaustive search, the adjusted R2 for the chosen models was still low (around 0.25). We decided to use the predictors from the ten predictor model that subset selection chose (as referenced above) in different model types. Specifically, we explored Logistic Regression (which is the model that subset selection uses), Linear Discriminate Analysis, Quadratic Discriminate Analysis, and K Nearest Neighbors. In order to compare these model types, we compared prediction accuracy.
@@ -264,6 +277,7 @@ mean(knn.pred==sex2[test_knn])
 
 Here are relevant insights:
 [KNN Analysis of New "Best Model"](https://data.world/tarrantrl/f-17-eda-project-3/insights/cdc5411d-6061-4671-89b3-f3f24ddee86b)
+
 [Testing if KNN Analysis is the best with New Predictors](https://data.world/tarrantrl/f-17-eda-project-3/insights/9a5567f6-da54-4c88-ad7c-604d61c3b504)
 
 ## Findings
